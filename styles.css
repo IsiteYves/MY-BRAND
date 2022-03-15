@@ -110,7 +110,7 @@ ul {
 .Menubar > ul:last-of-type > li:not(:first-of-type) {
   margin-top: 0.5rem;
 }
-.GreetingSide {
+body > div:nth-of-type(2) {
   display: flex;
   padding: 3rem 0 0 3rem;
   width: 100%;
@@ -235,7 +235,4 @@ body > button {
   border-radius: 50%;
   font-size: 20px !important;
   cursor: pointer;
-}
-body > button > span {
-  color: #000;
 }
