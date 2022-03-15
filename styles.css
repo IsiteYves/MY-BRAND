@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+:root {
+  --main-color: #08fdd8;
+  --secColor: #05fdd8;
+}
+body {
+  display: flex;
+  background: #1d1d1d;
+}
+.Menubar {
+  height: 100vh;
+  width: fit-content;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+}
+.Menubar > div:first-of-type {
+  background: #000;
+  padding: 1rem;
+  cursor: pointer;
+}
+.Menubar > div:first-of-type > h1 {
+  font-size: 1.5625rem;
+}
+.Menubar > div:first-of-type > h1::before {
+  content: "I";
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  display: block;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 82px;
+  color: #fd2155;
+  text-shadow: -4px 2px 0px var(--main-color);
+}
+.Menubar > div:first-of-type > p {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+ul {
+  list-style-type: none;
+}
+.Menubar > ul:first-of-type > li {
+  padding: 0.8rem 0;
+  width: 100%;
+  border-bottom: 1px solid #292828;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.Menubar > ul:first-of-type .active {
+  color: var(--main-color);
+  pointer-events: none;
+  cursor: default;
+}
+.Menubar > ul:first-of-type > li > a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.Menubar > ul:first-of-type > li > a:hover,
+.GreetingSide > div:first-of-type > div:last-of-type > a {
+  color: #1ec4ab;
+}
+.Menubar > ul:first-of-type span {
+  color: var(--main-color) !important;
+}
+.socials {
+  width: 80%;
+  margin: 0.5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.socials * {
+  font-size: 15px;
+  cursor: pointer;
+}
+.socials > * {
+  color: #fff !important;
+}
+.socials > *:hover {
+  color: var(--main-color) !important;
+}
+.socials *:nth-of-type(2),
+.socials *:nth-of-type(3) {
+  margin-left: 1.2rem;
+}
+.socials > *:last-of-type {
+  margin: 0.8rem auto 0 auto;
+}
+.Menubar > ul:last-of-type {
+  width: fit-content;
+  border-top: 1px solid #292828;
+  padding: 0.6rem !important;
+  margin: 0.5rem auto 0 auto !important;
+}
+.Menubar > ul:last-of-type > li {
+  color: #ccc;
+  font-size: 0.75rem;
+}
+.Menubar > ul:last-of-type > li:not(:first-of-type) {
+  margin-top: 0.5rem;
+}
+.GreetingSide {
+  display: flex;
+  padding: 3rem 0 0 3rem;
+  width: 100%;
+}
+.GreetingSide > div {
+  width: 50%;
+}
+.GreetingSide > div:first-of-type > div:first-of-type,
+.GreetingSide > div:first-of-type > div:nth-of-type(2) {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+}
+.GreetingSide > div:first-of-type > div:first-of-type *,
+.GreetingSide > div:first-of-type > div:nth-of-type(2) * {
+  color: #6b6b6b;
+  font-family: Hanuman !important;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem;
+}
+.GreetingSide > div:first-of-type > div:first-of-type > span:nth-of-type(2),
+.GreetingSide > div:first-of-type > div:nth-of-type(2) > span:nth-of-type(2) {
+  margin-left: 1.5rem;
+}
+.GreetingSide > div:first-of-type > div:first-of-type > span:last-of-type {
+  margin-left: 3rem;
+}
+.GreetingSide > div:first-of-type > h1 {
+  font-family: "Roboto";
+  color: #fff;
+  font-size: 4.375rem;
+  font-weight: 900;
+  width: fit-content;
+  text-shadow: 0px 4px 3px #5bf7e0;
+}
+.GreetingSide > div:first-of-type > h1 > span {
+  color: #fd2155;
+  text-shadow: -4px 2px 0 var(--main-color);
+}
+.GreetingSide > div:first-of-type > div:last-of-type {
+  margin-top: 3rem;
+}
+.GreetingSide > div:first-of-type > div:last-of-type > a,
+.GreetingSide > div:last-of-type > a {
+  position: relative;
+  padding: 0.6rem 4rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.GreetingSide > div:first-of-type > div:last-of-type > a {
+  width: fit-content;
+  background: #3acfb9;
+}
+.GreetingSide > div:last-of-type > a {
+  width: 50%;
+  text-align: center;
+  border: 1px solid #4bf5db;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  color: #3acfb9;
+}
+.GreetingSide > div:last-of-type > a:first-of-type,
+.GreetingSide > div:last-of-type > a:last-of-type {
+  background-color: #41d8c1;
+  color: #fff;
+}
+.GreetingSide > div:first-of-type > div:last-of-type > a::after {
+  background: #fff;
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+}
+.GreetingSide > div:first-of-type > div:last-of-type > a:last-of-type {
+  margin-left: 1.4rem;
+}
+.GreetingSide > div:first-of-type > div:last-of-type > a:hover,
+.GreetingSide > div:last-of-type > a:hover {
+  background-color: #41d8c1;
+  color: #fff;
+}
+.GreetingSide > div:last-of-type {
+  position: relative;
+  display: flex;
+  background-image: url("/images//IsiteYves.png");
+  background-position-x: 15rem;
+  background-position-y: 15rem;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  flex-direction: column;
+}
+.GreetingSide > div:last-of-type > a:not(:nth-of-type(2)) {
+  margin-top: 1rem;
+}
+.GreetingSide > div:last-of-type > a:nth-of-type(2) {
+  margin-top: 8rem;
+}
+.GreetingSide > div:last-of-type > a:first-of-type {
+  position: absolute;
+  right: 3rem;
+  width: fit-content !important;
+  float: right;
+}
+body > button {
+  position: absolute;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  left: 50%;
+  background: #08fdd8;
+  display: flex;
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  outline: none !important;
+  border: none !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+body > button > span {
+  color: #000;
+}
