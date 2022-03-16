@@ -11,8 +11,12 @@
 body {
   display: flex;
   background: #1d1d1d;
+  overflow-x: hidden;
+  height: 100vh;
 }
 .Menubar {
+  position: sticky;
+  top: 0;
   height: 100vh;
   width: fit-content;
   background: #181818;
@@ -112,10 +116,14 @@ ul {
 }
 body > div:nth-of-type(2) {
   display: flex;
-  padding: 3rem 0 0 3rem;
   width: 100%;
 }
-.GreetingSide > div {
+body > .GreetingSide {
+  padding: 3rem 0 0 3rem;
+}
+body > .GreetingSide > div,
+body > .About-me-info > div,
+body > .My_Skills > div {
   width: 50%;
 }
 .GreetingSide > div:first-of-type > div:first-of-type,
@@ -157,12 +165,22 @@ body > div:nth-of-type(2) {
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a,
 .GreetingSide > div:last-of-type > a,
-.my-work-info > a {
+.my-work-info > a,
+.About-me-info > div:last-of-type > div:first-of-type > a,
+.my-projects > div a {
   position: relative;
   padding: 0.6rem 4rem;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
+}
+.my-projects > div a {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 2rem !important;
+}
+.my-projects > div a * {
+  font-size: 1.5625rem !important;
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a {
   width: fit-content;
@@ -264,7 +282,6 @@ body > button {
   width: 4.875rem;
   height: 0.3125rem;
   background: var(--main-color);
-  border-color: 2px solid blue;
   top: -2rem;
   left: 14rem !important;
 }
@@ -272,29 +289,58 @@ body > button {
   display: flex;
   width: 90%;
   flex-wrap: wrap;
+  margin-left: -2rem !important;
+  border-color: 2px solid blue !important;
 }
 .my-projects > div:nth-of-type(-n + 3) {
   margin-top: 0 !important;
 }
-.my-projects > div:nth-of-type:first-of-type,
-.my-projects > div:nth-of-type:nth-of-type(4) {
-  margin-left: 0 !important;
-}
 .my-projects > div {
   margin: 2rem 0 0 2rem;
+  background-size: contain;
   width: 30%;
-  padding: 1rem;0
-  background-clip: red;
-  background: url("./images/project.png") no-repeat;
+  padding: 1rem;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+  animation: comeUp 1s ease;
 }
-.my-work-info > a {
+@keyframes comeUp {
+  0% {
+    margin-top: 4rem;
+    opacity: 0.1;
+  }
+  100% {
+    margin-top: 2rem;
+    opacity: 1;
+  }
+}
+.my-projects > div:first-of-type {
+  background: url("./images/skidesign.png") no-repeat;
+}
+.my-projects > div:nth-of-type(2) {
+  background: url("./images/groovinx.png") no-repeat;
+}
+.my-projects > div:nth-of-type(3) {
+  background: url("./images/sparkcinema.png") no-repeat;
+}
+.my-projects > div:nth-of-type(4) {
+  background: url("./images/myliberpay.png") no-repeat;
+}
+.my-projects > div:nth-of-type(5) {
+  background: url("./images/keystore.png") no-repeat;
+}
+.my-projects > div:nth-of-type(6) {
+  background: url("./images/measuremets-converter.png") no-repeat;
+}
+.my-work-info > a,
+.my-projects > div a {
   width: fit-content;
   margin-top: 2rem;
   background-color: #3acfb9 !important;
 }
 .my-work-info > .my-projects > div > div {
   margin-top: 4rem;
-  background: #000;
+  background: #00000094;
   padding: 1rem;
   border-radius: 0.3125rem;
 }
@@ -305,4 +351,182 @@ body > button {
   margin-top: 0.6rem !important;
   margin-bottom: 0.7rem !important;
   font-size: 0.875rem;
+}
+.About-me-info > div:nth-of-type(2) {
+  background-color: #181818;
+  padding: 2em 3rem 3rem 3rem;
+}
+.About-me-info > div:first-of-type {
+  padding: 5rem 3rem 3rem 3rem;
+}
+.About-me-info > div:first-of-type > h1 {
+  font-size: 3.125rem;
+  color: #08fdd8;
+}
+.About-me-info > div:first-of-type > p {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 1rem;
+}
+.About-me-info > div:first-of-type > p:last-of-type {
+  margin-bottom: 2rem;
+}
+.About-me-info > div:first-of-type > a {
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  width: 10rem;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 4rem;
+  background: #3acfb9;
+}
+.About-me-info > div:first-of-type > a:hover {
+  color: #3acfb9;
+  border: 1px solid #3acfb9;
+  background-color: transparent;
+  padding: 0.7375rem 1.9375rem;
+}
+.About-me-info > div:last-of-type > div:first-of-type {
+  display: flex;
+  justify-content: spaetween;
+}
+.About-me-info > div:last-of-type > div:first-of-type > a:first-of-type,
+.About-me-info > div:last-of-type > div:first-of-type > a:last-of-type:hover {
+  border: 1px solid #3acfb9 !important;
+  background: transparent !important;
+  color: #3acfb9 !important;
+}
+.About-me-info > div:last-of-type > div:first-of-type > a:first-of-type:hover,
+.About-me-info > div:last-of-type > div:first-of-type > a:last-of-type {
+  background: #3acfb9 !important;
+  color: #fff !important;
+}
+.About-me-info > div:last-of-type > h1 {
+  margin-top: 1.5rem;
+}
+.About-me-info > div:last-of-type > h1,
+.My_Skills > h1 {
+  color: #08fdd8;
+}
+.My_Skills > h1 {
+  margin-top: 0 !important;
+}
+.About-me-info > div:last-of-type > ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+}
+.About-me-info > div:last-of-type > ul > li {
+  color: #fff;
+  font-size: 1rem;
+}
+.My_Hobbies {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.My_Hobbies > div {
+  background: #201e1e;
+  width: 45%;
+  border-radius: 0.375rem;
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.My_Hobbies > div > span {
+  display: none !important;
+  height: 3rem !important;
+}
+.My_Hobbies > div > p {
+  font-weight: 900;
+  color: #fffada;
+}
+.My_Skills {
+  margin-top: 2rem;
+  background: #3f3b3b;
+  padding: 2rem 3rem !important;
+}
+.My_Skills > p {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.875rem;
+  margin-left: 0.2rem;
+}
+.My_Skills > p:not(:first-of-type) {
+  margin-top: 0.8rem !important;
+}
+.My_Skills > div {
+  background: #fff;
+  height: 1px;
+  width: 98%;
+  margin-top: 0.4rem;
+  margin-left: 0.2rem;
+}
+.My_Skills > div > div {
+  height: 100%;
+}
+.My_Skills > div:first-of-type > div {
+  width: 98%;
+  background-color: #42ade2;
+}
+.My_Skills > div:nth-of-type(2) > div {
+  width: 100%;
+  background-color: #fd2155;
+}
+.My_Skills > div:nth-of-type(3) > div {
+  width: 88%;
+  background-color: #08fdd8;
+}
+.My_Skills > div:nth-of-type(4) > div {
+  width: 100%;
+  background-color: #f1754d;
+}
+.My_Skills > div:nth-of-type(5) > div {
+  width: 88%;
+  background-color: #4d5cdd;
+}
+.My_Skills > div:nth-of-type(6) > div {
+  width: 100%;
+  background-color: #fd2155;
+}
+.My_Skills > div:nth-of-type(7) > div {
+  width: 88%;
+  background-color: #504ed1;
+}
+.My_Skills > h1:not(:first-of-type) {
+  margin-top: 1rem !important;
+}
+@media screen and (max-width: 63.75rem) {
+  body > div:nth-of-type(2) {
+    flex-direction: column;
+  }
+  body > div:nth-of-type(2) > div {
+    width: 100%;
+  }
+  body > button {
+    display: none;
+  }
+  body > div:nth-of-type(2) > div:nth-of-type(2) {
+    padding-bottom: 6rem !important;
+  }
+  .GreetingSide > div:last-of-type {
+    background-position-x: 20rem;
+    background-position-y: 5rem;
+  }
+  .GreetingSide > div:last-of-type > a:first-of-type {
+    position: relative;
+    left: 0;
+    float: none;
+  }
+  .GreetingSide > div:last-of-type > a {
+    width: 60% !important;
+  }
+  .my-projects {
+    flex-direction: column;
+  }
+  .my-projects > div {
+    width: 80%;
+  }
 }
