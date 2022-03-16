@@ -156,7 +156,8 @@ body > div:nth-of-type(2) {
   margin-top: 3rem;
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a,
-.GreetingSide > div:last-of-type > a {
+.GreetingSide > div:last-of-type > a,
+.my-work-info > a {
   position: relative;
   padding: 0.6rem 4rem;
   color: #fff;
@@ -235,4 +236,73 @@ body > button {
   border-radius: 50%;
   font-size: 20px !important;
   cursor: pointer;
+}
+.my-work-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 3rem 3rem !important;
+}
+
+.my-work-info > div:first-of-type {
+  display: flex;
+  align-items: center;
+  padding-bottom: 2rem;
+  color: #fff;
+  font-size: 0.875rem !important;
+}
+.my-work-info > div:first-of-type > h1 {
+  position: relative;
+  color: var(--main-color);
+  font-size: 3.125rem;
+  font-weight: 900 !important;
+  margin-right: 6.5rem;
+}
+.my-work-info > div:first-of-type > h1::after {
+  position: relative;
+  content: "";
+  display: flex;
+  width: 4.875rem;
+  height: 0.3125rem;
+  background: var(--main-color);
+  border-color: 2px solid blue;
+  top: -2rem;
+  left: 14rem !important;
+}
+.my-projects {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+}
+.my-projects > div:nth-of-type(-n + 3) {
+  margin-top: 0 !important;
+}
+.my-projects > div:nth-of-type:first-of-type,
+.my-projects > div:nth-of-type:nth-of-type(4) {
+  margin-left: 0 !important;
+}
+.my-projects > div {
+  margin: 2rem 0 0 2rem;
+  width: 30%;
+  padding: 1rem;0
+  background-clip: red;
+  background: url("./images/project.png") no-repeat;
+}
+.my-work-info > a {
+  width: fit-content;
+  margin-top: 2rem;
+  background-color: #3acfb9 !important;
+}
+.my-work-info > .my-projects > div > div {
+  margin-top: 4rem;
+  background: #000;
+  padding: 1rem;
+  border-radius: 0.3125rem;
+}
+.my-work-info > .my-projects > div > div * {
+  color: #fff;
+}
+.my-work-info > .my-projects > div p {
+  margin-top: 0.6rem !important;
+  margin-bottom: 0.7rem !important;
+  font-size: 0.875rem;
 }
