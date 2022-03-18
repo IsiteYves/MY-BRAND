@@ -11,3 +11,4 @@ menuIcon.addEventListener("click", () => {
 menubarRemoveIcon.onclick = () => {
   document.getElementsByClassName("Menubar")[0].style.display = "none";
 };
+// alert(document.documentElement.clientWidth);
