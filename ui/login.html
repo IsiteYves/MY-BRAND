@@ -14,13 +14,19 @@
 </head>
 
 <body>
-    <form class="auth-page" action="#" method="POST">
-        <a href="../index.html"></a>
-        <input type="email" name="email" id="email">
+    <form class="auth-form" action="#" method="POST">
+        <a href="../index.html">
+            <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
+            Home
+        </a>
+        <h2>Log Into Your Account</h2>
+        <input type="email" name="email" id="email" required>
         <label for="email">Email</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" required>
         <label for="password">Password</label>
         <input type="submit" value="Login">
+        <p>Don't have an account?</p>
+        <a href="./signup.html">SignUp</a>
     </form>
 </body>
 

@@ -83,7 +83,7 @@ ul {
 }
 .Menubar > ul:first-of-type > li > a {
   color: #fff;
-  text-decoration: none;
+
   transition: all 0.5s ease;
 }
 .Menubar > ul:first-of-type > li > a:hover,
@@ -210,7 +210,7 @@ body > .My_Skills > div {
   position: relative;
   padding: 0.6rem 4rem;
   color: #fff;
-  text-decoration: none;
+
   font-weight: 700;
 }
 .my-projects > div a {
@@ -351,7 +351,7 @@ body > button {
 .my-blogs > .blog > a {
   margin-left: 1rem;
   font-size: 0.875rem !important;
-  text-decoration: none;
+
   padding: 0.5rem 1.5rem;
   background: #25e0c4;
   border-radius: 3.125rem;
@@ -452,7 +452,6 @@ body > button {
   margin-bottom: 2rem;
 }
 .About-me-info > div:first-of-type > a {
-  text-decoration: none;
   padding: 0.8rem 2rem;
   width: 10rem;
   text-align: center;
@@ -631,7 +630,8 @@ body > button {
 .blog-info-section > div:last-of-type {
   width: 35%;
 }
-.blog-info-section > div:last-of-type > * {
+.blog-info-section > div:last-of-type > *,
+.auth-form {
   background: #292828;
   padding: 2rem;
   border-radius: 0.625rem;
@@ -641,13 +641,16 @@ body > button {
 .blog-info-section > div:last-of-type > *:nth-child(2) {
   margin-top: 2rem;
 }
-.blog-info-section > div:last-of-type > form > p {
+.blog-info-section > div:last-of-type > form > p,
+.auth-form > h2 {
   font-weight: 700;
 }
-.blog-info-section > div:last-of-type > * > * {
+.blog-info-section > div:last-of-type > * > *,
+.auth-form > *:nth-child(n + 2) {
   font-size: 0.875rem;
 }
-.blog-info-section > div:last-of-type > form > label {
+.blog-info-section > div:last-of-type > form > label,
+.auth-form > label {
   position: relative;
   left: 1.5rem;
   top: -2.1rem;
@@ -656,10 +659,12 @@ body > button {
   transition: all 0.5s ease;
 }
 .blog-info-section > div:last-of-type > form > label,
-.blog-info-section > div:last-of-type > form > button {
+.blog-info-section > div:last-of-type > form > button,
+.auth-form input[type="submit"] {
   color: #fff;
 }
-.blog-info-section > div:last-of-type > form > input {
+.blog-info-section > div:last-of-type > form > input,
+.auth-form > input:not(:last-child) {
   margin-top: 1rem;
   background: #3a3838;
   font-size: 0.9375rem !important;
@@ -667,7 +672,9 @@ body > button {
   color: #fff;
 }
 .blog-info-section > div:last-of-type > form > input:focus + label,
-.blog-info-section > div:last-of-type > form > input:valid + label {
+.blog-info-section > div:last-of-type > form > input:valid + label,
+.auth-form > input:not(:last-child):focus + label,
+.auth-form > input:not(:last-child):valid + label {
   top: -4.5rem;
   padding: 0.1rem 0.7rem;
   font-weight: 700;
@@ -685,18 +692,21 @@ body > button {
   background: #2aeed1;
 }
 .blog-info-section > div:last-of-type > form > input,
-.blog-info-section > div:last-of-type > * > button {
+.blog-info-section > div:last-of-type > * > button,
+.blog-info-section > div:last-of-type > * > a {
   border-radius: 50px;
   padding: 0.8rem 1rem;
   border: none;
   outline: none;
 }
-.blog-info-section > div:last-of-type > * > button {
+.blog-info-section > div:last-of-type > * > button,
+.blog-info-section > div:last-of-type > * > a {
   color: #fff;
   transition: all 0.5s ease;
   cursor: pointer;
 }
-.blog-info-section > div:last-of-type > div > button {
+.blog-info-section > div:last-of-type > div > button,
+.blog-info-section > div:last-of-type > div > a {
   width: fit-content;
   border-radius: 5px;
   padding: 0.8rem 2rem;
@@ -704,7 +714,7 @@ body > button {
   background: #086afd;
   margin: auto;
 }
-.blog-info-section > div:last-of-type > div > button:hover {
+.blog-info-section > div:last-of-type > div > a:hover {
   background-color: #4083e7;
 }
 .blog-info-section > div:last-of-type > * > p {
@@ -878,4 +888,101 @@ body > button {
   .blog-info-section {
     padding: 0 1rem 2rem 1rem !important;
   }
+}
+@media screen and (max-width: 27.25rem) {
+  .About-me-info > div:last-of-type > div:first-of-type {
+    flex-direction: column;
+  }
+  .About-me-info > div:last-of-type > div:first-of-type > a {
+    padding: 0.7rem auto !important;
+    text-align: center !important;
+  }
+  .About-me-info > div:last-of-type > div:first-of-type > a:last-of-type {
+    top: 1rem;
+  }
+}
+.auth-form {
+  margin: 10rem auto 0 auto;
+  min-width: 30%;
+}
+.auth-form > * {
+  outline: none;
+  border: none;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+}
+.auth-form > a:first-of-type {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.4rem 2rem;
+  border-radius: 3.125rem;
+  background-color: #086afd;
+  color: #fff !important;
+}
+.signup-form {
+  margin: 5rem auto !important;
+}
+.auth-form > a:first-of-type * {
+  font-size: 28px !important;
+}
+.auth-form > h2 {
+  margin-top: 1rem;
+  font-size: 23px !important;
+  text-align: center;
+}
+.auth-form > input:first-of-type {
+  margin-top: 2rem;
+}
+.auth-form > input {
+  padding: 0.8rem;
+}
+.auth-form > input:not(:last-child):focus,
+.auth-form > input:not(:last-child):valid {
+  margin-top: 2rem !important;
+}
+.auth-form > input:not(:last-child):focus {
+  border-bottom: 1px solid var(--main-color);
+}
+.auth-form > label {
+  left: 1rem;
+}
+.auth-form > input:not(:last-child):focus + label,
+.auth-form > input:not(:last-child):valid + label {
+  left: 0;
+}
+.auth-form > input[type="submit"] {
+  background-color: #086afd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.auth-form > p {
+  margin: 1rem 0;
+  width: 100% !important;
+  text-align: center;
+}
+.auth-form > a:last-of-type {
+  text-align: center;
+  color: #1d6de6;
+}
+@media screen and (max-width: 29.25rem) {
+  .auth-form {
+    width: 100vw;
+  }
+  body {
+    background: #292828 !important;
+  }
+  .auth-form {
+    margin: 3rem auto !important;
+  }
+}
+.auth-form input[type="file"] {
+  border: 2px dashed #808080 !important;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.auth-form input[type="file"] + label {
+  top: -5rem !important;
 }
