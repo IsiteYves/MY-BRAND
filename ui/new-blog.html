@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Hanuman' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <title>Create a new blog</title>
+</head>
+
+<body>
+    <form class="auth-form new-blog-form signup-form" action="#" method="POST">
+        <a href="./admin-dashboard.html">
+            <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
+            Back to dashboard
+        </a>
+        <h2>Create a new blog</h2>
+        <input type="text" name="names" id="names" required>
+        <label for="names">Title</label>
+        <h3>Paragraphs</h3>
+        <input type="email" name="email" id="email" required>
+        <label for="email">Paragraph 1</label>
+        <input type="password" name="password" id="password" required>
+        <label for="repeatedPassword">Paragraph 2</label>
+        <input type="password" name="repeatedPassword" id="repeatedPassword" required>
+        <label for="password">Paragraph 3</label>
+        <input type="file" name="images" id="upload-image">
+        <label id="upload-image">Upload Image 1</label>
+        <input type="file" name="images" id="upload-image">
+        <label id="upload-image">Upload Image 2</label>
+        <input type="submit" value="Create Blog">
+    </form>
+</body>
+
+</html>

@@ -889,6 +889,18 @@ body > button {
     padding: 0 1rem 2rem 1rem !important;
   }
 }
+@media screen and (max-width: 27.25rem) {
+  .About-me-info > div:last-of-type > div:first-of-type {
+    flex-direction: column;
+  }
+  .About-me-info > div:last-of-type > div:first-of-type > a {
+    padding: 0.7rem auto !important;
+    text-align: center !important;
+  }
+  .About-me-info > div:last-of-type > div:first-of-type > a:last-of-type {
+    top: 1rem;
+  }
+}
 .auth-form {
   margin: 10rem auto 0 auto;
   min-width: 30%;
@@ -908,6 +920,7 @@ a {
   padding: 0.4rem 2rem;
   border-radius: 3.125rem;
   background-color: #086afd;
+  color: #fff !important;
 }
 .signup-form {
   margin: 5rem auto !important;
@@ -964,4 +977,12 @@ a {
   .auth-form {
     margin: 3rem auto !important;
   }
+}
+.auth-form input[type="file"] {
+  border: 2px dashed #808080 !important;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.auth-form input[type="file"] + label {
+  top: -5rem !important;
 }

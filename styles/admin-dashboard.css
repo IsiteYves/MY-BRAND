@@ -80,9 +80,9 @@ body {
   color: #086afd;
 }
 .my-blogs > div:first-of-type > *:last-child {
-  padding: 1rem;
+  padding: 0.4rem 2rem;
   margin-left: 1rem;
-  border-radius: 50%;
+  border-radius: 3.125rem;
   color: #fff !important;
   background: #1e90ff;
   cursor: pointer;
