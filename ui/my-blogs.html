@@ -14,15 +14,22 @@
 </head>
 
 <body>
+    <section class="responsive-menu" id="menuIcon">
+        <h1>I</h1>
+        <span class="iconify" data-icon="ci:menu-alt-02"></span>
+    </section>
     <div class="Menubar">
         <div id="menu-block-link">
             <h1>Isite</h1>
             <p>Web Developer</p>
+            <span class="iconify" id="menubarRemoveIcon"
+                style="color: #fff!important;font-size: 40px;margin-top: 1rem;z-index: 40"
+                data-icon="iconoir:cancel"></span>
         </div>
         <ul>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="./about-me.html">About me</a></li>
-            <li><a href="./my-skills.html">My Skills</a></li>
+            <li><a href="./about-me.html"">About me</a></li>
+            <li><a href=" ./my-skills.html">My Skills</a></li>
             <li><a href="./my-work.html">My Work</a></li>
             <li><a href="#" class="active">Blogs</a></li>
             <li><a href="./contact-me.html">Contact me</a></li>
@@ -47,11 +54,31 @@
             <li>Nyabihu</li>
         </ul>
     </div>
-    <div class="my-blogs-info">
-        <div></div>
-        <div></div>
-    </div>
-    <script src="../js/main.js"></script>
+    <div class="my-work-info my-blogs">
+        <div>
+            <h1>My Blogs</h1>
+            <p>I also pretty much enjoy writting different articles and blogs mainly about tech
+                but also sometimes about other various intereseting topics.</p>
+        </div>
+        <div>
+            <div class="my-blogs">
+                
+            </div>
+            <div>
+                <form class="newsletter-subscribe" action="#" method="POST">
+                    <p>Subscribe to My NewsLetter!</p>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" />
+                    <button>Subscribe</button>
+                </form>
+                <div>
+                    <p>Also feel free to create an account here so as to be able to start commenting and reacting to my
+                        blogs for more feedback.</p>
+                    <button>SignUp</button>
+                </div>
+            </div>
+        </div>
+        <script src="../js/main.js"></script>
 </body>
 
 </html>

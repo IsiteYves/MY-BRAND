@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Open Sans;
+  z-index: 5 !important;
 }
 :root {
   --main-color: #08fdd8;
@@ -12,11 +13,12 @@ body {
   display: flex;
   background: #1d1d1d;
   overflow-x: hidden;
-  height: 100vh;
+  height: fit-content;
 }
 .Menubar {
-  position: sticky;
+  position: sticky !important;
   top: 0;
+  z-index: 20 !important;
   height: 100vh;
   width: fit-content;
   background: #181818;
@@ -33,9 +35,9 @@ body {
 .Menubar > div:first-of-type > h1 {
   font-size: 1.5625rem;
 }
-.Menubar > div:first-of-type > h1::before {
-  content: "I";
-  position: relative;
+.Menubar > div:first-of-type > h1::before,
+.responsive-menu > h1 {
+  content: "Y";
   height: fit-content;
   width: fit-content;
   margin: auto;
@@ -44,7 +46,8 @@ body {
   font-size: 60px;
   line-height: 82px;
   color: #fd2155;
-  text-shadow: -4px 2px 0px var(--main-color);
+  text-shadow: -4px 0 0px var(--main-color);
+  /* text-shadow: -4px 2px 0px var(--main-color); */
 }
 .Menubar > div:first-of-type > p {
   margin-top: 0.5rem;
@@ -94,6 +97,9 @@ ul {
 .socials > *:hover {
   color: var(--main-color) !important;
 }
+#menubarRemoveIcon {
+  display: none;
+}
 .socials *:nth-of-type(2),
 .socials *:nth-of-type(3) {
   margin-left: 1.2rem;
@@ -125,6 +131,27 @@ body > .GreetingSide > div,
 body > .About-me-info > div,
 body > .My_Skills > div {
   width: 50%;
+}
+.responsive-menu {
+  position: sticky;
+  top: 0;
+  background: #181818;
+  width: 100% !important;
+  display: none;
+  z-index: 15 !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 2rem;
+}
+.responsive-menu * {
+  cursor: pointer;
+}
+.responsive-menu > h1 {
+  margin-left: 0;
+}
+.responsive-menu *:last-child {
+  font-size: 30px;
+  color: #fff;
 }
 .GreetingSide > div:first-of-type > div:first-of-type,
 .GreetingSide > div:first-of-type > div:nth-of-type(2) {
@@ -258,14 +285,18 @@ body > button {
 .my-work-info {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 3rem 3rem !important;
+  padding: 0 0 3rem 0rem !important;
 }
 
 .my-work-info > div:first-of-type {
+  position: sticky;
+  top: 0;
+  z-index: 25 !important;
+  background: #1d1d1d;
   display: flex;
   align-items: center;
-  padding-bottom: 2rem;
   color: #fff;
+  padding: 0.8rem 0 1rem 3rem !important;
   font-size: 0.875rem !important;
 }
 .my-work-info > div:first-of-type > h1 {
@@ -285,15 +316,26 @@ body > button {
   top: -2rem;
   left: 14rem !important;
 }
+.my-blogs > div:first-of-type {
+  flex-direction: column;
+  align-items: unset;
+}
+.my-work-info > a {
+  margin-left: 3rem;
+}
+.my-blogs > div:first-of-type > p {
+  width: 45%;
+}
+.my-blogs > div:first-of-type > h1::after {
+  display: none;
+}
 .my-projects {
   display: flex;
   width: 90%;
   flex-wrap: wrap;
+  margin-top: -1rem;
   margin-left: -2rem !important;
-  border-color: 2px solid blue !important;
-}
-.my-projects > div:nth-of-type(-n + 3) {
-  margin-top: 0 !important;
+  padding-left: 3rem;
 }
 .my-projects > div {
   margin: 2rem 0 0 2rem;
@@ -301,6 +343,7 @@ body > button {
   width: 30%;
   padding: 1rem;
   border-radius: 5px;
+  box-shadow: 2px 3px 30px #000000;
   transition: all 0.4s ease;
   animation: comeUp 1s ease;
 }
@@ -389,7 +432,7 @@ body > button {
 }
 .About-me-info > div:last-of-type > div:first-of-type {
   display: flex;
-  justify-content: spaetween;
+  justify-content: space-between;
 }
 .About-me-info > div:last-of-type > div:first-of-type > a:first-of-type,
 .About-me-info > div:last-of-type > div:first-of-type > a:last-of-type:hover {
@@ -498,9 +541,18 @@ body > button {
 .My_Skills > h1:not(:first-of-type) {
   margin-top: 1rem !important;
 }
+/* RESPONSIVENESS */
 @media screen and (max-width: 63.75rem) {
+  body,
   body > div:nth-of-type(2) {
     flex-direction: column;
+    position: relative !important;
+  }
+  .responsive-menu {
+    display: flex;
+  }
+  .Menubar {
+    display: none;
   }
   body > div:nth-of-type(2) > div {
     width: 100%;
@@ -508,25 +560,102 @@ body > button {
   body > button {
     display: none;
   }
+  #menubarRemoveIcon {
+    display: flex;
+    margin: auto;
+  }
   body > div:nth-of-type(2) > div:nth-of-type(2) {
     padding-bottom: 6rem !important;
   }
   .GreetingSide > div:last-of-type {
-    background-position-x: 20rem;
+    background-position-x: 15rem;
     background-position-y: 5rem;
   }
   .GreetingSide > div:last-of-type > a:first-of-type {
     position: relative;
     left: 0;
     float: none;
+    margin-top: 2rem !important;
+    width: 60% !important;
+    color: #3acfb9 !important;
+    background: transparent !important;
+    border: 1px solid #4bf5db !important;
   }
   .GreetingSide > div:last-of-type > a {
     width: 60% !important;
   }
-  .my-projects {
-    flex-direction: column;
+  .my-projects > div:nth-of-type(-n + 3) {
+    margin-top: 1.5rem !important;
   }
   .my-projects > div {
-    width: 80%;
+    width: 45%;
+  }
+  .GreetingSide > div:last-of-type > a:nth-of-type(2) {
+    margin-top: 1rem !important;
+  }
+  .Menubar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .socials {
+    margin-top: 1rem;
+    width: 50%;
+    justify-content: space-between !important;
+  }
+  .socials > * {
+    margin: 0 !important;
+  }
+}
+@media screen and (max-width: 37.5rem) {
+  .my-work-info > div:first-of-type {
+    width: 90%;
+    flex-direction: column;
+  }
+  .my-work-info > div:first-of-type > h1 {
+    margin-right: 0;
+  }
+  .my-work-info > div:first-of-type > h1::after {
+    display: none;
+  }
+  .my-work-info > div:first-of-type > p {
+    margin: 0.5rem auto 0 auto;
+  }
+}
+@media screen and (max-width: 39.8125rem) {
+  .GreetingSide > div:first-of-type > div:last-of-type {
+    display: flex;
+    flex-direction: column;
+  }
+  .GreetingSide > div:first-of-type > div:last-of-type > a {
+    padding: 0.6rem auto;
+    text-align: center;
+    width: 90%;
+  }
+  .GreetingSide > div:first-of-type > div:last-of-type > a:last-of-type {
+    margin-top: 2rem;
+    margin-left: 0;
+  }
+  .GreetingSide > div:first-of-type > h1 {
+    text-shadow: unset;
+    font-size: 2.6875rem;
+  }
+  /* .my-projects {
+    flex-direction: column;
+  } */
+  .my-projects > div {
+    width: 90% !important;
+  }
+}
+@media screen and (max-width: 545px) {
+  .About-me-info > div:first-of-type {
+    padding: 5rem 3rem 3rem 1.5rem;
+  }
+}
+@media screen and (max-width: 30.875rem) {
+  .GreetingSide > div:last-of-type > a:first-of-type,
+  .GreetingSide > div:last-of-type > a {
+    width: 90% !important;
   }
 }
