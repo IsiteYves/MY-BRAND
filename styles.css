@@ -631,7 +631,8 @@ body > button {
 .blog-info-section > div:last-of-type {
   width: 35%;
 }
-.blog-info-section > div:last-of-type > * {
+.blog-info-section > div:last-of-type > *,
+.auth-form {
   background: #292828;
   padding: 2rem;
   border-radius: 0.625rem;
@@ -641,13 +642,16 @@ body > button {
 .blog-info-section > div:last-of-type > *:nth-child(2) {
   margin-top: 2rem;
 }
-.blog-info-section > div:last-of-type > form > p {
+.blog-info-section > div:last-of-type > form > p,
+.auth-form > h2 {
   font-weight: 700;
 }
-.blog-info-section > div:last-of-type > * > * {
+.blog-info-section > div:last-of-type > * > *,
+.auth-form > *:nth-child(n + 2) {
   font-size: 0.875rem;
 }
-.blog-info-section > div:last-of-type > form > label {
+.blog-info-section > div:last-of-type > form > label,
+.auth-form > label {
   position: relative;
   left: 1.5rem;
   top: -2.1rem;
@@ -656,10 +660,12 @@ body > button {
   transition: all 0.5s ease;
 }
 .blog-info-section > div:last-of-type > form > label,
-.blog-info-section > div:last-of-type > form > button {
+.blog-info-section > div:last-of-type > form > button,
+.auth-form input[type="submit"] {
   color: #fff;
 }
-.blog-info-section > div:last-of-type > form > input {
+.blog-info-section > div:last-of-type > form > input,
+.auth-form > input:not(:last-child) {
   margin-top: 1rem;
   background: #3a3838;
   font-size: 0.9375rem !important;
@@ -667,7 +673,9 @@ body > button {
   color: #fff;
 }
 .blog-info-section > div:last-of-type > form > input:focus + label,
-.blog-info-section > div:last-of-type > form > input:valid + label {
+.blog-info-section > div:last-of-type > form > input:valid + label,
+.auth-form > input:not(:last-child):focus + label,
+.auth-form > input:not(:last-child):valid + label {
   top: -4.5rem;
   padding: 0.1rem 0.7rem;
   font-weight: 700;
@@ -676,7 +684,8 @@ body > button {
   font-size: 12px;
   background: #1d6de6;
 }
-.blog-info-section > div:last-of-type > form > button {
+.blog-info-section > div:last-of-type > form > button,
+.auth-form > input[type="submit"] {
   background: #14d2b6;
   font-weight: 700;
 }
@@ -878,4 +887,40 @@ body > button {
   .blog-info-section {
     padding: 0 1rem 2rem 1rem !important;
   }
+}
+.auth-form {
+  margin: 10rem auto 0 auto;
+  min-width: 30%;
+}
+.auth-form > * {
+  outline: none;
+  border: none;
+  color: #fff;
+}
+.auth-form > a {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.4rem 2rem;
+  border-radius: 3.125rem;
+  background-color: #086afd;
+  text-decoration: none;
+}
+.auth-form > a * {
+  font-size: 28px !important;
+}
+.auth-form > h2 {
+  margin-top: 0.5rem;
+  font-size: 23px !important;
+  text-align: center;
+}
+.auth-form > input:first-of-type {
+  margin-top: 2rem;
+}
+.auth-form > input {
+  padding: 0.8rem;
+}
+.auth-form > input:not(:last-child):focus + label,
+.auth-form > input:not(:last-child):valid + label {
+  left: 0;
 }
