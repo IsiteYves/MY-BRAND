@@ -954,3 +954,14 @@ a {
   text-align: center;
   color: #1d6de6;
 }
+@media screen and (max-width: 29.25rem) {
+  .auth-form {
+    width: 100vw;
+  }
+  body {
+    background: #292828 !important;
+  }
+  .auth-form {
+    margin: 3rem auto !important;
+  }
+}

@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: open sans;
+}
+body {
+  height: 98vh;
+}
+.Sidebar {
+  width: fit-content;
+  height: 100%;
+  padding: 2rem 6rem 2rem 1.5rem;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  border-top-right-radius: 3.125rem;
+  border-bottom-right-radius: 3.125rem;
+  box-shadow: 5px 0 15px #0000000e;
+}
+.Sidebar > * {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.Sidebar > *:not(:last-of-type) > *:first-child,
+.Sidebar > * > a > * {
+  max-width: 1.5rem;
+  font-size: 40px;
+}
+.Sidebar > * > a > * {
+  margin-right: 0.5rem;
+}
+.Sidebar > .active * {
+  color: #086afd !important;
+}
+.Sidebar > * > *:last-child {
+  right: -1rem;
+}
+.Sidebar > * > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 900 !important;
+}
+.Sidebar > * > h3 {
+  font-size: 0.9375rem;
+  margin-left: 1rem;
+  width: 8rem;
+}
+a {
+  text-decoration: none;
+}
+body {
+  display: flex;
+}
+.my-blogs {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 95vh !important;
+  overflow: auto;
+  padding-bottom: 3rem !important;
+}
+.my-blogs > div:first-of-type {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 1rem 0 1rem 0;
+  margin-left: 1.5rem;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.068);
+}
+.my-blogs > div:first-of-type > h2 {
+  width: fit-content;
+  margin-left: 3rem;
+  color: #086afd;
+}
+.my-blogs > div:first-of-type > *:last-child {
+  padding: 1rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+  color: #fff !important;
+  background: #1e90ff;
+  cursor: pointer;
+}
+.my-blogs > div:first-of-type > *:last-child * {
+  color: #fff;
+}
+.my-blogs > .blog {
+  padding-bottom: 2rem;
+  width: 30%;
+  background: #fff;
+  margin: 1.5rem 0 0 1.5rem;
+  z-index: 10;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.068);
+  animation: comeUp 1s ease;
+}
+.my-blogs > .blog:nth-of-type(2) > div {
+  background-image: url("../images/top-pl.png");
+}
+.my-blogs > .blog:nth-of-type(3) > div {
+  background-image: url("../images/React-Best-Practices-and-Security.jpg");
+}
+.my-blogs > .blog:nth-of-type(4) > div {
+  background-image: url("../images/css-tips.jpg");
+}
+.my-blogs > .blog:nth-of-type(5) > div {
+  background-image: url("../images/js-regex.jpg");
+}
+.my-blogs > .blog:nth-of-type(6) > div {
+  background-image: url("../images/top-pl.png");
+}
+.my-blogs > .blog:nth-of-type(7) > div {
+  background-image: url("../images/React-Best-Practices-and-Security.jpg");
+}
+.my-blogs > .blog > div {
+  position: relative;
+  height: 11rem;
+  margin-bottom: 1rem;
+  background-size: cover;
+}
+.my-blogs > .blog > div::after {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 2.1875rem;
+  height: 2.1875rem;
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 50%;
+  content: "+";
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  background: #086afd;
+}
+.my-blogs > .blog > h3,
+.my-blogs > .blog > p {
+  margin-left: 1rem;
+  margin-bottom: 1.5rem !important;
+}
+.my-blogs > .blog > p {
+  font-size: 15px;
+}
+.my-blogs > .blog > a,
+.my-blogs > .blog > button {
+  margin-left: 1rem;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.5rem;
+  background: #25e0c4;
+  border-radius: 3.125rem;
+  color: #fff;
+  transition: all 0.5s ease;
+  font-weight: 700;
+  cursor: pointer;
+}
+.my-blogs > .blog > button {
+  background: #f03b59;
+  border: none;
+  outline: none;
+}
+.my-blogs > .blog > button:hover {
+  background: #c41532;
+}
