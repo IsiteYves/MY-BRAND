@@ -3,11 +3,23 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Open Sans;
+  background-repeat: no-repeat !important;
   z-index: 5 !important;
 }
 :root {
   --main-color: #08fdd8;
   --secColor: #05fdd8;
+}
+::-webkit-scrollbar {
+  width: 0.3125rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0.625rem;
+  background: #464444;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0.625rem;
+  background-color: #908f8f;
 }
 body {
   display: flex;
@@ -250,7 +262,6 @@ body > .My_Skills > div {
   background-position-x: 15rem;
   background-position-y: 15rem;
   background-size: 60%;
-  background-repeat: no-repeat;
   flex-direction: column;
 }
 .GreetingSide > div:last-of-type > a:not(:nth-of-type(2)) {
@@ -311,22 +322,48 @@ body > button {
   content: "";
   display: flex;
   width: 4.875rem;
-  height: 0.3125rem;
+  height: 0.0625rem;
   background: var(--main-color);
   top: -2rem;
   left: 14rem !important;
 }
-.my-blogs > div:first-of-type {
+.blog-info > div:first-of-type {
   flex-direction: column;
   align-items: unset;
 }
 .my-work-info > a {
   margin-left: 3rem;
 }
-.my-blogs > div:first-of-type > p {
-  width: 45%;
+.my-blogs > .blog > h3 {
+  font-weight: 700;
+  color: #288072;
 }
-.my-blogs > div:first-of-type > h1::after {
+.my-blogs > .blog > h3,
+.my-blogs > .blog > p {
+  margin: 1rem 0 0 1rem !important;
+  font-size: 0.875rem;
+  max-width: 91%;
+}
+.my-blogs > .blog > p {
+  margin-top: 0.5rem !important;
+  margin-bottom: 1.2rem !important;
+}
+.my-blogs > .blog > a {
+  margin-left: 1rem;
+  font-size: 0.875rem !important;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  background: #25e0c4;
+  border-radius: 3.125rem;
+  color: #fff;
+  transition: all 0.5s ease;
+  font-weight: 700;
+}
+.blog-info > div:first-child > p {
+  width: 55% !important;
+  margin-left: 0.4rem;
+}
+.blog-info > div:first-of-type > h1::after {
   display: none;
 }
 .my-projects {
@@ -358,22 +395,22 @@ body > button {
   }
 }
 .my-projects > div:first-of-type {
-  background: url("./images/skidesign.png") no-repeat;
+  background: url("./images/skidesign.png");
 }
 .my-projects > div:nth-of-type(2) {
-  background: url("./images/groovinx.png") no-repeat;
+  background: url("./images/groovinx.png");
 }
 .my-projects > div:nth-of-type(3) {
-  background: url("./images/sparkcinema.png") no-repeat;
+  background: url("./images/sparkcinema.png");
 }
 .my-projects > div:nth-of-type(4) {
-  background: url("./images/myliberpay.png") no-repeat;
+  background: url("./images/myliberpay.png");
 }
 .my-projects > div:nth-of-type(5) {
-  background: url("./images/keystore.png") no-repeat;
+  background: url("./images/keystore.png");
 }
 .my-projects > div:nth-of-type(6) {
-  background: url("./images/measuremets-converter.png") no-repeat;
+  background: url("./images/measuremets-converter.png");
 }
 .my-work-info > a,
 .my-projects > div a {
@@ -541,6 +578,142 @@ body > button {
 .My_Skills > h1:not(:first-of-type) {
   margin-top: 1rem !important;
 }
+.blog-info-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3rem 2rem 3rem;
+}
+.blog-info-section > .my-blogs {
+  position: relative;
+  left: -1rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  max-height: 78vh;
+  overflow-y: auto;
+}
+.blog-info-section > .my-blogs > .blog {
+  padding-bottom: 2rem;
+  width: 45%;
+  background: #fff;
+  margin: 1.5rem 0 0 1.5rem;
+  animation: comeUp 1s ease;
+}
+.blog-info-section > .my-blogs > .blog > div {
+  height: 11rem;
+  margin-bottom: 1rem;
+  background-size: cover;
+}
+.blog-info-section > .my-blogs > .blog:first-of-type > div {
+  background-image: url("./images/top-pl.png");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(2) > div {
+  background-image: url("./images/React-Best-Practices-and-Security.jpg");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(3) > div {
+  background-image: url("./images/css-tips.jpg");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(4) > div {
+  background-image: url("./images/js-regex.jpg");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(5) > div {
+  background-image: url("./images/top-pl.png");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(6) > div {
+  background-image: url("./images/React-Best-Practices-and-Security.jpg");
+}
+.blog-info-section > .my-blogs > .blog:nth-of-type(7) > div {
+  background-image: url("./images/css-tips.jpg");
+}
+.blog-info-section > .my-blogs > .blog:last-of-type > div {
+  background-image: url("./images/js-regex.jpg");
+}
+.blog-info-section > div:last-of-type {
+  width: 35%;
+}
+.blog-info-section > div:last-of-type > * {
+  background: #292828;
+  padding: 2rem;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+}
+.blog-info-section > div:last-of-type > *:nth-child(2) {
+  margin-top: 2rem;
+}
+.blog-info-section > div:last-of-type > form > p {
+  font-weight: 700;
+}
+.blog-info-section > div:last-of-type > * > * {
+  font-size: 0.875rem;
+}
+.blog-info-section > div:last-of-type > form > label {
+  position: relative;
+  left: 1.5rem;
+  top: -2.1rem;
+  width: 80%;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.blog-info-section > div:last-of-type > form > label,
+.blog-info-section > div:last-of-type > form > button {
+  color: #fff;
+}
+.blog-info-section > div:last-of-type > form > input {
+  margin-top: 1rem;
+  background: #3a3838;
+  font-size: 0.9375rem !important;
+  padding: 0.8rem 1.5rem !important;
+  color: #fff;
+}
+.blog-info-section > div:last-of-type > form > input:focus + label,
+.blog-info-section > div:last-of-type > form > input:valid + label {
+  top: -4.5rem;
+  padding: 0.1rem 0.7rem;
+  font-weight: 700;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 12px;
+  background: #1d6de6;
+}
+.blog-info-section > div:last-of-type > form > button {
+  background: #14d2b6;
+  font-weight: 700;
+}
+.blog-info-section > div:last-of-type > form > button:hover,
+.my-blogs > div > a:hover {
+  background: #2aeed1;
+}
+.blog-info-section > div:last-of-type > form > input,
+.blog-info-section > div:last-of-type > * > button {
+  border-radius: 50px;
+  padding: 0.8rem 1rem;
+  border: none;
+  outline: none;
+}
+.blog-info-section > div:last-of-type > * > button {
+  color: #fff;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.blog-info-section > div:last-of-type > div > button {
+  width: fit-content;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  background: #086afd;
+  margin: auto;
+}
+.blog-info-section > div:last-of-type > div > button:hover {
+  background-color: #4083e7;
+}
+.blog-info-section > div:last-of-type > * > p {
+  color: #fff;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
 /* RESPONSIVENESS */
 @media screen and (max-width: 63.75rem) {
   body,
@@ -559,6 +732,9 @@ body > button {
   }
   body > button {
     display: none;
+  }
+  .my-work-info > div:first-of-type {
+    top: 5.5rem;
   }
   #menubarRemoveIcon {
     display: flex;
@@ -622,6 +798,10 @@ body > button {
   .my-work-info > div:first-of-type > p {
     margin: 0.5rem auto 0 auto;
   }
+  .blog-info > div:first-child > p {
+    width: 100% !important;
+    margin: 0.5rem 0 0 0.3rem !important;
+  }
 }
 @media screen and (max-width: 39.8125rem) {
   .GreetingSide > div:first-of-type > div:last-of-type {
@@ -657,5 +837,45 @@ body > button {
   .GreetingSide > div:last-of-type > a:first-of-type,
   .GreetingSide > div:last-of-type > a {
     width: 90% !important;
+  }
+}
+@media screen and (max-width: 57.1875rem) {
+  .blog-info-section > .my-blogs {
+    width: 45%;
+  }
+  .blog-info-section > .my-blogs > .blog {
+    width: 100%;
+  }
+  .blog-info-section > div:last-of-type {
+    width: 48%;
+  }
+}
+@media screen and (max-width: 39.8125rem) {
+  .blog-info-section {
+    flex-direction: column;
+  }
+  .blog-info-section > *,
+  .blog-info-section > *:first-of-type * {
+    width: 100% !important;
+  }
+  .blog-info-section > *:last-child {
+    margin-top: 2rem;
+    border-top: 1px solid #808080;
+    padding-top: 1rem;
+  }
+  .blog-info-section > .my-blogs {
+    max-height: fit-content !important;
+  }
+  .my-work-info > div:first-of-type {
+    width: 100%;
+    padding: 0.8rem 1rem 1rem 3rem !important;
+  }
+}
+@media screen and (max-width: 32.1875rem) {
+  .my-work-info > div:first-of-type {
+    padding: 0.8rem 1rem 1rem 1rem !important;
+  }
+  .blog-info-section {
+    padding: 0 1rem 2rem 1rem !important;
   }
 }
