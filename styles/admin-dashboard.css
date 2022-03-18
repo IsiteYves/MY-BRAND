@@ -4,6 +4,17 @@
   box-sizing: border-box;
   font-family: open sans;
 }
+::-webkit-scrollbar {
+  width: 0.3125rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0.625rem;
+  background: #464444;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0.625rem;
+  background-color: #908f8f;
+}
 body {
   height: 98vh;
 }
