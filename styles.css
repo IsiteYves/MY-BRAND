@@ -109,7 +109,12 @@ ul {
 .socials > *:hover {
   color: var(--main-color) !important;
 }
+.menu-block-link,
+.menu-block-link * {
+  z-index: 80 !important;
+}
 #menubarRemoveIcon {
+  z-index: 99 !important;
   display: none;
 }
 .socials *:nth-of-type(2),
