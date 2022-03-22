@@ -5,7 +5,7 @@ if (document.getElementsByClassName("menu-block-link")[0]) {
     const isCloseClicked = e.target.id == "menubarRemoveIcon";
     if (isCloseClicked) return;
     if (!isCloseClicked) {
-      document.location.href = "/";
+      document.location.href = "/MY-BRAND";
     }
   };
 }
@@ -23,5 +23,5 @@ if (document.getElementById("menubarRemoveIcon")) {
 }
 const handleSubmit = () => {
   console.log("submitted");
-  document.location.href = "/ui/admin-dashboard.html";
+  document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
 };
