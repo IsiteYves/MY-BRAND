@@ -942,7 +942,7 @@ a {
   display: flex;
   align-items: center;
   width: fit-content;
-  padding: 0.4rem 2rem;
+  padding: 0.3rem 2rem 0.3rem 1.5rem;
   border-radius: 3.125rem;
   background-color: #086afd;
   color: #fff !important;
@@ -995,7 +995,8 @@ a {
 }
 .auth-form > a:last-of-type {
   text-align: center;
-  color: #1d6de6;
+  color: #498ef7;
+  font-weight: 700;
 }
 @media screen and (max-width: 29.25rem) {
   .auth-form {
