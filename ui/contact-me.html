@@ -49,9 +49,44 @@
     </div>
     <div class="Contact-me-info">
         <div>
-            <h1>Write to me!</h1>
+            <form class="auth-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+                <h2>Leave a message</h2>
+                <p>
+                    I would like to collaborate or work with you on any frontend
+                    project and would like to hear more suggestions from you. Whether they are requests or other type of
+                    message you would like to give me.
+                </p>
+                <input type="email" name="email" id="email" required>
+                <label for="email">Email</label>
+                <input type="text" name="names" id="names" required>
+                <label for="names">Your names</label>
+                <textarea name="message" id="message" required></textarea>
+                <label for="message">Message</label>
+                <input type="submit" value="Send">
+            </form>
         </div>
-        <div></div>
+        <div>
+            <div>
+                <h2>Social</h2>
+                <a href="https://www.linkedin.com/in/yves-isite-5779491a3/"><span class="iconify"
+                        data-icon="brandico:linkedin"></span>yves-isite</a>
+                <a href="https://www.facebook.com/whs.gloy/">
+                    <span class="iconify" data-icon="bxl:facebook"></span>ISITE Yves</a>
+                <a href="https://github.com/IsiteYves/"><span class="iconify"
+                        data-icon="akar-icons:github-fill"></span>IsiteYves</a>
+                <a href="https://dribbble.com/"><span class="iconify"
+                        data-icon="icon-park-outline:dribble"></span>ISITEYves</a>
+                <a href="https://www.instagram.com/isiteyves_official/"><span class="iconify"
+                        data-icon="akar-icons:instagram-fill"></span>isiteyves</a>
+                <a href="https://codepen.io"><span class="iconify"
+                        data-icon="ant-design:codepen-circle-outlined"></span>yvesisite</a>
+                <a href="https://twitter.com"><span class="iconify"
+                        data-icon="akar-icons:twitter-fill"></span>YvesIsite</a>
+                <h2>Location</h2>
+                <p><span class="iconify" data-icon="carbon:location"></span>Rwanda, Nyabihu, Mukamira</p>
+                <p><span class="iconify" data-icon="carbon:location"></span>Rwanda, Huye, Mbazi</p>
+            </div>
+        </div>
     </div>
     <script src="../js/main.js"></script>
 </body>

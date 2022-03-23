@@ -663,13 +663,17 @@ body > button {
   pointer-events: none;
   transition: all 0.5s ease;
 }
+.auth-form > textarea + label {
+  top: -5.2rem !important;
+}
 .blog-info-section > div:last-of-type > form > label,
 .blog-info-section > div:last-of-type > form > button,
 .auth-form input[type="submit"] {
   color: #fff;
 }
 .blog-info-section > div:last-of-type > form > input,
-.auth-form > input:not(:last-child) {
+.auth-form > input:not(:last-child),
+.auth-form > textarea {
   margin-top: 1rem;
   background: #3a3838;
   font-size: 0.9375rem !important;
@@ -679,14 +683,21 @@ body > button {
 .blog-info-section > div:last-of-type > form > input:focus + label,
 .blog-info-section > div:last-of-type > form > input:valid + label,
 .auth-form > input:not(:last-child):focus + label,
-.auth-form > input:not(:last-child):valid + label {
+.auth-form > input:not(:last-child):valid + label,
+.auth-form > textarea:focus + label,
+.auth-form > textarea:valid + label {
   top: -4.5rem;
   padding: 0.1rem 0.7rem;
   font-weight: 700;
   border-radius: 5px;
   width: fit-content;
   font-size: 12px;
+  color: #fff !important;
   background: #1d6de6;
+}
+.auth-form > textarea:focus + label,
+.auth-form > textarea:valid + label {
+  top: -7.5rem !important;
 }
 .blog-info-section > div:last-of-type > form > button {
   background: #14d2b6;
@@ -945,17 +956,22 @@ a {
   padding: 0.8rem;
 }
 .auth-form > input:not(:last-child):focus,
-.auth-form > input:not(:last-child):valid {
+.auth-form > input:not(:last-child):valid,
+.auth-form > textarea:focus,
+.auth-form > textarea:valid {
   margin-top: 2rem !important;
 }
-.auth-form > input:not(:last-child):focus {
-  border-bottom: 1px solid var(--main-color);
+.auth-form > input:not(:last-child):focus,
+.Contact-me-info .auth-form textarea:focus {
+  border-bottom: 1px solid var(--main-color) !important;
 }
 .auth-form > label {
   left: 1rem;
 }
 .auth-form > input:not(:last-child):focus + label,
-.auth-form > input:not(:last-child):valid + label {
+.auth-form > input:not(:last-child):valid + label,
+.auth-form > textarea:focus + label,
+.auth-form > textarea:valid + label {
   left: 0;
 }
 .auth-form > input[type="submit"] {
@@ -990,4 +1006,82 @@ a {
 }
 .auth-form input[type="file"] + label {
   top: -5rem !important;
+}
+.Contact-me-info > div {
+  width: 50%;
+}
+.Contact-me-info .auth-form {
+  width: 80% !important;
+  padding-left: 0.5rem !important;
+  margin-top: 2rem !important;
+  background-color: #1d1d1d !important;
+}
+.Contact-me-info .auth-form *:not(:last-child) {
+  text-align: left !important;
+}
+.Contact-me-info .auth-form *:last-child {
+  font-weight: 700 !important;
+}
+.Contact-me-info .auth-form label {
+  color: #777675 !important;
+}
+.Contact-me-info .auth-form input:not(:last-child),
+.Contact-me-info .auth-form textarea {
+  background: #2b2b2b !important;
+}
+.Contact-me-info .auth-form textarea {
+  height: 6rem !important;
+  width: 100% !important;
+  resize: none !important;
+}
+.Contact-me-info .auth-form > h2 {
+  color: var(--main-color) !important;
+  font-size: 2.5rem !important;
+}
+.Contact-me-info .auth-form input:last-child {
+  width: fit-content !important;
+  padding: 0.8rem 5rem !important;
+  border-radius: 0;
+}
+.Contact-me-info > div:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+}
+.Contact-me-info > div:nth-of-type(2) > div {
+  width: 60%;
+  background: #3f3b3b;
+  padding: 1.5rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div > h2 {
+  width: 100%;
+  color: var(--main-color);
+  font-size: 1.625rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div > h2:last-of-type {
+  margin-top: 0.5rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+.Contact-me-info > div:nth-of-type(2) > div > a {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--main-color);
+  font-size: 0.875rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div > a > *:first-child,
+.Contact-me-info > div:nth-of-type(2) > div > p > *:first-child {
+  color: #fff !important;
+  font-size: 1.125rem;
+  margin-right: 0.8rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div > p {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 0.875rem;
 }
