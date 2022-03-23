@@ -228,7 +228,7 @@ body > .My_Skills > div {
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a {
   width: fit-content;
-  background: #3acfb9;
+  background: #29b39e;
 }
 .GreetingSide > div:last-of-type > a {
   width: 50%;
@@ -730,7 +730,12 @@ body > button {
   background: #086afd;
   margin: auto;
 }
-.blog-info-section > div:last-of-type > div > a:hover {
+.auth-form input:last-of-type {
+  transition: all 0.5s ease;
+  font-weight: 700;
+}
+.blog-info-section > div:last-of-type > div > a:hover,
+.auth-form input:last-of-type:hover {
   background-color: #4083e7;
 }
 .blog-info-section > div:last-of-type > * > p {
@@ -758,6 +763,10 @@ body > button {
   }
   body > button {
     display: none;
+  }
+  .Contact-me-info > div:nth-of-type(2) > div {
+    width: 75% !important;
+    margin: auto;
   }
   .my-work-info > div:first-of-type {
     top: 5.5rem;
@@ -933,7 +942,7 @@ a {
   display: flex;
   align-items: center;
   width: fit-content;
-  padding: 0.4rem 2rem;
+  padding: 0.3rem 2rem 0.3rem 1.5rem;
   border-radius: 3.125rem;
   background-color: #086afd;
   color: #fff !important;
@@ -986,7 +995,8 @@ a {
 }
 .auth-form > a:last-of-type {
   text-align: center;
-  color: #1d6de6;
+  color: #498ef7;
+  font-weight: 700;
 }
 @media screen and (max-width: 29.25rem) {
   .auth-form {
@@ -1018,9 +1028,6 @@ a {
 }
 .Contact-me-info .auth-form *:not(:last-child) {
   text-align: left !important;
-}
-.Contact-me-info .auth-form *:last-child {
-  font-weight: 700 !important;
 }
 .Contact-me-info .auth-form label {
   color: #777675 !important;
@@ -1084,4 +1091,8 @@ a {
   align-items: center;
   color: #fff;
   font-size: 0.875rem;
+}
+.Contact-me-info > div:nth-of-type(2) > div > p > *:first-child {
+  font-size: 1.5rem !important;
+  color: var(--main-color) !important;
 }
