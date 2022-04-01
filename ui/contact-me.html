@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Contact me! | Leave a message!</title>
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
@@ -57,16 +57,15 @@
     </div>
     <div class="Contact-me-info">
         <div>
-            <form class="auth-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+            <form class="auth-form contact-me-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
                 <h2>Leave a message</h2>
-                <p id="error-paragraph"></p>
-                <span id="success-span">Your message got sent successfully!</span>
-                <span id="success-span">You've been successfully registered.</span>
                 <p>
                     I would like to collaborate or work with you on any frontend
                     project and would like to hear more suggestions from you. Whether they are requests or other type of
                     message you would like to give me.
                 </p>
+                <p id="error-paragraph"></p>
+                <span id="success-span">Your message got sent successfully!</span>
                 <input type="email" name="email" id="email" required>
                 <label for="email">Email</label>
                 <input type="text" name="names" id="names" required>

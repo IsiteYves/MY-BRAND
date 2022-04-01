@@ -7,6 +7,7 @@ const handleSubmit = () => {
     namesField = document.getElementById("names"),
     messageField = document.getElementById("message"),
     errorParagraph = document.getElementById("error-paragraph"),
+    successSpan = document.getElementById("success-span"),
     errorsFound = false,
     success = false;
   if (emailField.value == "") {
@@ -19,7 +20,7 @@ const handleSubmit = () => {
     } else {
       if (namesField.value.length < 3) {
         errorParagraph.innerHTML = "Names must be at least 3 characters long.";
-        errorsFound = false;
+        errorsFound = true;
       } else {
         if (messageField.value == "") {
           errorParagraph.innerHTML = "Message can't be empty.";
@@ -41,9 +42,6 @@ const handleSubmit = () => {
       }
     }
   }
-  if (errorsFound || success) {
-    emailField.classList.toggle("move-upper");
-  }
   if (errorsFound) {
     errorParagraph.style.display = "inline";
   }
@@ -51,7 +49,4 @@ const handleSubmit = () => {
     errorParagraph.style.display = "none";
     successSpan.style.display = "inline";
   }
-};
-window.onload = () => {
-  getUserInfoFromLocalStorage();
 };
