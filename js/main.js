@@ -21,7 +21,29 @@ if (document.getElementById("menubarRemoveIcon")) {
     document.getElementsByClassName("Menubar")[0].style.display = "none";
   };
 }
-const handleSubmit = () => {
-  console.log("submitted");
-  document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+function getUserInfoFromLocalStorage() {
+  if (
+    document.getElementById("username") &&
+    document.getElementById("email") &&
+    document.getElementById("user-role")
+  ) {
+    let usernameEl = document.getElementById("username"),
+      emailEl = document.getElementById("email"),
+      userRoleEl = document.getElementById("user-role");
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (!userInfo) {
+      document.location.href = "/ui/login.html";
+    } else {
+      const { username, email, role } = userInfo;
+      usernameEl.innerHTML = username;
+      emailEl.innerHTML = email;
+      userRoleEl.innerHTML = role;
+    }
+  }
+}
+function logout() {
+  localStorage.removeItem("userInfo");
+}
+window.onload = () => {
+  getUserInfoFromLocalStorage();
 };

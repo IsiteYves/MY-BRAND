@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: open sans;
 }
+:root {
+  --dashboard-main-color: #086afd;
+}
 ::-webkit-scrollbar {
   width: 0.3125rem;
 }
@@ -41,7 +44,7 @@ body {
   margin-right: 0.5rem;
 }
 .Sidebar > .active * {
-  color: #086afd !important;
+  color: var(--dashboard-main-color) !important;
 }
 .Sidebar > * > *:last-child {
   right: -1rem;
@@ -59,6 +62,23 @@ body {
   font-size: 0.9375rem;
   margin-left: 1rem;
   width: 8rem;
+}
+.Sidebar>section {
+  width: fit-content;
+  flex-direction: column !important;
+}
+.Sidebar>section>div {
+  width: 60px;
+  height: 60px;
+  background: url("../images/IsiteYves.png") no-repeat;
+  background-size: cover !important;
+  border: 2px solid var(--dashboard-main-color);
+  border-radius: 50%;
+}
+.Sidebar>section>span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #808080;
 }
 a {
   text-decoration: none;
@@ -88,7 +108,7 @@ body {
 .my-blogs > div:first-of-type > h2 {
   width: fit-content;
   margin-left: 3rem;
-  color: #086afd;
+  color: var(--dashboard-main-color);
 }
 .my-blogs > div:first-of-type > *:last-child {
   padding: 0.4rem 2rem;
@@ -147,7 +167,7 @@ body {
   text-align: center;
   color: #fff;
   font-weight: 700;
-  background: #086afd;
+  background: var(--dashboard-main-color);
 }
 .my-blogs > .blog > h3,
 .my-blogs > .blog > p {

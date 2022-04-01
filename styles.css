@@ -975,6 +975,15 @@ body > button {
   margin: 10rem auto 0 auto;
   min-width: 30%;
 }
+.login-form > p:first-of-type {
+  background: #d448487e;
+  color: #ec9292;
+  padding: 0.6rem;
+  display: none;
+}
+.move-upper {
+  margin-top: 0 !important;
+}
 .auth-form > * {
   outline: none;
   border: none;

@@ -11,10 +11,17 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Admin Dashboard</title>
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
     <div class="Sidebar">
+        <section class="few-profile-info">
+            <div></div>
+            <h4 id="username"></h4>
+            <h5 id="email"></h5>
+            <span id="user-role"></span>
+        </section>
         <div>
             <span class="iconify" data-icon="cib:skillshare"></span>
             <h3>My Skills</h3>
@@ -32,7 +39,7 @@
             <h3>Messages</h3>
         </div>
         <div>
-            <a href="../index.html"><span class="iconify"
+            <a href="./login.html" onClick="logout()"><span class="iconify"
                     data-icon="majesticons:logout-half-circle-line"></span>&nbsp;&nbsp;Logout</a>
         </div>
     </div>
@@ -96,6 +103,8 @@
             <a href="#">View</a><button>Delete</button>
         </div>
     </div>
+    <script src="../js//main.js"></script>
+    
 </body>
 
 </html>

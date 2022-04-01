@@ -11,16 +11,18 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Account Login</title>
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
-    <form class="auth-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+    <form class="auth-form login-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
         <a href="../index.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Home
         </a>
         <h2>Log Into Your Account</h2>
-        <input type="email" name="email" id="email" required>
+        <p id="error-paragraph">User not found</p>
+        <input type="email" name="email" id="email">
         <label for="email">Email</label>
         <input type="password" name="password" id="password" required>
         <label for="password">Password</label>
@@ -28,6 +30,7 @@
         <p>Don't have an account?</p>
         <a href="./signup.html">SignUp</a>
         <script src="../js/main.js"></script>
+        <script src="../js/loginPage.js"></script>
     </form>
 </body>
 
