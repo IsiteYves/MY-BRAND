@@ -58,6 +58,9 @@ body {
   font-size: 0.9375rem;
   font-weight: 900 !important;
 }
+.Sidebar>div:hover * {
+  color: var(--dashboard-main-color) !important;
+}
 .Sidebar > * > h3 {
   font-size: 0.9375rem;
   margin-left: 1rem;
