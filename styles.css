@@ -908,7 +908,7 @@ body > button {
     width: 90% !important;
   }
 }
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 34.0625rem) {
   .About-me-info > div:first-of-type {
     padding: 5rem 3rem 3rem 1.5rem;
   }
@@ -981,6 +981,7 @@ body > button {
 .blog-info-section .auth-form > p:first-of-type {
   background: #d448487e;
   color: #ec9292;
+  font-size: 0.875rem !important;
   padding: 0.6rem;
   display: none;
 }
@@ -992,6 +993,7 @@ body > button {
   text-align: center !important;
   padding: 0.6rem 0;
   display: none;
+  margin-bottom: 1rem !important;
 }
 .contact-me-form>span {
   padding-left: 1.5rem !important;
@@ -1078,7 +1080,7 @@ a {
     width: 55vw;
   }
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 45rem) {
   .auth-form {
     width: 70vw;
   }

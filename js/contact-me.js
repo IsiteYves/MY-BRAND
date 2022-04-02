@@ -1,7 +1,3 @@
-function getUserInfoFromLocalStorage() {
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  if (userInfo) document.location.href = "/ui/admin-dashboard.html";
-}
 const handleSubmit = () => {
   let emailField = document.getElementById("email"),
     namesField = document.getElementById("names"),

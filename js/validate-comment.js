@@ -1,7 +1,9 @@
 const handleSubmit = () => {
   let commentField = document.getElementById("blog-comment"),
     errorParagraph = document.getElementById("error-paragraph"),
-    errorsFound = false;
+    successSpan = document.getElementById("success-span"),
+    errorsFound = false,
+    success = false;
   if (commentField.value == "") {
     errorParagraph.innerHTML = "Comment can't be empty.";
     errorsFound = true;
@@ -9,8 +11,9 @@ const handleSubmit = () => {
     if (commentField.value.length < 3) {
       errorParagraph.innerHTML =
         "The comment must be at least 3 characters long.";
-        errorsFound=true;
+      errorsFound = true;
     } else {
+      success = true;
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const commentObj = {
         username: userInfo.username,
@@ -22,5 +25,9 @@ const handleSubmit = () => {
   }
   if (errorsFound) {
     errorParagraph.style.display = "inline";
+  }
+  if (success) {
+    errorParagraph.style.display = "none";
+    successSpan.style.display = "inline";
   }
 };
