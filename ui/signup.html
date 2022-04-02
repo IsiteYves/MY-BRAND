@@ -15,15 +15,17 @@
 </head>
 
 <body>
-    <form class="auth-form signup-form" action="#" method="POST">
+    <form class="auth-form signup-form signup-login-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
         <a href="../index.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Home
         </a>
         <h2>Create a new account</h2>
+        <p id="error-paragraph"></p>
+        <span id="success-span">You've been successfully registered!</span>
         <input type="text" name="names" id="names" required>
         <label for="names">Names</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email">
         <label for="email">Email</label>
         <input type="password" name="password" id="password" required>
         <label for="repeatedPassword">Confirm Password</label>
@@ -33,6 +35,7 @@
         <p>Already have an account?</p>
         <a href="./login.html">Login</a>
     </form>
+    <script src="../js/signupPage.js"></script>
 </body>
 
 </html>
