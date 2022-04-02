@@ -975,11 +975,26 @@ body > button {
   margin: 10rem auto 0 auto;
   min-width: 30%;
 }
-.auth-form > p:first-of-type {
+.signup-login-form > p:first-of-type,
+.contact-me-form > p:nth-of-type(2),
+.new-blog-form > p:first-of-type,
+.blog-info-section .auth-form > p:first-of-type {
   background: #d448487e;
   color: #ec9292;
   padding: 0.6rem;
   display: none;
+}
+.auth-form>span {
+  margin-top: 1rem;
+  background: #0b530b;
+  color: #7fd67f;
+  font-weight: 500;
+  text-align: center !important;
+  padding: 0.6rem 0;
+  display: none;
+}
+.contact-me-form>span {
+  padding-left: 1.5rem !important;
 }
 .move-upper {
   margin-top: 0 !important;
@@ -1058,7 +1073,17 @@ a {
     background: #2b2b2b !important;
   }
 }
-@media screen and (max-width: 29.25rem) {
+@media screen and (max-width: 70rem) {
+  .auth-form {
+    width: 55vw;
+  }
+}
+@media screen and (max-width: 720px) {
+  .auth-form {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 35rem) {
   .auth-form {
     width: 100vw;
   }
@@ -1102,10 +1127,23 @@ a {
 .Contact-me-info .auth-form label {
   color: #777675 !important;
 }
-.Contact-me-info .auth-form textarea {
+.Contact-me-info .auth-form textarea,
+.single-blog-section .auth-form textarea {
   height: 6rem !important;
   width: 100% !important;
   resize: none !important;
+}
+.single-blog-section .auth-form {
+  background: transparent !important;
+  border-bottom: 1px solid var(--main-color);
+  border-radius: 0 !important;
+  padding: 0 0 1rem 0 !important;
+  margin: 0 !important;
+}
+.single-blog-section .auth-form > input:first-of-type {
+  margin-top: 0 !important;
+  width: fit-content !important;
+  padding: 0.8rem 2rem !important;
 }
 .Contact-me-info .auth-form > h2 {
   color: var(--main-color) !important;
