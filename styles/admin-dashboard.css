@@ -163,7 +163,7 @@ body {
   margin-bottom: 1rem;
   background-size: cover;
 }
-.my-blogs > .blog > div::after {
+.my-blogs > .blog > div > a {
   position: absolute;
   top: -1rem;
   right: -1rem;
@@ -176,6 +176,11 @@ body {
   color: #fff;
   font-weight: 700;
   background: var(--dashboard-main-color);
+}
+.my-blogs > .blog > div > a:hover {
+  background: #fff;
+  border: 2px solid var(--dashboard-main-color);
+  color: var(--dashboard-main-color);
 }
 .my-blogs > .blog > h3,
 .my-blogs > .blog > p {
@@ -213,7 +218,10 @@ body {
   max-height: 95vh !important;
 }
 .real-messages {
+  background-color: var(--dashboard-main-color);
   display: flex;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -222,6 +230,7 @@ body {
 }
 .contact-messages .contact-message {
   width: 35vw;
+  background: #fff;
   padding: 1rem;
   margin: 1rem 0 0 1rem;
   border: 1px solid #ccc;

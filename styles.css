@@ -1086,8 +1086,9 @@ a {
   }
 }
 @media screen and (max-width: 35rem) {
-  .auth-form {
-    width: 100vw;
+  .auth-form,
+  .new-blog-form {
+    width: 100vw !important;
   }
   body,
   .single-blog-header,
@@ -1321,7 +1322,7 @@ a {
   margin-bottom: 2rem;
 }
 .new-blog-form {
-  width: 50vw !important;
+  width: 50vw;
 }
 .new-blog-form textarea {
   resize: none;
@@ -1333,4 +1334,43 @@ a {
 .new-blog-form > textarea:focus + label,
 .new-blog-form > textarea:valid + label {
   top: -13.8rem !important;
+}
+@media screen and (max-width: 58.5625rem) {
+  .new-blog-form {
+    width: 80vw;
+  }
+}
+.profile-form {
+  width: 50vw;
+  margin: 1.5rem 0 2rem 1.5rem !important;
+}
+.profile-form input[type=file] {
+  display: none;
+}
+.profile-form>label {
+  position: static;
+  margin: 0 !important;
+  top: 0 !important;
+}
+#profile-picture {
+  position: relative;
+  background: url("../images/IsiteYves.png") no-repeat;
+  background-size: cover;
+  width: 120px !important;
+  height: 120px !important;
+  margin: 1.5rem auto 0 auto;
+  border: 3px solid #086afd;
+  border-radius: 50%;
+}
+#profile-picture>label {
+  position: absolute;
+  padding: 0.3rem 0.9rem;
+  background: #086afd;
+  bottom: -0.4rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  right: -0.4rem;
+  cursor: pointer;
+  border-radius: 50%;
 }

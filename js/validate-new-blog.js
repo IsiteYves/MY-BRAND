@@ -10,6 +10,8 @@ const handleSubmit = () => {
   if (titleField.value == "") {
     errorParagraph.innerHTML = "Title can't be empty.";
     errorsFound = true;
+  } else if (titleField.value.length < 5) {
+    errorParagraph.innerHTML = "The Title must be at least 5 characters long.";
   } else {
     if (paragraph1Field.value == "") {
       errorParagraph.innerHTML = "Paragraph 1 can't be empty.";
