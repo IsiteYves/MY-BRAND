@@ -981,6 +981,15 @@ body > button {
   padding: 0.6rem;
   display: none;
 }
+.auth-form>span {
+  margin-top: 1rem;
+  background: #0b530b;
+  color: #7fd67f;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.6rem 0;
+  display: none;
+}
 .move-upper {
   margin-top: 0 !important;
 }
@@ -1058,7 +1067,17 @@ a {
     background: #2b2b2b !important;
   }
 }
-@media screen and (max-width: 29.25rem) {
+@media screen and (max-width: 70rem) {
+  .auth-form {
+    width: 55vw;
+  }
+}
+@media screen and (max-width: 720px) {
+  .auth-form {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 35rem) {
   .auth-form {
     width: 100vw;
   }
