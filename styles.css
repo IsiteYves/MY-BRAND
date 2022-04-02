@@ -976,7 +976,8 @@ body > button {
   min-width: 30%;
 }
 .signup-login-form > p:first-of-type,
-.contact-me-form > p:nth-of-type(2) {
+.contact-me-form > p:nth-of-type(2),
+.new-blog-form > p:first-of-type {
   background: #d448487e;
   color: #ec9292;
   padding: 0.6rem;

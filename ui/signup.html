@@ -11,18 +11,20 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Account Register</title>
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
-    <form class="auth-form signup-form signup-login-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+    <form class="auth-form signup-form signup-login-form" action="javascript:void(0)" onsubmit="handleSubmit()"
+        method="POST">
         <a href="../index.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Home
         </a>
         <h2>Create a new account</h2>
         <p id="error-paragraph"></p>
-        <span id="success-span">You've been successfully registered!</span>
+        <span id="success-span">You've been successfully registered!<br>Check you email for the verification
+            link.</span>
         <input type="text" name="names" id="names" required>
         <label for="names">Names</label>
         <input type="email" name="email" id="email">
