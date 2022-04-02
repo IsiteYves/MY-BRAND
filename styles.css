@@ -1320,3 +1320,17 @@ a {
 .comment:last-child {
   margin-bottom: 2rem;
 }
+.new-blog-form {
+  width: 50vw !important;
+}
+.new-blog-form textarea {
+  resize: none;
+  height: 12rem;
+}
+.new-blog-form > textarea + label {
+  top: -10.5rem !important;
+}
+.new-blog-form > textarea:focus + label,
+.new-blog-form > textarea:valid + label {
+  top: -13.8rem !important;
+}
