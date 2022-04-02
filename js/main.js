@@ -41,6 +41,9 @@ function getUserInfoFromLocalStorage() {
     }
   }
 }
+function changePage(to) {
+  document.location.href = `/ui/${to}`;
+}
 function logout() {
   localStorage.removeItem("userInfo");
 }

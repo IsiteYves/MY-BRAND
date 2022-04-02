@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Hanuman' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <title>Update blog</title>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+</head>
+
+<body>
+    <form class="auth-form new-blog-form signup-form" action="#" method="POST">
+        <a href="./admin-dashboard.html">
+            <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
+            Back to dashboard
+        </a>
+        <h2>Update blog</h2>
+        <input type="text" name="names" id="names" value="Top P.Languages to use 2022" required>
+        <label for="names">Title</label>
+        <h3>Paragraphs</h3>
+        <textarea name="paragraph1" id="paragraph1"
+            required>Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</textarea>
+        <label for="paragraph1">Paragraph 1</label>
+        <textarea name="paragraph2" id="paragraph2"
+            required>Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</textarea>
+        <label for="paragraph2">Paragraph 2</label>
+        <textarea name="paragraph3" id="paragraph3" required></textarea>
+        <label for="paragraph3">Paragraph 3</label>
+        <input type="file" name="images" id="upload-image">
+        <label id="upload-image">Upload Image 1</label>
+        <input type="file" name="images" id="upload-image">
+        <label id="upload-image">Upload Image 2</label>
+        <input type="submit" value="Create Blog">
+    </form>
+</body>
+
+</html>

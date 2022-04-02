@@ -21,16 +21,13 @@
     </section>
     <div class="Menubar">
         <div class="menu-block-link">
-            <h1>Isite</h1>
-            <p>Web Developer</p>
-            <span class="iconify" id="menubarRemoveIcon"
-                style="color: #fff!important;font-size: 40px;margin-top: 1rem;z-index: 40"
-                data-icon="iconoir:cancel"></span>
+            <h1>Eric</h1>
+            <p>Standard User</p>
         </div>
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="./about-me.html">About me</a></li>
-            <li><a href=" ./my-skills.html">My Skills</a></li>
+            <li><a href="./my-skills.html">My Skills</a></li>
             <li><a href="./my-work.html">My Work</a></li>
             <li><a href="#" class="active">Blogs</a></li>
             <li><a href="./contact-me.html">Contact me</a></li>
@@ -80,6 +77,13 @@
                 sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem
                 ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
             <h3>All comments (3)</h3>
+            <form class="auth-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+                <p id="error-paragraph"></p>
+                <span id="success-span">Your comment was successfully posted.</span>
+                <textarea name="blogComment" id="blog-comment" required></textarea>
+                <label for="blog-comment">Write your comment...</label>
+                <input type="submit" value="Post comment">
+            </form>
             <div class="comment">
                 <div></div>
                 <div>
@@ -123,6 +127,7 @@
         </div>
     </div>
     <script src="../js/main.js"></script>
+    <script src="../js/validate-comment.js"></script>
 </body>
 
 </html>
