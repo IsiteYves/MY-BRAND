@@ -5,7 +5,7 @@ if (document.getElementsByClassName("menu-block-link")[0]) {
     const isCloseClicked = e.target.id == "menubarRemoveIcon";
     if (isCloseClicked) return;
     if (!isCloseClicked) {
-      document.location.href = "/MY-BRAND";
+      document.location.href = "/MY-BRAND/";
     }
   };
 }
@@ -32,7 +32,7 @@ function getUserInfoFromLocalStorage() {
       userRoleEl = document.getElementById("user-role");
     let userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (!userInfo) {
-      document.location.href = "/ui/login.html";
+      document.location.href = "/MY-BRAND/ui/login.html";
     } else {
       const { username, email, role } = userInfo;
       usernameEl.innerHTML = username;

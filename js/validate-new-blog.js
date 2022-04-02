@@ -42,7 +42,7 @@ const handleSubmit = () => {
         };
         console.log(newBlogObj);
         localStorage.setItem("newBlogInfo", JSON.stringify(newBlogObj));
-        document.location.href = "/ui/admin-dashboard.html";
+        document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
       }
     }
   }
