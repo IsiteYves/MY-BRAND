@@ -97,6 +97,11 @@ body {
   padding-bottom: 3rem !important;
 }
 .my-blogs > div:first-of-type {
+  margin-left: 1.5rem;
+}
+.my-blogs > div:first-of-type,
+.contact-messages > div:first-of-type,
+.my-profile > div:first-of-type {
   position: sticky;
   top: 0;
   z-index: 20;
@@ -105,10 +110,11 @@ body {
   align-items: center;
   background: #fff;
   padding: 1rem 0 1rem 0;
-  margin-left: 1.5rem;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.068);
 }
-.my-blogs > div:first-of-type > h2 {
+.my-blogs > div:first-of-type > h2,
+.contact-messages > div:first-of-type > h2,
+.my-profile > div:first-of-type > h2 {
   width: fit-content;
   margin-left: 3rem;
   color: var(--dashboard-main-color);
@@ -161,12 +167,11 @@ body {
   position: absolute;
   top: -1rem;
   right: -1rem;
-  width: 2.1875rem;
-  height: 2.1875rem;
   cursor: pointer;
-  font-size: 25px;
-  border-radius: 50%;
-  content: "+";
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+  content: "Edit";
   text-align: center;
   color: #fff;
   font-weight: 700;
@@ -199,4 +204,94 @@ body {
 }
 .my-blogs > .blog > button:hover {
   background: #c41532;
+}
+.contact-messages,
+.my-profile {
+  padding: 0 2rem 2rem 2rem;
+  overflow: auto;
+  width: 100%;
+  max-height: 95vh !important;
+}
+.real-messages {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.contact-messages>div:first-of-type>p {
+  margin-left: 1rem;
+}
+.contact-messages .contact-message {
+  width: 35vw;
+  padding: 1rem;
+  margin: 1rem 0 0 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+  box-shadow: 5px 0 15px #00000046;
+}
+.contact-messages .contact-message>p:not(:first-of-type) {
+  margin-top: 0.8rem;
+}
+.contact-messages .contact-message>p:last-of-type {
+  font-style: italic;
+}
+.contact-messages .contact-message>p>span:first-of-type {
+  font-weight: 700;
+}
+.my-profile>form {
+  display: flex;
+  padding-left: 1rem;
+  width: 30vw;
+  flex-direction: column;
+}
+.my-profile>form>div {
+  position: relative;
+  background: url("../images/IsiteYves.png") no-repeat;
+  background-size: cover;
+  width: 120px !important;
+  height: 120px !important;
+  margin-top: 1.5rem;
+  margin-left: 10vw;
+  border: 3px solid var(--dashboard-main-color);
+  border-radius: 50%;
+}
+.my-profile>form>div>label {
+  position: absolute;
+  padding: 0.3rem 0.9rem;
+  background: var(--dashboard-main-color);
+  bottom: -0.4rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  right: -0.4rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.my-profile>form>label {
+  color: #808080;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+.my-profile>form>input:not(:last-of-type) {
+  border: 1px solid #a7a7a7;
+  padding: 0.5rem 0.8rem;
+  outline: none;
+  color: #302e2e;
+  font-weight: 700;
+}
+.my-profile>form>input::placeholder {
+  color: #979797;
+}
+.my-profile>form>input[type=file] {
+  display: none;
+}
+.my-profile>form>input[type=submit] {
+  cursor:no-drop;
+  width: fit-content;
+  margin-top: 1rem;
+  font-weight: 700;
+  background:#6a83f0;
+  padding: 0.6rem 2rem;
+  color: #fff;
+  border: none;
+  outline: none;
 }
