@@ -1,6 +1,6 @@
 function getUserInfoFromLocalStorage() {
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  if (userInfo) document.location.href = "/ui/admin-dashboard.html";
+  if (userInfo) document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
 }
 const handleSubmit = () => {
   let emailField = document.getElementById("email"),
@@ -31,7 +31,7 @@ const handleSubmit = () => {
           role: "Admin",
         };
         localStorage.setItem("userInfo", JSON.stringify(userObj));
-        document.location.href = "/ui/admin-dashboard.html";
+        document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
       }
     }
   }

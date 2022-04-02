@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Hanuman' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <title>My profile</title>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+</head>
+
+<body>
+    <section class="responsive-menu" id="menuIcon">
+        <h1>I</h1>
+        <span class="iconify" data-icon="ci:menu-alt-02"></span>
+    </section>
+    <div class="Menubar">
+        <div class="menu-block-link">
+            <h1>Eric Kalisa</h1>
+            <p>Standard User</p>
+        </div>
+        <ul>
+            <li><a href="#" class="active">My profile</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about-me.html">About me</a></li>
+            <li><a href=" ./my-skills.html">My Skills</a></li>
+            <li><a href="./my-work.html">My Work</a></li>
+            <li><a href="./my-blogs.html">Blogs</a></li>
+            <li><a href="./contact-me.html">Contact me</a></li>
+        </ul>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/yves-isite-5779491a3/" target="_blank">
+                <span class="iconify" data-icon="brandico:linkedin"></span>
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <span class="iconify" data-icon="akar-icons:twitter-fill"></span>
+            </a>
+            <a href="https://www.instagram.com/isiteyves/" target="_blank">
+                <span class="iconify" data-icon="akar-icons:instagram-fill"></span>
+            </a>
+            <a href="https://github.com/IsiteYves" target="_blank">
+                <span class="iconify" data-icon="akar-icons:github-fill"></span>
+            </a>
+        </div>
+        <ul>
+            <li>Rwanda</li>
+            <li>Western P</li>
+            <li>Nyabihu</li>
+        </ul>
+    </div>
+    <div class="profile-info">
+        <form class="auth-form profile-form" action="javascript:void(0)" method="POST">
+            <h2>My profile</h2>
+            <div id="profile-picture">
+                <label for="upload-new-picture" title="Upload new profile picture">+</label>
+            </div>
+            <input type="file" name="upload-new-picture" id="upload-new-picture" style="margin-top: 0 !important">
+            <label for="names">Names</label>
+            <input type="text" name="names" id="names" value="Eric Kalisa">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="erickalisa@gmail.com">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" placeholder="Rwanda, South, Huye" value="Rwanda, North, Musanze">
+            <input type="Submit" id="save-updates-btn" value="Save updates" disabled>
+        </form>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

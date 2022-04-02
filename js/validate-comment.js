@@ -1,4 +1,10 @@
 const handleSubmit = () => {
+  const user = {
+    username: "Eric Kalisa",
+    email: "erickalisa@gmail.com",
+    role: "Standard",
+  };
+  localStorage.setItem("userInfo", JSON.stringify(user));
   let commentField = document.getElementById("blog-comment"),
     errorParagraph = document.getElementById("error-paragraph"),
     successSpan = document.getElementById("success-span"),

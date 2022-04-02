@@ -10,6 +10,8 @@ const handleSubmit = () => {
   if (titleField.value == "") {
     errorParagraph.innerHTML = "Title can't be empty.";
     errorsFound = true;
+  } else if (titleField.value.length < 5) {
+    errorParagraph.innerHTML = "The Title must be at least 5 characters long.";
   } else {
     if (paragraph1Field.value == "") {
       errorParagraph.innerHTML = "Paragraph 1 can't be empty.";
@@ -40,7 +42,7 @@ const handleSubmit = () => {
         };
         console.log(newBlogObj);
         localStorage.setItem("newBlogInfo", JSON.stringify(newBlogObj));
-        document.location.href = "/ui/admin-dashboard.html";
+        document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
       }
     }
   }
