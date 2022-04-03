@@ -95,15 +95,17 @@ ul {
 }
 .socials {
   width: 80%;
-  margin: 0.5rem auto;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .socials * {
   font-size: 15px;
   cursor: pointer;
 }
 .socials > * {
+  margin-top: 0.8rem !important;
   color: #fff !important;
 }
 .socials > *:hover {
@@ -116,13 +118,6 @@ ul {
 #menubarRemoveIcon {
   z-index: 99 !important;
   display: none;
-}
-.socials *:nth-of-type(2),
-.socials *:nth-of-type(3) {
-  margin-left: 1.2rem;
-}
-.socials > *:last-of-type {
-  margin: 0.8rem auto 0 auto;
 }
 .Menubar > ul:last-of-type {
   width: fit-content;
@@ -813,14 +808,6 @@ body > button {
     top: 0;
     left: 0;
   }
-  .socials {
-    margin-top: 1rem;
-    width: 50%;
-    justify-content: space-between !important;
-  }
-  .socials > * {
-    margin: 0 !important;
-  }
   .single-blog {
     max-height: fit-content !important;
   }
@@ -837,6 +824,11 @@ body > button {
   }
   .single-blog-section > div:last-of-type > *:nth-child(2) {
     margin-top: 0 !important;
+  }
+  .profile-form {
+    background: transparent !important;
+    width: 98vw !important;
+    padding: 0 3rem 2rem 0 !important;
   }
 }
 @media screen and (max-width: 40.5rem) {
@@ -1341,7 +1333,7 @@ a {
   }
 }
 .profile-form {
-  width: 50vw;
+  width: 40vw;
   margin: 1.5rem 0 2rem 1.5rem !important;
 }
 .profile-form input[type=file] {
@@ -1349,8 +1341,11 @@ a {
 }
 .profile-form>label {
   position: static;
-  margin: 0 !important;
+  margin: 2rem 0 0 0 !important;
   top: 0 !important;
+}
+.profile-form > input[type=submit] {
+  margin-top: 1.5rem;
 }
 #profile-picture {
   position: relative;
