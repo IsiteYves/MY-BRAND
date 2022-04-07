@@ -1,10 +1,24 @@
 require("./db");
-const app = require("express")(),
-  cors = require("cors");
+const express = require("express"),
+  app = express(),
+  cors = require("cors"),
+  { swaggerJsdoc, swaggerUi } = require("./utils/swagger"),
+  { corsFunction } = require("./utils/cors"),
+  dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
 
 app.use(cors());
+app.use(corsFunction());
 
-const port = process.env.PORT || 8000,
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerJsdoc));
+
+app.use("/api/blogs", require("./routes/blog.routes"));
+app.use("/api/queries", require("./routes/query.routes"));
+
+const port = process.env.PORT,
   server = require("http")
     .createServer(app)
     .listen(port, () => console.log(`Server started at port ${port}`)),
