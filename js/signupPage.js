@@ -27,10 +27,18 @@ const handleSubmit = () => {
             errorParagraph.innerHTML =
               "Names must be at least 3 characters long.";
             errorsFound = true;
+          } else if (namesField.value.length > 75) {
+            errorParagraph.innerHTML =
+              "Names must not be beyond 75 characters.";
+            errorsFound = true;
           } else {
             if (passwordField.value.length < 6) {
               errorParagraph.innerHTML =
                 "The password must be at least 6 characters long";
+              errorsFound = true;
+            } else if (passwordField.value.length > 25) {
+              errorParagraph.innerHTML =
+                "The password must not be beyond 25 characters";
               errorsFound = true;
             } else if (passwordField.value != repeatPasswordField.value) {
               errorParagraph.innerHTML =
