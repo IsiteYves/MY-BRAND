@@ -1,3 +1,5 @@
+const { trim } = require("lodash");
+
 const handleSubmit = () => {
   let emailField = document.getElementById("email"),
     namesField = document.getElementById("names"),
@@ -6,6 +8,9 @@ const handleSubmit = () => {
     successSpan = document.getElementById("success-span"),
     errorsFound = false,
     success = false;
+  emailField.value = trim(emailField.value);
+  namesField.value = trim(namesField.value);
+  messageField.value = trim(messageField.value);
   if (emailField.value == "") {
     errorParagraph.innerHTML = "Email can not be empty.";
     errorsFound = true;
@@ -22,9 +27,12 @@ const handleSubmit = () => {
           errorParagraph.innerHTML = "Message can't be empty.";
           errorsFound = true;
         } else {
-          if (messageField.value.length < 3) {
+          if (messageField.value.length < 5) {
             errorParagraph.innerHTML =
-              "Message has to be at least 3 characters long.";
+              "Message has to be at least 5 characters long.";
+            errorsFound = true;
+          } else if (messageField.value.split(" ").length > 300) {
+            errorParagraph.innerHTML = "Message must not exceed 300 words.";
             errorsFound = true;
           } else {
             success = true;
