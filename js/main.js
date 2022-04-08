@@ -42,7 +42,7 @@ function getUserInfoFromLocalStorage() {
   }
 }
 function changePage(to) {
-  document.location.href = `/ui/${to}`;
+  document.location.href = `/MY-BRAND/ui/${to}`;
 }
 function logout() {
   localStorage.removeItem("userInfo");
