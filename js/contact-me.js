@@ -1,6 +1,4 @@
-const { trim } = require("lodash");
-
-const handleSubmit = () => {
+const handleSubmit = async () => {
   let emailField = document.getElementById("email"),
     namesField = document.getElementById("names"),
     messageField = document.getElementById("message"),
@@ -8,9 +6,9 @@ const handleSubmit = () => {
     successSpan = document.getElementById("success-span"),
     errorsFound = false,
     success = false;
-  emailField.value = trim(emailField.value);
-  namesField.value = trim(namesField.value);
-  messageField.value = trim(messageField.value);
+  emailField.value = emailField.value.trim();
+  namesField.value = namesField.value.trim();
+  messageField.value = messageField.value.trim();
   if (emailField.value == "") {
     errorParagraph.innerHTML = "Email can not be empty.";
     errorsFound = true;
@@ -37,10 +35,24 @@ const handleSubmit = () => {
           } else {
             success = true;
             const messageObj = {
-              senderEmail: emailField.value,
-              senderNames: namesField.value,
+              email: emailField.value,
+              names: namesField.value,
               messageText: messageField.value,
             };
+            let res = await fetch(
+              "https://my-brandbackend.herokuapp.com/api/query",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json;charset=utf-8",
+                  Authorization:
+                    "IYPortfolio eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjUxMTQwNDI1ZDBjZWM4NWNhZjM3OTEiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NTA1NTk3NjB9.bikhaoTr0W15IPpGP7nOnhxDgRO3ny44Qilj6Za89pQ",
+                },
+                body: JSON.stringify(messageObj),
+              }
+            );
+            console.log(res);
+            let result = res;
           }
         }
       }
