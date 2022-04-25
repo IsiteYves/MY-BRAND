@@ -1,6 +1,7 @@
 const handleSubmit = async () => {
   let namesField = document.getElementById("names"),
     emailField = document.getElementById("email"),
+    addressField = document.getElementById("address"),
     passwordField = document.getElementById("password"),
     repeatPasswordField = document.getElementById("repeatedPassword"),
     errorParagraph = document.getElementById("error-paragraph"),
@@ -44,11 +45,20 @@ const handleSubmit = async () => {
               errorParagraph.innerHTML =
                 "Please confirm your password correctly.";
               errorsFound = true;
+            } else if (addressField.value < 10) {
+              errorParagraph.innerHTML =
+                "Residence must be at least 10 characters long.";
+              errorsFound = true;
+            } else if (addressField.value > 150) {
+              errorParagraph.innerHTML =
+                "Residence must not exceed 150 characters.";
+              errorsFound = true;
             } else {
               const userObj = {
                 names: namesField.value,
                 email: emailField.value,
                 password: passwordField.value,
+                address: "",
                 role: "Standard",
               };
               const res = await fetch(
@@ -61,8 +71,8 @@ const handleSubmit = async () => {
                   body: JSON.stringify(userObj),
                 }
               );
+              console.log(res.formData);
               if (res.status === 200) {
-                console.log(res.formData);
                 // success = true;
               } else {
                 errorsFound = true;
