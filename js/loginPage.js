@@ -2,7 +2,7 @@ function getUserInfoFromLocalStorage() {
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
   if (userInfo) document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
 }
-const handleSubmit = () => {
+const handleSubmit = async () => {
   let emailField = document.getElementById("email"),
     passwordField = document.getElementById("password"),
     errorParagraph = document.getElementById("error-paragraph"),
@@ -30,8 +30,29 @@ const handleSubmit = () => {
           email: "yvesisite@gmail.com",
           role: "Admin",
         };
-        localStorage.setItem("userInfo", JSON.stringify(userObj));
-        document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+        const res = await fetch(
+          "https://my-brandbackend.herokuapp.com/api/user",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(userObj),
+          }
+        );
+        if (res.status === 404) {
+          errorParagraph.innerHTML = "Incorrect email or password";
+          errorsFound = true;
+        } else {
+          if (res.status === 500) {
+            errorParagraph.innerHTML = "Server error.";
+            errorsFound = true;
+          } else {
+            const hd = res.headers;
+            console.log(hd);
+            document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+          }
+        }
       }
     }
   }
