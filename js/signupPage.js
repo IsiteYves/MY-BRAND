@@ -1,6 +1,7 @@
 const handleSubmit = async () => {
   let namesField = document.getElementById("names"),
     emailField = document.getElementById("email"),
+    addressField = document.getElementById("address"),
     passwordField = document.getElementById("password"),
     repeatPasswordField = document.getElementById("repeatedPassword"),
     errorParagraph = document.getElementById("error-paragraph"),
@@ -45,27 +46,44 @@ const handleSubmit = async () => {
                 "Please confirm your password correctly.";
               errorsFound = true;
             } else {
-              const userObj = {
-                names: namesField.value,
-                email: emailField.value,
-                password: passwordField.value,
-                role: "Standard",
-              };
-              const res = await fetch(
-                "https://my-brandbackend.herokuapp.com/api/user",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json;charset=utf-8",
-                  },
-                  body: JSON.stringify(userObj),
-                }
-              );
-              if (res.status === 200) {
-                console.log(res.formData);
-                // success = true;
-              } else {
+              if (addressField.value.length < 10) {
+                errorParagraph.innerHTML =
+                  "Residence must be at least 10 characters long.";
                 errorsFound = true;
+              } else {
+                if (addressField.value.length > 150) {
+                  errorParagraph.innerHTML =
+                    "Residence must not exceed 150 characters.";
+                  errorsFound = true;
+                } else {
+                  const userObj = {
+                    names: namesField.value,
+                    email: emailField.value,
+                    password: passwordField.value,
+                    address: addressField.value,
+                  };
+                  const res = await fetch(
+                    "https://my-brandbackend.herokuapp.com/api/user",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json;charset=utf-8",
+                      },
+                      body: JSON.stringify(userObj),
+                    }
+                  );
+                  if (res.status === 200) {
+                    success = true;
+                  } else {
+                    if (res.status === 400) {
+                      errorParagraph.innerHTML = "Email already taken.";
+                      errorsFound = true;
+                    } else {
+                      errorParagraph.innerHTML = "Server error.";
+                      errorsFound = true;
+                    }
+                  }
+                }
               }
             }
           }
