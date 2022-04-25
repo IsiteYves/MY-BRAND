@@ -39,7 +39,7 @@ const handleSubmit = async () => {
               names: namesField.value,
               messageText: messageField.value,
             };
-            let res = await fetch(
+            const res = await fetch(
               "https://my-brandbackend.herokuapp.com/api/query",
               {
                 method: "POST",
@@ -51,8 +51,6 @@ const handleSubmit = async () => {
                 body: JSON.stringify(messageObj),
               }
             );
-            console.log(res);
-            let result = res;
           }
         }
       }

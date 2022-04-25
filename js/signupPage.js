@@ -1,4 +1,4 @@
-const handleSubmit = () => {
+const handleSubmit = async () => {
   let namesField = document.getElementById("names"),
     emailField = document.getElementById("email"),
     passwordField = document.getElementById("password"),
@@ -45,20 +45,28 @@ const handleSubmit = () => {
                 "Please confirm your password correctly.";
               errorsFound = true;
             } else {
-              success = true;
               const userObj = {
-                  username: namesField.value,
-                  email: emailField.value,
-                  password: passwordField.value,
-                  role: "Standard",
-                },
-                existingUsersStr = localStorage.getItem("registeredUsers"),
-                registeredUsers = JSON.parse(existingUsersStr);
-              registeredUsers.push(userObj);
-              localStorage.setItem(
-                "registeredUsers",
-                JSON.stringify(registeredUsers)
+                names: namesField.value,
+                email: emailField.value,
+                password: passwordField.value,
+                role: "Standard",
+              };
+              const res = await fetch(
+                "https://my-brandbackend.herokuapp.com/api/user",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                  },
+                  body: JSON.stringify(userObj),
+                }
               );
+              if (res.status === 200) {
+                console.log(res.formData);
+                // success = true;
+              } else {
+                errorsFound = true;
+              }
             }
           }
         }
