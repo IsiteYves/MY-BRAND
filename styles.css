@@ -228,14 +228,13 @@ body > .My_Skills > div {
 .GreetingSide > div:last-of-type > a {
   width: 50%;
   text-align: center;
-  border: 1px solid #4bf5db;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   color: #3acfb9;
 }
 .GreetingSide > div:last-of-type > a:first-of-type,
 .GreetingSide > div:last-of-type > a:last-of-type {
-  background-color: #41d8c1;
+  background-color: #219987;
   color: #fff;
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a::after {
@@ -263,6 +262,9 @@ body > .My_Skills > div {
   background-position-y: 15rem;
   background-size: 60%;
   flex-direction: column;
+}
+.GreetingSide > div:last-of-type > a:not(:last-of-type) {
+  border: 1px solid #4bf5db;
 }
 .GreetingSide > div:last-of-type > a:not(:nth-of-type(2)) {
   margin-top: 1rem;

@@ -55,7 +55,9 @@ async function getUserInfoFromLocalStorage() {
       }
     }
   }
-  if (document.getElementById("signedInUsernames")) {
+  const signedInUsernames = document.getElementById("signedInUsernames"),
+    commentForm = document.getElementById("comment-form");
+  if (signedInUsernames || commentForm) {
     if (localStorage.getItem("iyPortfolioInfo")) {
       const { _id, token } = JSON.parse(
         localStorage.getItem("iyPortfolioInfo")
@@ -70,16 +72,39 @@ async function getUserInfoFromLocalStorage() {
       );
       if (res.status === 200) {
         const result = await res.json();
-        document.getElementById("signedInUsernames").innerHTML = result.names;
-        if (result.role !== "Admin")
-          document.getElementById("signedInRole").innerHTML = "Standard User";
-        else document.getElementById("profileLi").style.display = "none";
+        if (signedInUsernames) signedInUsernames.innerHTML = result.names;
+        if (result.role !== "Admin") {
+          if (signedInUsernames)
+            document.getElementById("signedInRole").innerHTML = "Standard User";
+        } else {
+          if (signedInUsernames) execShow();
+          if (commentForm) commentForm.style.display = "none";
+        }
       } else {
-        document.getElementById("profileLi").style.display = "none";
+        if (signedInUsernames) execShow();
+      }
+    } else {
+      if (commentForm) commentForm.style.display = "none";
+      if (signedInUsernames) {
+        execShow();
       }
     }
   }
 }
+
+function execShow() {
+  document.getElementById("logout").style.display = "none";
+  document.getElementById("profileLi").style.display = "none";
+}
+
+const exploreMore = document.getElementById("exploreMore");
+if (exploreMore) {
+  exploreMore.onclick = () => {
+    document.location.href = "/ui/about-me.html";
+    // document.location.href = "/MY-BRAND/ui/about-me.html";
+  };
+}
+
 function changePage(to) {
   document.location.href = `/MY-BRAND/ui/${to}`;
 }
