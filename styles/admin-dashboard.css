@@ -195,12 +195,15 @@ body {
   margin-left: 1rem;
   font-size: 0.875rem !important;
   padding: 0.5rem 1.5rem;
-  background: #25e0c4;
+  background: #18946b;
   border-radius: 3.125rem;
   color: #fff;
   transition: all 0.5s ease;
   font-weight: 700;
   cursor: pointer;
+}
+.my-blogs > .blog > a:hover {
+  background: #20c0a8;
 }
 .my-blogs > .blog > button {
   background: #f03b59;
@@ -303,4 +306,7 @@ body {
   color: #fff;
   border: none;
   outline: none;
+}
+#nomessage>h3 {
+  margin: auto;
 }

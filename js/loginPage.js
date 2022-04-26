@@ -1,6 +1,21 @@
-function getUserInfoFromLocalStorage() {
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  if (userInfo) document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+async function getUserInfoFromLocalStorage() {
+  if (localStorage.getItem("iyPortfolioInfo")) {
+    const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+    const res = await fetch(
+      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    if (res.status === 200) {
+      const result = await res.json();
+      if (result && result.role === "Admin")
+        // document.location.href = "/ui/admin-dashboard.html";
+        document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+    }
+  }
 }
 const handleSubmit = async () => {
   let emailField = document.getElementById("email"),
@@ -15,23 +30,13 @@ const handleSubmit = async () => {
       errorParagraph.innerHTML = "Password can not be empty.";
       errorsFound = true;
     } else {
-      if (emailField.value != "yvesisite@gmail.com") {
-        errorParagraph.innerHTML = "Email not registered.";
-        errorsFound = true;
-      } else if (
-        passwordField.value != "pass123" ||
-        passwordField.value.length < 6
-      ) {
-        errorParagraph.innerHTML = "Invalid password.";
-        errorsFound = true;
-      } else {
+      try {
         const userObj = {
-          username: "Yves Isite",
-          email: "yvesisite@gmail.com",
-          role: "Admin",
+          email: emailField.value,
+          password: passwordField.value,
         };
         const res = await fetch(
-          "https://my-brandbackend.herokuapp.com/api/user",
+          "https://my-brandbackend.herokuapp.com/api/user/login",
           {
             method: "POST",
             headers: {
@@ -48,11 +53,21 @@ const handleSubmit = async () => {
             errorParagraph.innerHTML = "Server error.";
             errorsFound = true;
           } else {
-            const hd = res.headers;
-            console.log(hd);
+            const { data, token } = await res.json();
+            const storageInfo = {
+              _id: data._id,
+              token,
+            };
+            localStorage.setItem(
+              "iyPortfolioInfo",
+              JSON.stringify(storageInfo)
+            );
+            // document.location.href = "/ui/admin-dashboard.html";
             document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
           }
         }
+      } catch (err) {
+        console.error(err);
       }
     }
   }
