@@ -64,3 +64,27 @@ const handleSubmit = async () => {
     successSpan.style.display = "inline";
   }
 };
+
+window.onload = async () => {
+  if (!localStorage.getItem("iyPortfolioInfo")) {
+    // document.location.href = "/ui/login.html";
+    document.location.href = "/MY-BRAND/ui/login.html";
+  } else {
+    const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+    const res = await fetch(
+      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    if (res.status !== 200) document.location.href = "/ui/login.html";
+    else {
+      const result = await res.json();
+      if (result.role === "Admin") {
+        document.location.href = "/ui/login.html";
+      }
+    }
+  }
+};

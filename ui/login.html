@@ -11,11 +11,12 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Account Login</title>
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
-    <form class="auth-form signup-login-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+    <form class="auth-form signup-login-form" action="javascript:void(0)" autocomplete="on" onsubmit="handleSubmit()"
+        method="POST">
         <a href="../index.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Home
@@ -24,7 +25,7 @@
         <p id="error-paragraph"></p>
         <input type="email" name="email" id="email">
         <label for="email">Email</label>
-        <input type="password" name="password" id="password" required>
+        <input type="password" name="password" id="password" required autocomplete="off">
         <label for="password">Password</label>
         <input type="submit" value="Login">
         <p>Don't have an account?</p>

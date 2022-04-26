@@ -354,13 +354,15 @@ body > button {
 .my-blogs > .blog > a {
   margin-left: 1rem;
   font-size: 0.875rem !important;
-
   padding: 0.5rem 1.5rem;
-  background: #25e0c4;
+  background: #137957;
   border-radius: 3.125rem;
   color: #fff;
   transition: all 0.5s ease;
   font-weight: 700;
+}
+.my-blogs > .blog > a:hover {
+  background: #03442e;
 }
 .blog-info > div:first-child > p {
   width: 55% !important;
@@ -419,7 +421,7 @@ body > button {
 .my-projects > div a {
   width: fit-content;
   margin-top: 2rem;
-  background-color: #3acfb9 !important;
+  background-color: #18946b !important;
 }
 .my-work-info > .my-projects > div > div {
   margin-top: 4rem;
