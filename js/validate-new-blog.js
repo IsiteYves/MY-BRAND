@@ -106,7 +106,7 @@ const handleSubmit = async () => {
             errorsFound = true;
             errorParagraph.innerHTML = "Blog storage error";
           } else {
-            alert("Successfully posted");
+            alert("Successfully posted the new blog.");
             errorsFound = false;
             window.location.href = "/ui/admin-dashboard.html";
           }

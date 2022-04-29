@@ -294,16 +294,18 @@ const handleUpdate = async () => {
           "Every written paragraph has to be at leat 200 characters long.";
         errorsFound = true;
       } else {
+        const { comments, likes, dislikes, image1Url, image2Url } =
+          blogToUpdateInfo;
         let newBlogObj = {
           title: titleField.value,
           paragraph1: paragraph1Field.value,
           paragraph2: paragraph2Field.value,
           paragraph3: paragraph3Field.value,
-          image1Url: "",
-          image2Url: "",
-          comments: [],
-          likes: 0,
-          dislikes: 0,
+          image1Url,
+          image2Url,
+          likes,
+          dislikes,
+          comments: [...comments],
         };
         const formData1 = new FormData();
         const formData2 = new FormData();
@@ -314,20 +316,22 @@ const handleUpdate = async () => {
         formData2.append("file", uploaded2);
         formData2.append("upload_preset", "bt7sz20d");
         const uploadError = false;
-        let image2Url = "";
+        let image2Url1 = "";
         formLoader.style.display = "block";
-        const res1 = await fetch(
-          "https://api.cloudinary.com/v1_1/yvesisite/image/upload",
-          {
-            method: "POST",
-            headers: {},
-            body: formData1,
+        if (image1Field.value !== "") {
+          const res1 = await fetch(
+            "https://api.cloudinary.com/v1_1/yvesisite/image/upload",
+            {
+              method: "POST",
+              headers: {},
+              body: formData1,
+            }
+          );
+          if (res1.status !== 200) {
+            uploadError = true;
           }
-        );
-        if (res1.status !== 200) {
-          uploadError = true;
+          newBlogObj.image1Url = (await res1.json()).url;
         }
-        newBlogObj.image1Url = (await res1.json()).url;
         if (image2Field.value !== "") {
           const res2 = await fetch(
             "https://api.cloudinary.com/v1_1/yvesisite/image/upload",
@@ -338,10 +342,10 @@ const handleUpdate = async () => {
             }
           );
           if (res2.status !== 200) uploadError = true;
-          else image2Url = (await res2.json()).url;
+          else image2Url1 = (await res2.json()).url;
         }
         if (!uploadError) {
-          newBlogObj.image2Url = image2Url;
+          if (image2Field.value !== "") newBlogObj.image2Url = image2Url1;
           const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
           formLoader.style.display = "block";
           const res3 = await fetch(
@@ -356,11 +360,11 @@ const handleUpdate = async () => {
             }
           );
           formLoader.style.display = "none";
-          if (res3.status !== 201) {
+          if (res3.status !== 200) {
             errorsFound = true;
-            errorParagraph.innerHTML = "Blog storage error";
+            errorParagraph.innerHTML = "Blog update error";
           } else {
-            alert("Successfully posted");
+            alert("Successfully updated the blog.");
             errorsFound = false;
             window.location.href = "/ui/admin-dashboard.html";
           }
@@ -399,7 +403,6 @@ window.onload = async () => {
       if (res5.status !== 200) alert("Error fetching the current blog info.");
       else {
         const result5 = await res5.json();
-        console.log(result5);
         blogToUpdateInfo = { ...result5 };
         const { title, paragraph1, paragraph2, paragraph3 } = result5;
         titleField.value = title;
