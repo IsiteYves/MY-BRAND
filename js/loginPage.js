@@ -39,7 +39,8 @@ const handleSubmit = async () => {
           password: passwordField.value,
         };
         const res = await fetch(
-          "https://my-brandbackend.herokuapp.com/api/user/login",
+          // "https://my-brandbackend.herokuapp.com/api/user/login",
+          "http://localhost:8000/api/user/login",
           {
             method: "POST",
             headers: {

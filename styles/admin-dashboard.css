@@ -94,6 +94,8 @@ body {
   flex-wrap: wrap;
   max-height: 95vh !important;
   overflow: auto;
+  justify-content: unset !important;
+  align-items: unset !important;
   padding-bottom: 3rem !important;
 }
 .my-blogs > div:first-of-type {
@@ -105,12 +107,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
+  height: fit-content !important;
   width: 100%;
   display: flex;
   align-items: center;
   background: #fff;
   padding: 1rem 0 1rem 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.068);
+  box-shadow: 0px 3px 8px #00000071;
 }
 .my-blogs > div:first-of-type > h2,
 .contact-messages > div:first-of-type > h2,
@@ -131,31 +134,18 @@ body {
   color: #fff;
 }
 .my-blogs > .blog {
-  padding-bottom: 2rem;
   width: 30%;
   background: #fff;
-  margin: 1.5rem 0 0 1.5rem;
+  padding-bottom: 1rem;
+  margin: 1.5rem 0 0 1.7rem;
   z-index: 10;
   box-shadow: 0px 3px 8px #00000071;
   animation: comeUp 1s ease;
 }
-.my-blogs > .blog:nth-of-type(2) > div {
-  background-image: url("../images/top-pl.png");
-}
-.my-blogs > .blog:nth-of-type(3) > div {
-  background-image: url("../images/React-Best-Practices-and-Security.jpg");
-}
-.my-blogs > .blog:nth-of-type(4) > div {
-  background-image: url("../images/css-tips.jpg");
-}
-.my-blogs > .blog:nth-of-type(5) > div {
-  background-image: url("../images/js-regex.jpg");
-}
-.my-blogs > .blog:nth-of-type(6) > div {
-  background-image: url("../images/top-pl.png");
-}
-.my-blogs > .blog:nth-of-type(7) > div {
-  background-image: url("../images/React-Best-Practices-and-Security.jpg");
+#blogsNbr {
+  width: 100%;
+  margin: 0.6rem 2rem 0 2rem !important;
+  display: block;
 }
 .my-blogs > .blog > div {
   position: relative;
@@ -185,7 +175,7 @@ body {
 .my-blogs > .blog > h3,
 .my-blogs > .blog > p {
   margin-left: 1rem;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
   margin-right: 1.5rem !important;
 }
 .my-blogs > .blog > p {
@@ -204,7 +194,7 @@ body {
   cursor: pointer;
 }
 .my-blogs > .blog > a:hover {
-  background: #20c0a8;
+  background: #0e5e43;
 }
 .my-blogs > .blog > button {
   background: #f03b59;
@@ -310,6 +300,24 @@ body {
 }
 #nomessage>h3 {
   margin: auto;
+}
+#NoblogsFound {
+  margin: 1rem 2rem;
+}
+#loadingBlogs {
+  height: 40px;
+  width: 40px;
+  margin: 2rem 5rem;
+  border-radius: 50%;
+  background: transparent;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+  border: 4px solid var(--dashboard-main-color);
+  animation: load 0.7s infinite ease-in-out;
+}
+@keyframes load {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg);}
 }
 #datePosted {
   margin-top: 0.8rem;

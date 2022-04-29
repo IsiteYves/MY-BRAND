@@ -11,11 +11,12 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Create a new blog</title>
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
-    <form class="auth-form new-blog-form signup-form" action="javascript:void(0)" onsubmit="handleSubmit()" method="POST">
+    <form class="auth-form new-blog-form signup-form" id="newblogform" action="javascript:void(0)"
+        onsubmit="handleSubmit()" method="POST">
         <a href="./admin-dashboard.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Back to dashboard
@@ -25,19 +26,21 @@
         <input type="text" name="title" id="title" required>
         <label for="title">Title</label>
         <h3>Paragraphs</h3>
-        <input type="text" name="paragraph1" id="paragraph1">
+        <textarea name="paragraph1" id="paragraph1"></textarea>
         <label for="paragraph1">Paragraph 1</label>
-        <input type="text" name="paragraph2" id="paragraph2">
+        <textarea name="paragraph2" id="paragraph2"></textarea>
         <label for="paragraph2">Paragraph 2</label>
-        <input type="text" name="paragraph3" id="paragraph3">
+        <textarea name="paragraph3" id="paragraph3"></textarea>
         <label for="paragraph3">Paragraph 3</label>
         <input type="file" name="image1" id="image1" accept="image/*">
         <label id="image1">Upload Image 1</label>
         <input type="file" name="image2" id="image2" accept="image/*">
         <label id="image2">Upload Image 2</label>
+        <div id="formLoader"></div>
         <input type="submit" value="Create Blog">
     </form>
     <script src="../js/validate-new-blog.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

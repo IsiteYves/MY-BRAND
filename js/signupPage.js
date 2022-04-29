@@ -63,7 +63,8 @@ const handleSubmit = async () => {
                     address: addressField.value,
                   };
                   const res = await fetch(
-                    "https://my-brandbackend.herokuapp.com/api/user",
+                    // "https://my-brandbackend.herokuapp.com/api/user",
+                    "http://localhost:8000/api/user",
                     {
                       method: "POST",
                       headers: {
@@ -101,4 +102,6 @@ const handleSubmit = async () => {
     errorParagraph.style.display = "none";
     successSpan.style.display = "inline";
   }
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 };

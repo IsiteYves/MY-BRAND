@@ -15,22 +15,20 @@
 </head>
 
 <body>
-    <form class="auth-form new-blog-form signup-form" action="javascript:void(0)" onsubmit="handleSubmit()"
-        method="POST">
+    <form class="auth-form new-blog-form signup-form" id="blogUpdateForm" action="javascript:void(0)"
+        onsubmit="handleUpdate()" method="POST">
         <a href="./admin-dashboard.html">
             <span class="iconify" data-icon="ep:back"></span>&nbsp;&nbsp;
             Back to dashboard
         </a>
         <h2>Update blog</h2>
         <p id="error-paragraph"></p>
-        <input type="text" name="title" id="title" value="Top P.Languages to use 2022">
+        <input type="text" name="title" id="title">
         <label for="title">Title</label>
         <h3>Paragraphs</h3>
-        <textarea name="paragraph1"
-            id="paragraph1">Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</textarea>
+        <textarea name="paragraph1" id="paragraph1"></textarea>
         <label for="paragraph1">Paragraph 1</label>
-        <textarea name="paragraph2"
-            id="paragraph2">Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</textarea>
+        <textarea name="paragraph2" id="paragraph2"></textarea>
         <label for="paragraph2">Paragraph 2</label>
         <textarea name="paragraph3" id="paragraph3"></textarea>
         <label for="paragraph3">Paragraph 3</label>
@@ -38,9 +36,10 @@
         <label id="image1">Upload Image 1</label>
         <input type="file" name="image2" id="image2" accept="image/*">
         <label id="image2">Upload Image 2</label>
+        <div id="formLoader"></div>
         <input type="submit" value="Update Blog">
     </form>
-    <script src="../js/validate-new-blog.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>
