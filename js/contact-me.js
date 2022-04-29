@@ -39,14 +39,16 @@ const handleSubmit = async () => {
               names: namesField.value,
               messageText: messageField.value,
             };
+            const { _id, token } = JSON.parse(
+              localStorage.getItem("iyPortfolioInfo")
+            );
             const res = await fetch(
               "https://my-brandbackend.herokuapp.com/api/query",
               {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json;charset=utf-8",
-                  Authorization:
-                    "IYPortfolio eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjUxMTQwNDI1ZDBjZWM4NWNhZjM3OTEiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2NTA1NTk3NjB9.bikhaoTr0W15IPpGP7nOnhxDgRO3ny44Qilj6Za89pQ",
+                  Authorization: token,
                 },
                 body: JSON.stringify(messageObj),
               }

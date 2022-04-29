@@ -81,6 +81,14 @@
                 sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem
                 ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
             <h3>All comments (3)</h3>
+            <form class="auth-form" id="comment-form" action="javascript:void(0)" onsubmit="handleSubmit()"
+                method="POST">
+                <p id="error-paragraph"></p>
+                <span id="success-span">Your comment was successfully posted.</span>
+                <textarea name="blogComment" id="blog-comment" required></textarea>
+                <label for="blog-comment">Write your comment...</label>
+                <input type="submit" value="Post comment">
+            </form>
             <div class="comment">
                 <div></div>
                 <div>

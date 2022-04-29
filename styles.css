@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: Open Sans;
   background-repeat: no-repeat !important;
+  scroll-behavior: smooth;
   z-index: 5 !important;
 }
 :root {
@@ -228,14 +229,13 @@ body > .My_Skills > div {
 .GreetingSide > div:last-of-type > a {
   width: 50%;
   text-align: center;
-  border: 1px solid #4bf5db;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   color: #3acfb9;
 }
 .GreetingSide > div:last-of-type > a:first-of-type,
 .GreetingSide > div:last-of-type > a:last-of-type {
-  background-color: #41d8c1;
+  background-color: #219987;
   color: #fff;
 }
 .GreetingSide > div:first-of-type > div:last-of-type > a::after {
@@ -263,6 +263,9 @@ body > .My_Skills > div {
   background-position-y: 15rem;
   background-size: 60%;
   flex-direction: column;
+}
+.GreetingSide > div:last-of-type > a:not(:last-of-type) {
+  border: 1px solid #4bf5db;
 }
 .GreetingSide > div:last-of-type > a:not(:nth-of-type(2)) {
   margin-top: 1rem;
@@ -597,7 +600,7 @@ body > button {
   overflow-y: auto;
 }
 .blog-info-section > .my-blogs > .blog {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   width: 45%;
   background: #fff;
   margin: 1.5rem 0 0 1.5rem;
@@ -993,7 +996,11 @@ body > button {
   padding-left: 1.5rem !important;
 }
 .move-upper {
+  display: block;
   margin-top: 0 !important;
+}
+.hidden {
+  display: none;
 }
 .auth-form > * {
   outline: none;
@@ -1370,4 +1377,19 @@ a {
   right: -0.4rem;
   cursor: pointer;
   border-radius: 50%;
+}
+#formLoader {
+  height: 40px;
+  width: 40px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  background: transparent;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+  border: 4px solid #086afd;
+  animation: load 0.7s infinite ease-in-out;
+}
+@keyframes load {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg);}
 }

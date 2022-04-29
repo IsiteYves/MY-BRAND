@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <title>Admin Dashboard</title>
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
 <body>
@@ -43,80 +43,16 @@
                     data-icon="majesticons:logout-half-circle-line"></span>&nbsp;&nbsp;Logout</a>
         </div>
     </div>
-    <div class="my-blogs">
+    <div class="my-blogs" id="adminBlogs">
         <div>
             <h2>Manage Blogs</h2>
             <a href="./new-blog.html">New blog</a>
         </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>Top P.Languages to use 2022</h3>
-            <p>
-                Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>Best practices in React 16!</h3>
-            <p>
-                Lorem ipsum dolor sitamet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>🚀 CSS & HTML5 Tips</h3>
-            <p>
-                Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>Javascript Regex</h3>
-            <p>
-                Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>Top P.Languages to use 2021</h3>
-            <p>
-                Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
-        <div class="blog">
-            <div>
-                <a href="./update-blog.html" title="Edit this blog">Edit</a>
-            </div>
-            <h3>Top P.Languages to use 2021</h3>
-            <p>
-                Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet.
-            </p>
-            <a href="#">View</a><button>Delete</button>
-        </div>
+        <h3 id="blogsNbr"></h3>
+        <div id="loadingBlogs"></div>
     </div>
-    <script src="../js//main.js"></script>
-    
+    <script src="../js/main.js"></script>
+
 </body>
 
 </html>

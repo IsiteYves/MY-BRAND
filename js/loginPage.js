@@ -14,6 +14,9 @@ async function getUserInfoFromLocalStorage() {
       if (result && result.role === "Admin")
         // document.location.href = "/ui/admin-dashboard.html";
         document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+      if (result && result.role !== "Admin")
+        // document.location.href = "/ui/admin-dashboard.html";
+        document.location.href = "/";
     }
   }
 }
@@ -36,7 +39,8 @@ const handleSubmit = async () => {
           password: passwordField.value,
         };
         const res = await fetch(
-          "https://my-brandbackend.herokuapp.com/api/user/login",
+          // "https://my-brandbackend.herokuapp.com/api/user/login",
+          "http://localhost:8000/api/user/login",
           {
             method: "POST",
             headers: {
@@ -62,8 +66,9 @@ const handleSubmit = async () => {
               "iyPortfolioInfo",
               JSON.stringify(storageInfo)
             );
-            // document.location.href = "/ui/admin-dashboard.html";
-            document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+            if (data.role === "Admin")
+              document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
+            else document.location.href = "/";
           }
         }
       } catch (err) {
