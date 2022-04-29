@@ -180,6 +180,7 @@ body {
 }
 .my-blogs > .blog > p {
   font-size: 15px;
+  word-wrap: break-word;
 }
 .my-blogs > .blog > a,
 .my-blogs > .blog > button {
