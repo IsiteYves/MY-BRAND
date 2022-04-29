@@ -203,7 +203,9 @@ async function loadBlogs1() {
       h3 = document.createElement("h3"),
       txt2 = document.createTextNode(`${result[i].title}`),
       p1 = document.createElement("p"),
-      txt3 = document.createTextNode(`${result[i].paragraph1.substr(0, 140)}`),
+      txt3 = document.createTextNode(
+        `${result[i].paragraph1.substr(0, 140)}...`
+      ),
       a2 = document.createElement("a"),
       txt4 = document.createTextNode("View"),
       btn = document.createElement("button"),
