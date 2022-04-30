@@ -5,7 +5,9 @@ const adminBlogs = document.getElementById("adminBlogs"),
   titleField = document.getElementById("title"),
   paragraph1Field = document.getElementById("paragraph1"),
   paragraph2Field = document.getElementById("paragraph2"),
-  paragraph3Field = document.getElementById("paragraph3");
+  paragraph3Field = document.getElementById("paragraph3"),
+  singleBlog = document.querySelector("#single-blog"),
+  singleBlogHeader = document.querySelector("#blogHeader");
 if (formLoader) formLoader.style.display = "none";
 let blogToUpdate = "",
   blogToUpdateInfo = {};
@@ -144,13 +146,9 @@ async function loadBlogs1() {
   const loadingBlogs = document.getElementById("loadingBlogs");
   const blogsNbr = document.querySelector("#blogsNbr");
   blogsNbr.style.display = "none";
-  const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
   const res = await fetch(
       // `https://my-brandbackend.herokuapp.com/api/blog`,
-      `http://localhost:8000/api/blog/all`,
-      {
-        headers: {},
-      }
+      `http://localhost:8000/api/blog/all`
     ),
     result = await res.json();
   loadingBlogs.style.display = "none";
@@ -221,10 +219,10 @@ async function loadBlogs1() {
     a1.setAttribute("title", "Edit this blog");
     a1.append(txt1);
     d1.style.backgroundImage = `url(${result[i].image1Url})`;
-    d1.appendChild(a1);
+    if (adminBlogs) d1.appendChild(a1);
     h3.appendChild(txt2);
     p1.append(txt3);
-    a2.setAttribute("href", `./single-blog-view.html/?q=${result[i]._id}`);
+    a2.setAttribute("href", `./single-blog-view.html?q=${result[i]._id}`);
     a2.append(txt4);
     btn.append(txt5);
     p2.setAttribute("id", "datePosted");
@@ -235,9 +233,10 @@ async function loadBlogs1() {
     newEl.appendChild(h3);
     newEl.appendChild(p1);
     newEl.appendChild(a2);
-    newEl.appendChild(btn);
+    if (adminBlogs) newEl.appendChild(btn);
     newEl.appendChild(p2);
-    adminBlogs.appendChild(newEl);
+    if (adminBlogs) adminBlogs.appendChild(newEl);
+    if (standardBlogs) standardBlogs.appendChild(newEl);
     btn.onclick = () => {
       deleteBlog(result[i]._id);
     };
@@ -392,9 +391,11 @@ const handleUpdate = async () => {
 window.onload = async () => {
   getUserInfoFromLocalStorage();
   if (adminBlogs || standardBlogs) loadBlogs1();
+  if (standardBlogs && document.documentElement.clientWidth > 637)
+    document.documentElement.style.overflow = "hidden";
   if (document.getElementById("newblogform")) checkAdmin();
-  if (blogUpdateForm) {
-    checkAdmin();
+  if (blogUpdateForm || singleBlog) {
+    if (blogUpdateForm) checkAdmin();
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     blogToUpdate = urlParams.get("q");
@@ -402,16 +403,76 @@ window.onload = async () => {
       const res5 = await fetch(
         `http://localhost:8000/api/blog/${blogToUpdate}`
       );
-      if (res5.status !== 200) alert("Error fetching the current blog info.");
-      else {
+      if (res5.status !== 200) {
+        alert("Error fetching the current blog info.");
+        window.location.href = "/MY-BRAND";
+      } else {
         const result5 = await res5.json();
-        blogToUpdateInfo = { ...result5 };
-        const { title, paragraph1, paragraph2, paragraph3 } = result5;
-        titleField.value = title;
-        paragraph1Field.value = paragraph1;
-        paragraph2Field.value = paragraph2;
-        paragraph3Field.value = paragraph3;
+        const {
+          title,
+          paragraph1,
+          paragraph2,
+          paragraph3,
+          image1Url,
+          image2Url,
+          likes,
+          dislikes,
+          comments,
+        } = result5;
+        if (blogUpdateForm) {
+          blogToUpdateInfo = { ...result5 };
+          titleField.value = title;
+          paragraph1Field.value = paragraph1;
+          paragraph2Field.value = paragraph2;
+          paragraph3Field.value = paragraph3;
+        }
+        if (singleBlog) {
+          document.title = title;
+          const blogHeadline = singleBlogHeader.getElementsByTagName("span")[0],
+            peopleReactions = singleBlogHeader.getElementsByTagName("div")[0],
+            likesP = peopleReactions.children[0],
+            dislikesP = peopleReactions.children[1],
+            commentsP = peopleReactions.children[2],
+            blogImage1 = singleBlog.querySelector("#blogImage1"),
+            blogImage2 = singleBlog.querySelector("#blogImage2"),
+            commentsNbr = document.querySelector("#commentsNbr");
+          blogHeadline.innerHTML = title;
+          singleBlog.querySelector("#blogPar1").innerHTML = paragraph1;
+          singleBlog.querySelector("#blogPar2").innerHTML = paragraph2;
+          singleBlog.querySelector("#blogPar3").innerHTML = paragraph3;
+          blogImage1.setAttribute("src", image1Url);
+          if (image2Url) blogImage2.setAttribute("src", image2Url);
+          else blogImage2.style.display = "none";
+          commentsNbr.innerHTML = comments.length;
+          likesP.append(likes);
+          dislikesP.append(dislikes);
+          commentsP.append(comments.length);
+          if (comments.length > 0) {
+            document.querySelector("#noComments").style.display = "none";
+            for (let j = 0; j < comments.length; j++) {
+              const picDiv = document.createElement("div");
+              picDiv.style.backgroundImage = `url('https://res.cloudinary.com/yvesisite/image/upload/v1651323426/Screenshot_2022-04-29_123726_xpsixq.png')`;
+              const commentEl = `<div class="comment">
+              ${picDiv}
+              <div><h4>${comments[j].names}</h4><p>${comments[j].commentText}</p></div>
+              </div>`;
+              singleBlog.appendChild(commentEl);
+            }
+          }
+        }
       }
     } else window.location.href = "/ui/admin-dashboard.html";
+  }
+};
+
+window.onresize = () => {
+  if (standardBlogs) {
+    if (document.documentElement.clientWidth <= 637)
+      document.documentElement.style.overflow = "auto";
+    else {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      document.documentElement.style.overflow = "hidden";
+    }
   }
 };

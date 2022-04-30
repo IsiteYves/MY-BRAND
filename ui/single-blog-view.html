@@ -10,7 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Hanuman' rel='stylesheet' />
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-    <title>My Blogs | Best practices in React16!</title>
+    <title></title>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
@@ -56,31 +56,25 @@
         </ul>
     </div>
     <div class="blog-info-section single-blog-section">
-        <div class="single-blog">
+        <div class="single-blog" id="single-blog">
             <div class="single-blog-header">
                 <a href="./my-blogs.html"><span class="iconify" data-icon="bi:arrow-left"></span>All Blogs</a>
-                <div>
-                    Best practices in React16!
+                <div id="blogHeader">
+                    <span></span>
                     <div>
-                        <p title="Like blog"><span class="iconify" data-icon="fluent:thumb-like-20-filled"></span>36</p>
-                        <p title="Dislike blog"><span class="iconify" data-icon="fluent:thumb-like-20-regular"></span>2
+                        <p title="Like blog"><span class="iconify" data-icon="fluent:thumb-like-20-filled"></span></p>
+                        <p title="Dislike blog"><span class="iconify" data-icon="fluent:thumb-like-20-regular"></span>
                         </p>
-                        <p title="Comments"><span class="iconify" data-icon="bx:comment-detail"></span>11</p>
+                        <p title="Comments"><span class="iconify" data-icon="bx:comment-detail"></span></p>
                     </div>
                 </div>
             </div>
-            <img src="../images/blog-main-image.png" />
-            <p>Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dol
-                or sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor
-                sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem
-                ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dol
-                or sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor
-                sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem
-                ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-            <h3>All comments (3)</h3>
+            <img src="#" alt="Main picture for this blog" id="blogImage1" />
+            <p id="blogPar1"></p>
+            <p id="blogPar2"></p>
+            <img src="#" alt="Secondary picture for this blog" id="blogImage2" />
+            <p id="blogPar3"></p>
+            <h3>All comments (<span id="commentsNbr"></span>)</h3>
             <form class="auth-form" id="comment-form" action="javascript:void(0)" onsubmit="handleSubmit()"
                 method="POST">
                 <p id="error-paragraph"></p>
@@ -89,7 +83,8 @@
                 <label for="blog-comment">Write your comment...</label>
                 <input type="submit" value="Post comment">
             </form>
-            <div class="comment">
+            <p id="noComments">No comments yet.</p>
+            <!-- <div class="comment">
                 <div></div>
                 <div>
                     <h4>Kretty Nick</h4>
@@ -97,25 +92,7 @@
                         Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem...
                     </p>
                 </div>
-            </div>
-            <div class="comment">
-                <div></div>
-                <div>
-                    <h4>Peter Cleck</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet.
-                    </p>
-                </div>
-            </div>
-            <div class="comment">
-                <div></div>
-                <div>
-                    <h4>Edison</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet. Lorem Ipsum dolor sit amet. Lorem...
-                    </p>
-                </div>
-            </div>
+            </div> -->
         </div>
         <div>
             <form class="newsletter-subscribe" action="#" method="POST">
