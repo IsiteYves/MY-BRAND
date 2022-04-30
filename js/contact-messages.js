@@ -11,7 +11,8 @@ window.onload = async () => {
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res1 = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      // `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `http://localhost:8000/api/user/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -21,7 +22,8 @@ window.onload = async () => {
     if (res1.status !== 200) document.location.href = "/ui/login.html";
     else {
       const res = await fetch(
-          `https://my-brandbackend.herokuapp.com/api/query`,
+          // `https://my-brandbackend.herokuapp.com/api/query`,
+          `http://localhost:8000/api/query`,
           {
             headers: {
               Authorization: token,

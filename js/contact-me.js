@@ -43,7 +43,8 @@ const handleSubmit = async () => {
               localStorage.getItem("iyPortfolioInfo")
             );
             const res = await fetch(
-              "https://my-brandbackend.herokuapp.com/api/query",
+              // "https://my-brandbackend.herokuapp.com/api/query",
+              "http://localhost:8000/api/query",
               {
                 method: "POST",
                 headers: {
