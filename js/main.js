@@ -49,15 +49,11 @@ async function getUserInfoFromLocalStorage() {
       const { _id, token } = JSON.parse(
         localStorage.getItem("iyPortfolioInfo")
       );
-      const res = await fetch(
-        // `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
-        `http://localhost:8000/api/user/${_id}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
+      const res = await fetch(`http://localhost:8000/api/user/${_id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
       if (res.status !== 200)
         document.location.href = "/MY-BRAND/ui/login.html";
       else {
@@ -78,14 +74,11 @@ async function getUserInfoFromLocalStorage() {
       const { _id, token } = JSON.parse(
         localStorage.getItem("iyPortfolioInfo")
       );
-      const res = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
+      const res = await fetch(`http://localhost:8000/api/user/${_id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
       if (res.status === 200) {
         const result = await res.json();
         if (signedInUsernames) signedInUsernames.innerHTML = result.names;
@@ -247,17 +240,26 @@ async function checkAdmin() {
     document.location.href = "/MY-BRAND/ui/login.html";
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
-    const res = await fetch(
-      `http://localhost:8000/api/user/${_id}`,
-      // `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:8000/api/user/${_id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
     if (res.status !== 200) document.location.href = "/MY-BRAND/ui/login.html";
   }
+}
+async function checkIsLoggedIn() {
+  if (!localStorage.getItem("iyPortfolioInfo")) console.log(false);
+  else {
+    const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+    const res = await fetch(`http://localhost:8000/api/user/${_id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    if (res.status !== 200) return false;
+  }
+  return true;
 }
 const handleUpdate = async () => {
   let image1Field = document.getElementById("image1"),
@@ -459,6 +461,13 @@ window.onload = async () => {
               singleBlog.appendChild(commentEl);
             }
           }
+          likesP.onclick = () => {
+            checkIsLoggedIn();
+            if (!checkIsLoggedIn)
+              alert(
+                "Log in so as to be able to like / dislikes / comment blogs."
+              );
+          };
         }
       }
     } else window.location.href = "/ui/admin-dashboard.html";
