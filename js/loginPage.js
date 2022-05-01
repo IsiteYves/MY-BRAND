@@ -12,11 +12,9 @@ async function getUserInfoFromLocalStorage() {
     if (res.status === 200) {
       const result = await res.json();
       if (result && result.role === "Admin")
-        // document.location.href = "/ui/admin-dashboard.html";
         document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
       if (result && result.role !== "Admin")
-        // document.location.href = "/ui/admin-dashboard.html";
-        document.location.href = "/";
+        document.location.href = "/MY-BRAND";
     }
   }
 }
@@ -39,8 +37,7 @@ const handleSubmit = async () => {
           password: passwordField.value,
         };
         const res = await fetch(
-          // "https://my-brandbackend.herokuapp.com/api/user/login",
-          "http://localhost:8000/api/user/login",
+          "https://my-brandbackend.herokuapp.com/api/user/login",
           {
             method: "POST",
             headers: {

@@ -43,8 +43,7 @@ const handleSubmit = async () => {
               localStorage.getItem("iyPortfolioInfo")
             );
             const res = await fetch(
-              // "https://my-brandbackend.herokuapp.com/api/query",
-              "http://localhost:8000/api/query",
+              "https://my-brandbackend.herokuapp.com/api/query",
               {
                 method: "POST",
                 headers: {
@@ -70,7 +69,6 @@ const handleSubmit = async () => {
 
 window.onload = async () => {
   if (!localStorage.getItem("iyPortfolioInfo")) {
-    // document.location.href = "/ui/login.html";
     document.location.href = "/MY-BRAND/ui/login.html";
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));

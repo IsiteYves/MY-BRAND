@@ -93,14 +93,17 @@ const handleSubmit = async () => {
           newBlogObj.image2Url = image2Url;
           const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
           formLoader.style.display = "block";
-          const res3 = await fetch(`http://localhost:8000/api/blog`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json;charset=utf-8",
-              Authorization: token,
-            },
-            body: JSON.stringify(newBlogObj),
-          });
+          const res3 = await fetch(
+            `https://my-brandbackend.herokuapp.com/api/blog`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json;charset=utf-8",
+                Authorization: token,
+              },
+              body: JSON.stringify(newBlogObj),
+            }
+          );
           formLoader.style.display = "none";
           if (res3.status !== 201) {
             errorsFound = true;
