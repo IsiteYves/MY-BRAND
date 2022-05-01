@@ -75,12 +75,13 @@
             <img src="#" alt="Secondary picture for this blog" id="blogImage2" />
             <p id="blogPar3"></p>
             <h3>All comments (<span id="commentsNbr"></span>)</h3>
-            <form class="auth-form" id="comment-form" action="javascript:void(0)" onsubmit="handleSubmit()"
+            <form class="auth-form" id="comment-form" action="javascript:void(0)" onsubmit="handleCommentSubmit()"
                 method="POST">
                 <p id="error-paragraph"></p>
                 <span id="success-span">Your comment was successfully posted.</span>
                 <textarea name="blogComment" id="blog-comment" required></textarea>
                 <label for="blog-comment">Write your comment...</label>
+                <div id="formLoader"></div>
                 <input type="submit" value="Post comment">
             </form>
             <p id="noComments">No comments yet.</p>

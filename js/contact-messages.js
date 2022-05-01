@@ -6,13 +6,11 @@ window.onload = async () => {
     emailEl = document.getElementById("email"),
     userRoleEl = document.getElementById("user-role");
   if (!localStorage.getItem("iyPortfolioInfo")) {
-    // document.location.href = "/ui/login.html";
     document.location.href = "/MY-BRAND/ui/login.html";
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res1 = await fetch(
-      // `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
-      `http://localhost:8000/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -21,15 +19,11 @@ window.onload = async () => {
     );
     if (res1.status !== 200) document.location.href = "/ui/login.html";
     else {
-      const res = await fetch(
-          // `https://my-brandbackend.herokuapp.com/api/query`,
-          `http://localhost:8000/api/query`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        ),
+      const res = await fetch(`https://isiteyves.herokuapp.com/api/query`, {
+          headers: {
+            Authorization: token,
+          },
+        }),
         result1 = await res1.json(),
         result = await res.json(),
         { names, email, role } = result1;

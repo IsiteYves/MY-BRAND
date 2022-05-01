@@ -614,30 +614,6 @@ body > button {
   margin-bottom: 1rem;
   background-size: cover;
 }
-.blog-info-section > .my-blogs > .blog:first-of-type > div {
-  background-image: url("./images/top-pl.png");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(2) > div {
-  background-image: url("./images/React-Best-Practices-and-Security.jpg");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(3) > div {
-  background-image: url("./images/css-tips.jpg");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(4) > div {
-  background-image: url("./images/js-regex.jpg");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(5) > div {
-  background-image: url("./images/top-pl.png");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(6) > div {
-  background-image: url("./images/React-Best-Practices-and-Security.jpg");
-}
-.blog-info-section > .my-blogs > .blog:nth-of-type(7) > div {
-  background-image: url("./images/css-tips.jpg");
-}
-.blog-info-section > .my-blogs > .blog:last-of-type > div {
-  background-image: url("./images/js-regex.jpg");
-}
 .blog-info-section > div:last-of-type {
   width: 35%;
 }
@@ -1275,7 +1251,7 @@ a {
 }
 .single-blog > p {
   color: #fff;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 .single-blog > p:not(:first-of-type) {
   margin-top: 1rem;
@@ -1307,15 +1283,6 @@ a {
   height: 2.1875rem;
   border: 1px solid var(--main-color);
   border-radius: 50%;
-}
-.comment:nth-of-type(2) > div:first-child {
-  background-image: url("./images/profile-pic2.png");
-}
-.comment:nth-of-type(3) > div:first-child {
-  background-image: url("./images/profile-pic1.png");
-}
-.comment:nth-of-type(4) > div:first-child {
-  background-image: url("./images/profile-pic3.png");
 }
 .comment > div:last-child {
   width: 90%;
