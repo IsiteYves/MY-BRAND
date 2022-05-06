@@ -10,11 +10,10 @@ async function getUserInfoFromLocalStorage() {
       }
     );
     if (res.status === 200) {
-      const result = await res.json();
-      if (result && result.role === "Admin")
+      const { _doc } = await res.json();
+      if (_doc && _doc.role === "Admin")
         document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
-      if (result && result.role !== "Admin")
-        document.location.href = "/MY-BRAND";
+      if (_doc && _doc.role !== "Admin") document.location.href = "/MY-BRAND";
     }
   }
 }
@@ -56,16 +55,16 @@ const handleSubmit = async () => {
           } else {
             const { data, token } = await res.json();
             const storageInfo = {
-              _id: data._id,
+              _id: data._doc._id,
               token,
             };
             localStorage.setItem(
               "iyPortfolioInfo",
               JSON.stringify(storageInfo)
             );
-            if (data.role === "Admin")
+            if (data._doc.role === "Admin")
               document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
-            else document.location.href = "/";
+            else document.location.href = "/MY-BRAND";
           }
         }
       } catch (err) {
