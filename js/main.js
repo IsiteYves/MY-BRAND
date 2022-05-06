@@ -435,8 +435,8 @@ window.onload = async () => {
           paragraph3,
           image1Url,
           image2Url,
-          likes: [{}],
-          dislikes: [{}],
+          likes,
+          dislikes,
           comments,
         } = result5;
         if (blogUpdateForm || singleBlog) blogToUpdateInfo = { ...result5 };
@@ -464,8 +464,8 @@ window.onload = async () => {
           if (image2Url) blogImage2.setAttribute("src", image2Url);
           else blogImage2.style.display = "none";
           commentsNbr.innerHTML = comments.length;
-          likesP.append(likes);
-          dislikesP.append(dislikes);
+          likesP.append(likes.length);
+          dislikesP.append(dislikes.length);
           commentsP.append(comments.length);
           if (comments.length > 0) {
             document.querySelector("#noComments").style.display = "none";
