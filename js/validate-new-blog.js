@@ -1,5 +1,5 @@
-const formLoader = document.querySelector("#formLoader");
-formLoader.style.display = "none";
+// const formLoader = document.querySelector("#formLoader");
+// formLoader.style.display = "none";
 const handleSubmit = async () => {
   let titleField = document.getElementById("title"),
     paragraph1Field = document.getElementById("paragraph1"),
@@ -51,8 +51,8 @@ const handleSubmit = async () => {
           image1Url: "",
           image2Url: "",
           comments: [],
-          likes: 0,
-          dislikes: 0,
+          likes: [],
+          dislikes: [],
         };
         const formData1 = new FormData();
         const formData2 = new FormData();

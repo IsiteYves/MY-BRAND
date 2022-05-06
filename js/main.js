@@ -62,8 +62,8 @@ async function getUserInfoFromLocalStorage() {
       if (res.status !== 200)
         document.location.href = "/MY-BRAND/ui/login.html";
       else {
-        const result = await res.json();
-        const { names, email, role } = result;
+        const { _doc } = await res.json();
+        const { names, email, role } = _doc;
         if (role !== "Admin")
           document.location.href = "/MY-BRAND/ui/login.html";
         usernameEl.innerHTML = names;
@@ -89,11 +89,11 @@ async function getUserInfoFromLocalStorage() {
       );
       if (res.status === 200) {
         const result = await res.json();
-        const { names, email, profilePicUrl } = result;
+        const { names, email, profilePicUrl } = result._doc;
         userNames = names;
         userEmail = email;
         userProfilePicUrl = profilePicUrl;
-        if (signedInUsernames) signedInUsernames.innerHTML = result.names;
+        if (signedInUsernames) signedInUsernames.innerHTML = names;
         if (result.role !== "Admin") {
           if (signedInUsernames)
             document.getElementById("signedInRole").innerHTML = "Standard User";
@@ -435,8 +435,8 @@ window.onload = async () => {
           paragraph3,
           image1Url,
           image2Url,
-          likes,
-          dislikes,
+          likes: [{}],
+          dislikes: [{}],
           comments,
         } = result5;
         if (blogUpdateForm || singleBlog) blogToUpdateInfo = { ...result5 };
