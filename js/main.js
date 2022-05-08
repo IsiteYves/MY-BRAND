@@ -1,3 +1,4 @@
+// @ts-nocheck
 const adminBlogs = document.getElementById("adminBlogs"),
   standardBlogs = document.querySelector("#standardBlogs"),
   blogUpdateForm = document.querySelector("#blogUpdateForm"),
@@ -52,7 +53,7 @@ async function getUserInfoFromLocalStorage() {
         localStorage.getItem("iyPortfolioInfo")
       );
       const res = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+        `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -80,7 +81,7 @@ async function getUserInfoFromLocalStorage() {
         localStorage.getItem("iyPortfolioInfo")
       );
       const res = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+        `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -102,6 +103,7 @@ async function getUserInfoFromLocalStorage() {
         }
       } else {
         if (signedInUsernames) execShow();
+        if (commentForm) commentForm.style.display = "none";
       }
     } else {
       if (commentForm) commentForm.style.display = "none";
@@ -135,7 +137,7 @@ async function deleteBlog(id) {
   if (delConfirm) {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/blog/${id}`,
+      `https://my-brandbackend.herokuapp.com/api/blogs/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -153,7 +155,9 @@ async function loadBlogs1() {
   const loadingBlogs = document.getElementById("loadingBlogs");
   const blogsNbr = document.querySelector("#blogsNbr");
   blogsNbr.style.display = "none";
-  const res = await fetch(`https://my-brandbackend.herokuapp.com/api/blog/all`),
+  const res = await fetch(
+      `https://my-brandbackend.herokuapp.com/api/blogs/all`
+    ),
     result = await res.json();
   loadingBlogs.style.display = "none";
   blogsNbr.style.display = "block";
@@ -252,7 +256,7 @@ async function checkAdmin() {
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -268,7 +272,7 @@ async function checkIsLoggedIn() {
   else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -370,7 +374,7 @@ const handleUpdate = async () => {
           const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
           formLoader.style.display = "block";
           const res3 = await fetch(
-            `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`,
+            `https://my-brandbackend.herokuapp.com/api/blogs/${blogToUpdate}`,
             {
               method: "PATCH",
               headers: {
@@ -421,7 +425,7 @@ window.onload = async () => {
     blogToUpdate = urlParams.get("q");
     if (blogToUpdate) {
       const res5 = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`
+        `https://my-brandbackend.herokuapp.com/api/blogs/${blogToUpdate}`
       );
       if (res5.status !== 200) {
         alert("Error fetching the current blog info.");
@@ -563,7 +567,7 @@ const handleCommentSubmit = async () => {
       const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
       formLoader.style.display = "block";
       const res3 = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`,
+        `https://my-brandbackend.herokuapp.com/api/blogs/${blogToUpdate}`,
         {
           method: "PATCH",
           headers: {

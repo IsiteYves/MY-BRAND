@@ -63,7 +63,7 @@ const handleSubmit = async () => {
                     address: addressField.value,
                   };
                   const res = await fetch(
-                    "https://my-brandbackend.herokuapp.com/api/user",
+                    "https://my-brandbackend.herokuapp.com/api/users",
                     {
                       method: "POST",
                       headers: {

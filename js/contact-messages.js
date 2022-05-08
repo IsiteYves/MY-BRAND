@@ -10,7 +10,7 @@ window.onload = async () => {
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res1 = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
       {
         headers: {
           Authorization: token,

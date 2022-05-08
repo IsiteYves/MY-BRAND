@@ -94,7 +94,7 @@ const handleSubmit = async () => {
           const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
           formLoader.style.display = "block";
           const res3 = await fetch(
-            `https://my-brandbackend.herokuapp.com/api/blog`,
+            `https://my-brandbackend.herokuapp.com/api/blogs`,
             {
               method: "POST",
               headers: {
