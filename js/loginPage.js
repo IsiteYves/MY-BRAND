@@ -30,6 +30,9 @@ const handleSubmit = async () => {
     if (passwordField.value == "") {
       errorParagraph.innerHTML = "Password can not be empty.";
       errorsFound = true;
+    } else if (passwordField.value.length < 6) {
+      errorParagraph.innerHTML = "Invalid password.";
+      errorsFound = true;
     } else {
       try {
         const userObj = {

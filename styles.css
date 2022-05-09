@@ -406,21 +406,24 @@ body > button {
   }
 }
 .my-projects > div:first-of-type {
-  background: url("./images/skidesign.png");
+  background: url("./images/gssbsave.png");
 }
 .my-projects > div:nth-of-type(2) {
-  background: url("./images/groovinx.png");
+  background: url("./images/skidesign.png");
 }
 .my-projects > div:nth-of-type(3) {
-  background: url("./images/sparkcinema.png");
+  background: url("./images/groovinx.png");
 }
 .my-projects > div:nth-of-type(4) {
-  background: url("./images/myliberpay.png");
+  background: url("./images/sparkcinema.png");
 }
 .my-projects > div:nth-of-type(5) {
-  background: url("./images/keystore.png");
+  background: url("./images/myliberpay.png");
 }
 .my-projects > div:nth-of-type(6) {
+  background: url("./images/keystore.png");
+}
+.my-projects > div:nth-of-type(7) {
   background: url("./images/measuremets-converter.png");
 }
 .my-work-info > a,
@@ -1221,6 +1224,9 @@ a {
   text-align: center;
   cursor: pointer;
 }
+.single-blog-header > div > div > p:not(:last-of-type) * {
+  user-select: none !important;
+}
 .single-blog-header > div > div > p:last-of-type,
 .single-blog-header > div > div > p:last-of-type * {
   cursor: auto !important;
@@ -1359,7 +1365,8 @@ a {
   margin-left: 1.5rem;
 }
 #formLoader,
-#loadingBlogs {
+#loadingBlogs,
+#blogLoader {
   height: 40px !important;
   width: 40px !important;
   margin: 1rem auto;
@@ -1373,4 +1380,14 @@ a {
 @keyframes load {
   0% {transform: rotate(0deg)}
   100% {transform: rotate(360deg);}
+}
+.portfolioOwnerCommentHeading {
+  margin-bottom: 0.5rem;
+}
+#portfolioOwnerBadge {
+  padding: 0.2rem 0.8rem;
+  font-size: 12px !important;
+  border-radius: 20px;
+  margin-left: 0.6rem;
+  background: #18946b;
 }
