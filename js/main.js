@@ -456,14 +456,11 @@ window.onload = async () => {
           commentsP.append(comments.length);
           likeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
           dislikeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
-          let hasLiked = false,
-            myLikeIndex = 0,
-            hasDisliked = false,
+          let myLikeIndex = 0,
             myDislikeIndex = 0;
           if (likes.length !== 0) {
             for (let i = 0; i < likes.length; i++) {
               if (likes[i].email === userEmail) {
-                hasLiked = true;
                 myLikeIndex = i;
                 likeIcon.setAttribute(
                   "data-icon",
@@ -475,7 +472,6 @@ window.onload = async () => {
           if (dislikes.length !== 0) {
             for (let i = 0; i < dislikes.length; i++) {
               if (dislikes[i].email === userEmail) {
-                hasDisliked = true;
                 myDislikeIndex = i;
                 dislikeIcon.setAttribute(
                   "data-icon",
@@ -513,22 +509,28 @@ window.onload = async () => {
                 dislikes: [...dislikes],
                 comments: [...comments],
               };
-              likeIcon.removeAttribute("data-icon");
-              likeIcon.hasAttribute("data-icon")
+              likesP.children[0].setAttribute(
+                "data-icon",
+                "fluent:thumb-like-20-fill"
+              );
               if (likesNbr === 1) {
-                dislikeIcon.setAttribute(
+                likesP.children[0].setAttribute(
                   "data-icon",
                   "fluent:thumb-like-20-regular"
                 );
                 likesNbr = 0;
                 newBlogObj.likes.splice(myLikeIndex, 1);
               } else {
-                dislikeIcon.setAttribute(
+                likesP.children[0].setAttribute(
                   "data-icon",
                   "fluent:thumb-like-20-fill"
                 );
                 likesNbr = 1;
-                newBlogObj.likes.push({ email: userEmail });
+                let hasLiked = false;
+                for (let j = 0; j < newBlogObj.likes.length; j++) {
+                  if (newBlogObj.likes[j].email === userEmail) hasLiked = true;
+                }
+                if (!hasLiked) newBlogObj.likes.push({ email: userEmail });
                 if (dislikesNbr === 1) {
                   dislikesNbr = 0;
                   newBlogObj.dislikes.splice(myDislikeIndex, 1);
@@ -570,18 +572,26 @@ window.onload = async () => {
                 dislikes: [...dislikes],
                 comments: [...comments],
               };
-              dislikeIcon.removeAttribute("data-icon");
               if (dislikesNbr === 1) {
-                likeIcon.setAttribute(
+                dislikesP.children[0].setAttribute(
                   "data-icon",
                   "fluent:thumb-like-20-regular"
                 );
                 dislikesNbr = 0;
                 newBlogObj.dislikes.splice(myDislikeIndex, 1);
               } else {
-                likeIcon.setAttribute("data-icon", "fluent:thumb-like-20-fill");
+                dislikesP.children[0].setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-fill"
+                );
                 dislikesNbr = 1;
-                newBlogObj.dislikes.push({ email: userEmail });
+                let hasDisliked = false;
+                for (let j = 0; j < newBlogObj.dislikes.length; j++) {
+                  if (newBlogObj.dislikes[j].email === userEmail)
+                    hasDisliked = true;
+                }
+                if (!hasDisliked)
+                  newBlogObj.dislikes.push({ email: userEmail });
                 if (likesNbr === 1) {
                   likesNbr = 0;
                   newBlogObj.likes.splice(myLikeIndex, 1);
