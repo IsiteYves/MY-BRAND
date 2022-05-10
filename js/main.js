@@ -18,7 +18,8 @@ const adminBlogs = document.getElementById("adminBlogs"),
   profilePicture = document.querySelector("#profile-picture"),
   profileLi = document.getElementById("profileLi"),
   logoutLink = document.getElementById("logout"),
-  newProfilePicture = document.getElementById("upload-new-picture");
+  newProfilePicture = document.getElementById("upload-new-picture"),
+  adminImageURL = document.querySelector("#adminImageURL");
 
 let userNames = "",
   userEmail = "",
@@ -82,6 +83,7 @@ if (profileUpdateForm) {
         profilePicture.style.backgroundImage = `url(${reader.result})`;
         newProfilePictureInfo = files[0];
         isProfileImageChanged = true;
+        profileSaveBtn.className = "profile-save-enabled";
         isProfileChanged = true;
       },
       false
@@ -174,7 +176,7 @@ if (profileUpdateForm) {
             localStorage.removeItem("iyPortfolioInfo");
             window.location.href = "/MY-BRAND/ui/login.html";
           }
-          window.location.reload();
+          // window.location.reload();
         }
       } else alert("You didn't changed anything on your profile.");
     }
@@ -240,11 +242,23 @@ async function getUserInfoFromLocalStorage() {
         if (usernameEl) {
           usernameEl.innerHTML = names;
           emailEl.innerHTML = email;
+          console.log(window.location.pathname);
+          if (
+            (window.location.pathname === "/MY-BRAND/ui/admin-dashboard.html" ||
+              window.location.pathname === "/MY-BRAND/ui/my-profile.html" ||
+              window.location.pathname ===
+                "/MY-BRAND/ui/contact-messages.html") &&
+            role !== "Admin"
+          ) {
+            window.location.href = "/MY-BRAND/ui/login.html";
+          }
         }
         userNames = names;
         userEmail = email;
         userAddress = address;
         userInfo = { ..._doc };
+        if (adminImageURL)
+          adminImageURL.style.backgroundImage = `url(${profilePicUrl})`;
         if (profileUpdateForm) {
           profilePicture.style.backgroundImage = `url(${profilePicUrl})`;
           profileNames.value = names;
