@@ -289,15 +289,25 @@ body {
   display: none;
 }
 .my-profile>form>input[type=submit] {
-  cursor:no-drop;
   width: fit-content;
   margin-top: 1rem;
   font-weight: 700;
-  background:#6a83f0;
   padding: 0.6rem 2rem;
   color: #fff;
   border: none;
   outline: none;
+}
+.profile-save-disabled {
+  cursor:no-drop;
+  background:#6a83f0;
+}
+.profile-save-enabled {
+  cursor: pointer;
+  background: #4157bd;
+  transition: all 0.5s ease;
+}
+.profile-save-enabled:hover {
+  background: #2d42a3;
 }
 #nomessage>h3 {
   margin: auto;

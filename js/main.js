@@ -1,16 +1,186 @@
+// @ts-nocheck
 const adminBlogs = document.getElementById("adminBlogs"),
   standardBlogs = document.querySelector("#standardBlogs"),
   blogUpdateForm = document.querySelector("#blogUpdateForm"),
   formLoader = document.querySelector("#formLoader"),
   titleField = document.getElementById("title"),
+  blogLoader = document.querySelector("#blogLoader"),
   paragraph1Field = document.getElementById("paragraph1"),
   paragraph2Field = document.getElementById("paragraph2"),
   paragraph3Field = document.getElementById("paragraph3"),
   singleBlog = document.querySelector("#single-blog"),
-  singleBlogHeader = document.querySelector("#blogHeader");
+  singleBlogHeader = document.querySelector("#blogHeader"),
+  profileNames = document.querySelector("#profile-names"),
+  profileEmail = document.querySelector("#profile-email"),
+  profileAddress = document.querySelector("#profile-address"),
+  profileUpdateForm = document.querySelector("#profileUpdateForm"),
+  profileSaveBtn = document.querySelector("#save-updates-btn"),
+  profilePicture = document.querySelector("#profile-picture"),
+  profileLi = document.getElementById("profileLi"),
+  logoutLink = document.getElementById("logout"),
+  newProfilePicture = document.getElementById("upload-new-picture");
+
 let userNames = "",
   userEmail = "",
-  userProfilePicUrl = "";
+  userAddress = "",
+  userProfilePicUrl = "",
+  userInfo = {};
+
+if (profileLi) {
+  showHideProfileLi();
+}
+
+async function showHideProfileLi() {
+  if (!localStorage.getItem("iyPortfolioInfo")) {
+    profileLi.style.display = "none";
+    logoutLink.style.display = "none";
+  } else {
+    const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+    const res = await fetch(
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    if (res.status !== 200) {
+      profileLi.style.display = "none";
+      logoutLink.style.display = "none";
+    }
+  }
+}
+
+if (profileUpdateForm) {
+  profileSaveBtn.classList.add("profile-save-disabled");
+  let isProfileChanged = false;
+  const inputItems = profileUpdateForm.getElementsByTagName("input");
+  for (let i = 1; i < inputItems.length - 1; i++) {
+    inputItems[i].onkeyup = () => {
+      profileSaveBtn.className = "";
+      if (
+        profileNames.value === userNames &&
+        profileEmail.value === userEmail &&
+        profileAddress.value === userAddress
+      ) {
+        profileSaveBtn.className = "profile-save-disabled";
+        isProfileChanged = false;
+      } else {
+        profileSaveBtn.className = "profile-save-enabled";
+        isProfileChanged = true;
+      }
+    };
+  }
+  let isProfileImageChanged = false,
+    newProfilePictureInfo = "";
+  newProfilePicture.onchange = (e) => {
+    const { files } = e.target;
+    const reader = new FileReader();
+    reader.addEventListener(
+      "load",
+      function () {
+        profilePicture.style.backgroundImage = `url(${reader.result})`;
+        newProfilePictureInfo = files[0];
+        isProfileImageChanged = true;
+        isProfileChanged = true;
+      },
+      false
+    );
+
+    if (files[0]) {
+      reader.readAsDataURL(files[0]);
+    }
+  };
+  profileUpdateForm.onsubmit = async () => {
+    let errorsFound = false,
+      errorParagraph = document.getElementById("error-paragraph");
+    if (profileNames.value.length < 3) {
+      errorParagraph.innerHTML = "Names must be at least 3 characters long.";
+      errorsFound = true;
+    } else if (profileNames.value.length > 75) {
+      errorParagraph.innerHTML = "Names must not be beyond 75 characters.";
+      errorsFound = true;
+    } else if (profileEmail.value == "") {
+      errorParagraph.innerHTML = "Email can not be empty";
+      errorsFound = true;
+    } else if (profileAddress.value.length < 10) {
+      errorParagraph.innerHTML =
+        "Residence must be at least 10 characters long.";
+      errorsFound = true;
+    } else if (profileAddress.value.length > 150) {
+      errorParagraph.innerHTML = "Residence must not exceed 150 characters.";
+      errorsFound = true;
+    } else {
+      if (isProfileChanged) {
+        let uploadError = false;
+        errorParagraph.innerHTML = "";
+        errorsFound = false;
+        const { _id, token } = JSON.parse(
+          localStorage.getItem("iyPortfolioInfo")
+        );
+        let updatedUserInfo = {
+          names: "",
+          email: "",
+          profilePicUrl: userInfo.profilePicUrl,
+          address: "",
+        };
+        updatedUserInfo.names = profileNames.value;
+        updatedUserInfo.email = profileEmail.value;
+        updatedUserInfo.password = "123456";
+        updatedUserInfo.address = profileAddress.value;
+        formLoader.style.display = "block";
+        if (isProfileImageChanged && newProfilePictureInfo !== "") {
+          const formData1 = new FormData();
+          formData1.append("file", newProfilePictureInfo);
+          formData1.append("upload_preset", "bt7sz20d");
+          const res1 = await fetch(
+            "https://api.cloudinary.com/v1_1/yvesisite/image/upload",
+            {
+              method: "POST",
+              headers: {},
+              body: formData1,
+            }
+          );
+          if (res1.status !== 200) uploadError = true;
+          else {
+            updatedUserInfo.profilePicUrl = (await res1.json()).url;
+          }
+        }
+        let res;
+        if (!uploadError) {
+          res = await fetch(
+            `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json;charset=utf-8",
+                Authorization: token,
+              },
+              body: JSON.stringify(updatedUserInfo),
+            }
+          );
+        }
+        formLoader.style.display = "none";
+        if ((res.status !== 200 && res.status !== 201) || uploadError)
+          alert(
+            "Error while updating your info.Please try again or refresh the page."
+          );
+        else {
+          alert("Successfully updated profile info.");
+          if (profileEmail.value !== userInfo.email) {
+            alert(
+              `You've just changed your email.Please verify the new email '${profileNames.value}'`
+            );
+            localStorage.removeItem("iyPortfolioInfo");
+            window.location.href = "/MY-BRAND/ui/login.html";
+          }
+          window.location.reload();
+        }
+      } else alert("You didn't changed anything on your profile.");
+    }
+  };
+}
+
 if (formLoader) formLoader.style.display = "none";
 let blogToUpdate = "",
   blogToUpdateInfo = {};
@@ -38,9 +208,10 @@ if (document.getElementById("menubarRemoveIcon")) {
 }
 async function getUserInfoFromLocalStorage() {
   if (
-    document.getElementById("username") &&
-    document.getElementById("email") &&
-    document.getElementById("user-role")
+    (document.getElementById("username") &&
+      document.getElementById("email") &&
+      document.getElementById("user-role")) ||
+    profileUpdateForm
   ) {
     let usernameEl = document.getElementById("username"),
       emailEl = document.getElementById("email"),
@@ -52,7 +223,7 @@ async function getUserInfoFromLocalStorage() {
         localStorage.getItem("iyPortfolioInfo")
       );
       const res = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+        `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -63,12 +234,24 @@ async function getUserInfoFromLocalStorage() {
         document.location.href = "/MY-BRAND/ui/login.html";
       else {
         const { _doc } = await res.json();
-        const { names, email, role } = _doc;
-        if (role !== "Admin")
-          document.location.href = "/MY-BRAND/ui/login.html";
-        usernameEl.innerHTML = names;
-        emailEl.innerHTML = email;
-        userRoleEl.innerHTML = role;
+        const { names, email, address, profilePicUrl, role } = _doc;
+        // if (role !== "Admin")
+        //   document.location.href = "/MY-BRAND/ui/login.html";
+        if (usernameEl) {
+          usernameEl.innerHTML = names;
+          emailEl.innerHTML = email;
+        }
+        userNames = names;
+        userEmail = email;
+        userAddress = address;
+        userInfo = { ..._doc };
+        if (profileUpdateForm) {
+          profilePicture.style.backgroundImage = `url(${profilePicUrl})`;
+          profileNames.value = names;
+          profileEmail.value = email;
+          profileAddress.value = address;
+        }
+        if (userRoleEl) userRoleEl.innerHTML = role;
       }
     }
   }
@@ -80,7 +263,7 @@ async function getUserInfoFromLocalStorage() {
         localStorage.getItem("iyPortfolioInfo")
       );
       const res = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+        `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -88,20 +271,25 @@ async function getUserInfoFromLocalStorage() {
         }
       );
       if (res.status === 200) {
-        const result = await res.json();
-        const { names, email, profilePicUrl } = result._doc;
+        const result = await res.json(),
+          loginBtn = document.getElementById("loginBtn");
+        if (loginBtn) loginBtn.style.display = "none";
+        const { names, email, profilePicUrl, role } = result._doc;
         userNames = names;
         userEmail = email;
         userProfilePicUrl = profilePicUrl;
         if (signedInUsernames) signedInUsernames.innerHTML = names;
-        if (result.role !== "Admin") {
+        if (role !== "Admin") {
           if (signedInUsernames)
             document.getElementById("signedInRole").innerHTML = "Standard User";
         } else {
-          if (signedInUsernames) execShow();
+          if (signedInUsernames)
+            if (role === "Admin")
+              document.location.href = "/MY-BRAND/ui/admin-dashboard.html";
         }
       } else {
         if (signedInUsernames) execShow();
+        if (commentForm) commentForm.style.display = "none";
       }
     } else {
       if (commentForm) commentForm.style.display = "none";
@@ -113,8 +301,10 @@ async function getUserInfoFromLocalStorage() {
 }
 
 function execShow() {
-  document.getElementById("logout").style.display = "none";
-  document.getElementById("profileLi").style.display = "none";
+  if (profileLi) {
+    profileLi.style.display = "none";
+    logoutLink.style.display = "none";
+  }
 }
 
 const exploreMore = document.getElementById("exploreMore");
@@ -135,7 +325,7 @@ async function deleteBlog(id) {
   if (delConfirm) {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/blog/${id}`,
+      `https://my-brandbackend.herokuapp.com/api/blogs/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -153,7 +343,7 @@ async function loadBlogs1() {
   const loadingBlogs = document.getElementById("loadingBlogs");
   const blogsNbr = document.querySelector("#blogsNbr");
   blogsNbr.style.display = "none";
-  const res = await fetch(`https://my-brandbackend.herokuapp.com/api/blog/all`),
+  const res = await fetch(`https://my-brandbackend.herokuapp.com/api/blogs`),
     result = await res.json();
   loadingBlogs.style.display = "none";
   blogsNbr.style.display = "block";
@@ -252,7 +442,7 @@ async function checkAdmin() {
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -260,23 +450,6 @@ async function checkAdmin() {
       }
     );
     if (res.status !== 200) document.location.href = "/MY-BRAND/ui/login.html";
-  }
-}
-async function checkIsLoggedIn() {
-  if (!localStorage.getItem("iyPortfolioInfo"))
-    alert("Log in so as to be able to like / dislikes / comment blogs.");
-  else {
-    const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
-    const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
-    if (res.status !== 200)
-      alert("Log in so as to be able to like / dislikes / comment blogs.");
   }
 }
 const handleUpdate = async () => {
@@ -369,17 +542,7 @@ const handleUpdate = async () => {
           if (image2Field.value !== "") newBlogObj.image2Url = image2Url1;
           const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
           formLoader.style.display = "block";
-          const res3 = await fetch(
-            `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json;charset=utf-8",
-                Authorization: token,
-              },
-              body: JSON.stringify(newBlogObj),
-            }
-          );
+          const res3 = performUpdate(newBlogObj, blogToUpdate, token);
           formLoader.style.display = "none";
           if (res3.status !== 200) {
             errorsFound = true;
@@ -387,7 +550,7 @@ const handleUpdate = async () => {
           } else {
             alert("Successfully updated the blog.");
             errorsFound = false;
-            window.location.href = "/ui/admin-dashboard.html";
+            window.location.href = "/MY-BRAND/ui/admin-dashboard.html";
           }
         } else {
           formLoader.style.display = "none";
@@ -409,7 +572,7 @@ const handleUpdate = async () => {
 };
 
 window.onload = async () => {
-  getUserInfoFromLocalStorage();
+  await getUserInfoFromLocalStorage();
   if (adminBlogs || standardBlogs) loadBlogs1();
   if (standardBlogs && document.documentElement.clientWidth > 637)
     document.documentElement.style.overflow = "hidden";
@@ -421,8 +584,9 @@ window.onload = async () => {
     blogToUpdate = urlParams.get("q");
     if (blogToUpdate) {
       const res5 = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`
+        `https://my-brandbackend.herokuapp.com/api/blogs/${blogToUpdate}`
       );
+      if (blogLoader) blogLoader.style.display = "none";
       if (res5.status !== 200) {
         alert("Error fetching the current blog info.");
         window.location.href = "/MY-BRAND";
@@ -451,7 +615,11 @@ window.onload = async () => {
           const blogHeadline = singleBlogHeader.getElementsByTagName("span")[0],
             peopleReactions = singleBlogHeader.getElementsByTagName("div")[0],
             likesP = peopleReactions.children[0],
+            likeIcon = likesP.getElementsByTagName("span")[0],
+            likesContainer = likesP.getElementsByTagName("span")[1],
             dislikesP = peopleReactions.children[1],
+            dislikeIcon = dislikesP.getElementsByTagName("span")[0],
+            dislikesContainer = dislikesP.getElementsByTagName("span")[1],
             commentsP = peopleReactions.children[2],
             blogImage1 = singleBlog.querySelector("#blogImage1"),
             blogImage2 = singleBlog.querySelector("#blogImage2"),
@@ -464,9 +632,163 @@ window.onload = async () => {
           if (image2Url) blogImage2.setAttribute("src", image2Url);
           else blogImage2.style.display = "none";
           commentsNbr.innerHTML = comments.length;
-          likesP.append(likes.length);
-          dislikesP.append(dislikes.length);
+          likesContainer.innerHTML = likes.length;
+          dislikesContainer.innerHTML = dislikes.length;
+          let likesNbr = likes.length,
+            dislikesNbr = dislikes.length;
           commentsP.append(comments.length);
+          likeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
+          dislikeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
+          let myLikeIndex = 0,
+            myDislikeIndex = 0;
+          if (likes.length !== 0) {
+            for (let i = 0; i < likes.length; i++) {
+              if (likes[i].email === userEmail) {
+                myLikeIndex = i;
+                likeIcon.setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-filled"
+                );
+              }
+            }
+          }
+          if (dislikes.length !== 0) {
+            for (let i = 0; i < dislikes.length; i++) {
+              if (dislikes[i].email === userEmail) {
+                myDislikeIndex = i;
+                dislikeIcon.setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-filled"
+                );
+              }
+            }
+          }
+          likesP.onclick = async () => {
+            if (userEmail === "")
+              alert(
+                "Log in so as to be able to like, dislike or even comment on blogs."
+              );
+            else {
+              const {
+                  title,
+                  paragraph1,
+                  paragraph2,
+                  paragraph3,
+                  image1Url,
+                  image2Url,
+                  likes,
+                  dislikes,
+                  comments,
+                } = blogToUpdateInfo,
+                { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+              let newBlogObj = {
+                title,
+                paragraph1,
+                paragraph2,
+                paragraph3,
+                image1Url,
+                image2Url,
+                likes: [...likes],
+                dislikes: [...dislikes],
+                comments: [...comments],
+              };
+              likesP.children[0].setAttribute(
+                "data-icon",
+                "fluent:thumb-like-20-fill"
+              );
+              if (likesNbr === 1) {
+                likesP.children[0].setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-regular"
+                );
+                likesNbr = 0;
+                newBlogObj.likes.splice(myLikeIndex, 1);
+              } else {
+                likesP.children[0].setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-fill"
+                );
+                likesNbr = 1;
+                let hasLiked = false;
+                for (let j = 0; j < newBlogObj.likes.length; j++) {
+                  if (newBlogObj.likes[j].email === userEmail) hasLiked = true;
+                }
+                if (!hasLiked) newBlogObj.likes.push({ email: userEmail });
+                if (dislikesNbr === 1) {
+                  dislikesNbr = 0;
+                  newBlogObj.dislikes.splice(myDislikeIndex, 1);
+                }
+              }
+              likesContainer.innerHTML = likesNbr;
+              dislikesContainer.innerHTML = dislikesNbr;
+              const res3 = await performUpdate(newBlogObj, blogToUpdate, token);
+              if (res3.status !== 200)
+                alert("Error liking / unliking this blog.Please try again.");
+            }
+          };
+          dislikesP.onclick = async () => {
+            if (userEmail === "")
+              alert(
+                "Log in so as to be able to like, dislike or even comment on blogs."
+              );
+            else {
+              const {
+                  title,
+                  paragraph1,
+                  paragraph2,
+                  paragraph3,
+                  image1Url,
+                  image2Url,
+                  likes,
+                  dislikes,
+                  comments,
+                } = blogToUpdateInfo,
+                { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
+              let newBlogObj = {
+                title,
+                paragraph1,
+                paragraph2,
+                paragraph3,
+                image1Url,
+                image2Url,
+                likes: [...likes],
+                dislikes: [...dislikes],
+                comments: [...comments],
+              };
+              if (dislikesNbr === 1) {
+                dislikesP.children[0].setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-regular"
+                );
+                dislikesNbr = 0;
+                newBlogObj.dislikes.splice(myDislikeIndex, 1);
+              } else {
+                dislikesP.children[0].setAttribute(
+                  "data-icon",
+                  "fluent:thumb-like-20-fill"
+                );
+                dislikesNbr = 1;
+                let hasDisliked = false;
+                for (let j = 0; j < newBlogObj.dislikes.length; j++) {
+                  if (newBlogObj.dislikes[j].email === userEmail)
+                    hasDisliked = true;
+                }
+                if (!hasDisliked)
+                  newBlogObj.dislikes.push({ email: userEmail });
+                if (likesNbr === 1) {
+                  likesNbr = 0;
+                  newBlogObj.likes.splice(myLikeIndex, 1);
+                }
+              }
+              dislikesContainer.innerHTML = dislikesNbr;
+              likesContainer.innerHTML = likesNbr;
+              const res3 = await performUpdate(newBlogObj, blogToUpdate, token);
+              if (res3.status !== 200)
+                alert(
+                  "Error disliking / undisliking this blog.Please try again."
+                );
+            }
+          };
           if (comments.length > 0) {
             document.querySelector("#noComments").style.display = "none";
             for (let j = 0; j < comments.length; j++) {
@@ -476,11 +798,19 @@ window.onload = async () => {
                 d2 = document.createElement("div"),
                 h4 = document.createElement("h4"),
                 txt1 = document.createTextNode(comments[j].names),
-                p = document.createElement("p", "Abafana"),
-                txt2 = document.createTextNode(comments[j].commentText);
+                p = document.createElement("p"),
+                txt2 = document.createTextNode(comments[j].commentText),
+                span = document.createElement("span"),
+                txt3 = document.createTextNode("Portfolio Owner");
               commentEl.setAttribute("class", "comment");
               h4.append(txt1);
               p.append(txt2);
+              if (comments[j].email === "yvesisite@gmail.com") {
+                span.setAttribute("id", "portfolioOwnerBadge");
+                span.append(txt3);
+                h4.classList.add("portfolioOwnerCommentHeading");
+                h4.appendChild(span);
+              }
               d2.appendChild(h4);
               d2.appendChild(p);
               commentEl.appendChild(picDiv);
@@ -488,12 +818,9 @@ window.onload = async () => {
               singleBlog.appendChild(commentEl);
             }
           }
-          likesP.onclick = () => {
-            checkIsLoggedIn();
-          };
         }
       }
-    } else window.location.href = "/ui/admin-dashboard.html";
+    } else window.location.href = "/MY-BRAND/ui/admin-dashboard.html";
   }
 };
 
@@ -562,17 +889,7 @@ const handleCommentSubmit = async () => {
       newBlogObj.comments.push(commentObj);
       const { token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
       formLoader.style.display = "block";
-      const res3 = await fetch(
-        `https://my-brandbackend.herokuapp.com/api/blog/${blogToUpdate}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-            Authorization: token,
-          },
-          body: JSON.stringify(newBlogObj),
-        }
-      );
+      const res3 = await performUpdate(newBlogObj, blogToUpdate, token);
       formLoader.style.display = "none";
       if (res3.status === 200) {
         success = true;
@@ -593,3 +910,15 @@ const handleCommentSubmit = async () => {
     successSpan.style.display = "inline";
   }
 };
+
+function performUpdate(nBo, bTu, token) {
+  const res3 = fetch(`https://my-brandbackend.herokuapp.com/api/blogs/${bTu}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      Authorization: token,
+    },
+    body: JSON.stringify(nBo),
+  });
+  return res3;
+}

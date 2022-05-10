@@ -47,21 +47,23 @@
         <div>
             <h2>My profile</h2>
         </div>
-        <form action="javascript:void(0)" method="POST">
+        <form action="javascript:void(0)" id="profileUpdateForm" method="POST">
             <div id="profile-picture">
                 <label for="upload-new-picture" title="Upload new profile picture">+</label>
             </div>
+            <p id="error-paragraph"></p>
             <input type="file" name="upload-new-picture" id="upload-new-picture">
-            <label for="names">Names</label>
-            <input type="text" name="names" id="names" value="Yves ISITE">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="yvesisite@gmail.com">
-            <label for="address">Address</label>
-            <input type="text" name="address" id="address" placeholder="Rwanda, South, Huye">
-            <input type="Submit" id="save-updates-btn" value="Save updates" disabled>
+            <label for="profile-names">Names</label>
+            <input type="text" name="names" id="profile-names">
+            <label for="profile-email">Email</label>
+            <input type="email" name="email" id="profile-email">
+            <label for="profile-address">Address</label>
+            <input type="text" name="address" id="profile-address" placeholder="Rwanda, South, Huye">
+            <div id="formLoader"></div>
+            <input type="Submit" id="save-updates-btn" value="Save updates">
         </form>
     </div>
-    <script src="../js//main.js"></script>
+    <script src="../js/main.js"></script>
 
 </body>
 

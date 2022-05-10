@@ -1,8 +1,9 @@
+// @ts-nocheck
 async function getUserInfoFromLocalStorage() {
   if (localStorage.getItem("iyPortfolioInfo")) {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
-      `https://my-brandbackend.herokuapp.com/api/user/${_id}`,
+      `https://my-brandbackend.herokuapp.com/api/users/${_id}`,
       {
         headers: {
           Authorization: token,
@@ -29,6 +30,9 @@ const handleSubmit = async () => {
     if (passwordField.value == "") {
       errorParagraph.innerHTML = "Password can not be empty.";
       errorsFound = true;
+    } else if (passwordField.value.length < 6) {
+      errorParagraph.innerHTML = "Invalid password.";
+      errorsFound = true;
     } else {
       try {
         const userObj = {
@@ -36,7 +40,7 @@ const handleSubmit = async () => {
           password: passwordField.value,
         };
         const res = await fetch(
-          "https://my-brandbackend.herokuapp.com/api/user/login",
+          "https://my-brandbackend.herokuapp.com/api/users/login",
           {
             method: "POST",
             headers: {
