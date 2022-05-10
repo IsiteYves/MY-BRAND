@@ -129,8 +129,22 @@ if (profileUpdateForm) {
         updatedUserInfo.password = "123456";
         updatedUserInfo.address = profileAddress.value;
         formLoader.style.display = "block";
-        if(isProfileImageChanged && newProfilePictureInfo !== "") {
-          
+        if (isProfileImageChanged && newProfilePictureInfo !== "") {
+          const formData1 = new FormData();
+          formData1.append("file", newProfilePictureInfo);
+          formData1.append("upload_preset", "bt7sz20d");
+          const res1 = await fetch(
+            "https://api.cloudinary.com/v1_1/yvesisite/image/upload",
+            {
+              method: "POST",
+              headers: {},
+              body: formData1,
+            }
+          );
+          if (res1.status !== 200) uploadError = true;
+          else {
+            updatedUserInfo.profilePicUrl = (await res1.json()).url;
+          }
         }
         let res;
         if (!uploadError) {
