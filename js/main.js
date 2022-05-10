@@ -807,10 +807,13 @@ window.onload = async () => {
             document.querySelector("#noComments").style.display = "none";
             for (let j = 0; j < comments.length; j++) {
               const picDiv = document.createElement("div");
+              console.log(comments[j].profilePicUrl);
               picDiv.style.backgroundImage = `url('${comments[j].profilePicUrl}')`;
               const commentEl = document.createElement("div"),
                 d2 = document.createElement("div"),
                 h4 = document.createElement("h4"),
+                sp3 = document.createElement("span"),
+                txt = document.createTextNode("Me"),
                 txt1 = document.createTextNode(comments[j].names),
                 p = document.createElement("p"),
                 txt2 = document.createTextNode(comments[j].commentText),
@@ -824,6 +827,12 @@ window.onload = async () => {
                 span.append(txt3);
                 h4.classList.add("portfolioOwnerCommentHeading");
                 h4.appendChild(span);
+              }
+              if (comments[j].email === userEmail) {
+                sp3.setAttribute("id", "portfolioOwnerBadge");
+                sp3.append(txt);
+                h4.classList.add("portfolioOwnerCommentHeading");
+                h4.appendChild(sp3);
               }
               d2.appendChild(h4);
               d2.appendChild(p);
