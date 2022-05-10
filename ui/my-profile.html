@@ -17,7 +17,7 @@
 <body>
     <div class="Sidebar">
         <section class="few-profile-info">
-            <div></div>
+            <div id="adminImageURL"></div>
             <h4 id="username"></h4>
             <h5 id="email"></h5>
             <span id="user-role"></span>
@@ -51,8 +51,8 @@
             <div id="profile-picture">
                 <label for="upload-new-picture" title="Upload new profile picture">+</label>
             </div>
-            <p id="error-paragraph"></p>
-            <input type="file" name="upload-new-picture" id="upload-new-picture">
+            <p id="error-paragraph" class="profile-error"></p>
+            <input type="file" name="upload-new-picture" id="upload-new-picture" accept="images/*">
             <label for="profile-names">Names</label>
             <input type="text" name="names" id="profile-names">
             <label for="profile-email">Email</label>

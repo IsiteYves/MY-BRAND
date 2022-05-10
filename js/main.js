@@ -18,7 +18,8 @@ const adminBlogs = document.getElementById("adminBlogs"),
   profilePicture = document.querySelector("#profile-picture"),
   profileLi = document.getElementById("profileLi"),
   logoutLink = document.getElementById("logout"),
-  newProfilePicture = document.getElementById("upload-new-picture");
+  newProfilePicture = document.getElementById("upload-new-picture"),
+  adminImageURL = document.querySelector("#adminImageURL");
 
 let userNames = "",
   userEmail = "",
@@ -82,6 +83,7 @@ if (profileUpdateForm) {
         profilePicture.style.backgroundImage = `url(${reader.result})`;
         newProfilePictureInfo = files[0];
         isProfileImageChanged = true;
+        profileSaveBtn.className = "profile-save-enabled";
         isProfileChanged = true;
       },
       false
@@ -174,7 +176,7 @@ if (profileUpdateForm) {
             localStorage.removeItem("iyPortfolioInfo");
             window.location.href = "/MY-BRAND/ui/login.html";
           }
-          window.location.reload();
+          // window.location.reload();
         }
       } else alert("You didn't changed anything on your profile.");
     }
@@ -240,11 +242,23 @@ async function getUserInfoFromLocalStorage() {
         if (usernameEl) {
           usernameEl.innerHTML = names;
           emailEl.innerHTML = email;
+          console.log(window.location.pathname);
+          if (
+            (window.location.pathname === "/MY-BRAND/ui/admin-dashboard.html" ||
+              window.location.pathname === "/MY-BRAND/ui/my-profile.html" ||
+              window.location.pathname ===
+                "/MY-BRAND/ui/contact-messages.html") &&
+            role !== "Admin"
+          ) {
+            window.location.href = "/MY-BRAND/ui/login.html";
+          }
         }
         userNames = names;
         userEmail = email;
         userAddress = address;
         userInfo = { ..._doc };
+        if (adminImageURL)
+          adminImageURL.style.backgroundImage = `url(${profilePicUrl})`;
         if (profileUpdateForm) {
           profilePicture.style.backgroundImage = `url(${profilePicUrl})`;
           profileNames.value = names;
@@ -793,10 +807,13 @@ window.onload = async () => {
             document.querySelector("#noComments").style.display = "none";
             for (let j = 0; j < comments.length; j++) {
               const picDiv = document.createElement("div");
+              console.log(comments[j].profilePicUrl);
               picDiv.style.backgroundImage = `url('${comments[j].profilePicUrl}')`;
               const commentEl = document.createElement("div"),
                 d2 = document.createElement("div"),
                 h4 = document.createElement("h4"),
+                sp3 = document.createElement("span"),
+                txt = document.createTextNode("Me"),
                 txt1 = document.createTextNode(comments[j].names),
                 p = document.createElement("p"),
                 txt2 = document.createTextNode(comments[j].commentText),
@@ -810,6 +827,12 @@ window.onload = async () => {
                 span.append(txt3);
                 h4.classList.add("portfolioOwnerCommentHeading");
                 h4.appendChild(span);
+              }
+              if (comments[j].email === userEmail) {
+                sp3.setAttribute("id", "portfolioOwnerBadge");
+                sp3.append(txt);
+                h4.classList.add("portfolioOwnerCommentHeading");
+                h4.appendChild(sp3);
               }
               d2.appendChild(h4);
               d2.appendChild(p);
