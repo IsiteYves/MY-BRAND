@@ -32,6 +32,7 @@
             <li><a href="./my-work.html">My Work</a></li>
             <li><a href="./my-blogs.html">Blogs</a></li>
             <li><a href="./contact-me.html">Contact me</a></li>
+            <li id="logout"><a href="/index.html" onclick="logout()">Logout</a></li>
         </ul>
         <div class="socials">
             <a href="https://www.linkedin.com/in/yves-isite-5779491a3/" target="_blank">
@@ -54,21 +55,22 @@
         </ul>
     </div>
     <div class="profile-info">
-        <form class="auth-form profile-form" action="javascript:void(0)" method="POST">
+        <form class="auth-form profile-form" id="profileUpdateForm" action="javascript:void(0)" method="POST">
             <h2>My profile</h2>
             <div id="profile-picture">
                 <label for="upload-new-picture" title="Upload new profile picture">+</label>
             </div>
+            <p id="error-paragraph" class="profile-error"></p>
             <input type="file" name="upload-new-picture" id="upload-new-picture">
-            <label for="names">Names</label>
-            <input type="text" name="names" id="names" value="Eric Kalisa" style="margin-top: 0.6rem !important">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="erickalisa@gmail.com"
+            <label for="profile-names">Names</label>
+            <input type="text" name="names" id="profile-names" placeholder="Type here...">
+            <label for="profile-email">Email</label>
+            <input type="email" name="email" id="profile-email" placeholder="Type here...">
+            <label for="profile-address">Address</label>
+            <input type="text" name="address" id="profile-address" placeholder="Rwanda, South, Huye"
                 style="margin-top: 0.6rem !important">
-            <label for="address">Address</label>
-            <input type="text" name="address" id="address" placeholder="Rwanda, South, Huye"
-                value="Rwanda, North, Musanze" style="margin-top: 0.6rem !important">
-            <input type="Submit" id="save-updates-btn" value="Save updates" disabled>
+            <div id="formLoader"></div>
+            <input type="Submit" id="save-updates-btn" value="Save updates">
         </form>
     </div>
     <script src="../js/main.js"></script>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 const handleSubmit = async () => {
   let namesField = document.getElementById("names"),
     emailField = document.getElementById("email"),
@@ -72,7 +73,7 @@ const handleSubmit = async () => {
                       body: JSON.stringify(userObj),
                     }
                   );
-                  if (res.status === 200) {
+                  if (res.status === 201) {
                     success = true;
                   } else {
                     if (res.status === 400) {

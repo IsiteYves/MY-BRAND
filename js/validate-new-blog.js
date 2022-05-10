@@ -1,3 +1,4 @@
+// @ts-nocheck
 // const formLoader = document.querySelector("#formLoader");
 // formLoader.style.display = "none";
 const handleSubmit = async () => {

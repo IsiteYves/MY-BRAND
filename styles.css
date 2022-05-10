@@ -1024,6 +1024,9 @@ a {
 .auth-form > textarea:valid {
   margin-top: 2rem !important;
 }
+#profileUpdateForm > input:not(:last-child):valid {
+  margin-top: 0.5rem !important;
+}
 .auth-form > input:not(:last-child):focus,
 .Contact-me-info .auth-form textarea:focus {
   border-bottom: 1px solid var(--main-color) !important;
@@ -1337,9 +1340,13 @@ a {
 .profile-form > input[type=submit] {
   margin-top: 1.5rem;
 }
+.profile-error {
+  color: #c73b3b !important;
+}
 #profile-picture {
   position: relative;
-  background: url("../images/IsiteYves.png") no-repeat;
+  /* background: url("../images/IsiteYves.png") no-repeat; */
+  background-repeat: no-repeat;
   background-size: cover;
   width: 120px !important;
   height: 120px !important;
