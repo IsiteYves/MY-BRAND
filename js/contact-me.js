@@ -80,11 +80,11 @@ window.onload = async () => {
         },
       }
     );
-    if (res.status !== 200) document.location.href = "/ui/login.html";
+    if (res.status !== 200) document.location.href = "/MY-BRAND/ui"/login.html";
     else {
       const result = await res.json();
       if (result.role === "Admin") {
-        document.location.href = "/ui/login.html";
+        document.location.href = "/MY-BRAND/ui"/login.html";
       }
     }
   }

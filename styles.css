@@ -120,7 +120,7 @@ ul {
   z-index: 80 !important;
 }
 #menubarRemoveIcon {
-  z-index: 99 !important;
+  z-index: 9999 !important;
   display: none;
 }
 .Menubar > ul:last-of-type {
@@ -1342,6 +1342,9 @@ a {
 }
 .profile-error {
   color: #c73b3b !important;
+}
+.single-blog > p a {
+  color: #1e90ff;
 }
 #profile-picture {
   position: relative;

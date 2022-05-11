@@ -17,7 +17,7 @@ window.onload = async () => {
         },
       }
     );
-    if (res1.status !== 200) document.location.href = "/ui/login.html";
+    if (res1.status !== 200) document.location.href = "/MY-BRAND/ui"/login.html";
     else {
       const res = await fetch(`https://isiteyves.herokuapp.com/api/query`, {
           headers: {
