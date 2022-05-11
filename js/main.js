@@ -33,8 +33,8 @@ if (profileLi) {
 
 async function showHideProfileLi() {
   if (!localStorage.getItem("iyPortfolioInfo")) {
-    profileLi.style.display = "none";
-    logoutLink.style.display = "none";
+    if (profileLi) profileLi.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "none";
   } else {
     const { _id, token } = JSON.parse(localStorage.getItem("iyPortfolioInfo"));
     const res = await fetch(
@@ -176,7 +176,7 @@ if (profileUpdateForm) {
             localStorage.removeItem("iyPortfolioInfo");
             window.location.href = "/MY-BRAND/ui/login.html";
           }
-          // window.location.reload();
+          window.location.reload();
         }
       } else alert("You didn't changed anything on your profile.");
     }
@@ -188,12 +188,8 @@ let blogToUpdate = "",
   blogToUpdateInfo = {};
 if (document.getElementsByClassName("menu-block-link")[0]) {
   const menuBlockLink = document.getElementsByClassName("menu-block-link")[0];
-  menuBlockLink.onclick = (e) => {
-    const isCloseClicked = e.target.id == "menubarRemoveIcon";
-    if (isCloseClicked) return;
-    if (!isCloseClicked) {
-      document.location.href = "/MY-BRAND/";
-    }
+  menuBlockLink.onclick = () => {
+    document.location.href = "/MY-BRAND/";
   };
 }
 if (document.querySelector("#menuIcon")) {
@@ -203,8 +199,9 @@ if (document.querySelector("#menuIcon")) {
   });
 }
 if (document.getElementById("menubarRemoveIcon")) {
-  menubarRemoveIcon = document.getElementById("menubarRemoveIcon");
-  menubarRemoveIcon.onclick = () => {
+  const menubarRemoveIcon = document.getElementById("menubarRemoveIcon");
+  menubarRemoveIcon.onclick = (e) => {
+    e.stopPropagation();
     document.getElementsByClassName("Menubar")[0].style.display = "none";
   };
 }
@@ -242,7 +239,6 @@ async function getUserInfoFromLocalStorage() {
         if (usernameEl) {
           usernameEl.innerHTML = names;
           emailEl.innerHTML = email;
-          console.log(window.location.pathname);
           if (
             (window.location.pathname === "/MY-BRAND/ui/admin-dashboard.html" ||
               window.location.pathname === "/MY-BRAND/ui/my-profile.html" ||
@@ -653,12 +649,10 @@ window.onload = async () => {
           commentsP.append(comments.length);
           likeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
           dislikeIcon.setAttribute("data-icon", "fluent:thumb-like-20-regular");
-          let myLikeIndex = 0,
-            myDislikeIndex = 0;
+          let myDislikeIndex = 0;
           if (likes.length !== 0) {
             for (let i = 0; i < likes.length; i++) {
               if (likes[i].email === userEmail) {
-                myLikeIndex = i;
                 likeIcon.setAttribute(
                   "data-icon",
                   "fluent:thumb-like-20-filled"
@@ -710,12 +704,24 @@ window.onload = async () => {
                 "data-icon",
                 "fluent:thumb-like-20-fill"
               );
-              if (likesNbr === 1) {
+              let myLikeIndex = -1;
+              if (likes.length !== 0) {
+                for (let i = 0; i < likes.length; i++) {
+                  if (likes[i].email === userEmail) {
+                    myLikeIndex = i;
+                    likeIcon.setAttribute(
+                      "data-icon",
+                      "fluent:thumb-like-20-filled"
+                    );
+                  }
+                }
+              }
+              if (likesNbr === likes.length + 1) {
                 likesP.children[0].setAttribute(
                   "data-icon",
                   "fluent:thumb-like-20-regular"
                 );
-                likesNbr = 0;
+                likesNbr = likes.length;
                 newBlogObj.likes.splice(myLikeIndex, 1);
               } else {
                 likesP.children[0].setAttribute(
@@ -807,7 +813,6 @@ window.onload = async () => {
             document.querySelector("#noComments").style.display = "none";
             for (let j = 0; j < comments.length; j++) {
               const picDiv = document.createElement("div");
-              console.log(comments[j].profilePicUrl);
               picDiv.style.backgroundImage = `url('${comments[j].profilePicUrl}')`;
               const commentEl = document.createElement("div"),
                 d2 = document.createElement("div"),
