@@ -28,7 +28,7 @@ body {
   overflow-x: hidden;
   height: fit-content;
 }
-#single-blog>img:nth-of-type(2) {
+#single-blog > img:nth-of-type(2) {
   margin-top: 1rem;
 }
 .Menubar {
@@ -559,12 +559,11 @@ body > button {
 }
 .My_Skills > div > div {
   height: 100%;
-}
-.My_Skills > div:first-of-type > div {
-  width: 98%;
+  width: 50%;
   background-color: #42ade2;
 }
-.My_Skills > div:nth-of-type(2) > div {
+
+/* .My_Skills > div:nth-of-type(2) > div {
   width: 100%;
   background-color: #fd2155;
 }
@@ -590,7 +589,7 @@ body > button {
 }
 .My_Skills > h1:not(:first-of-type) {
   margin-top: 1rem !important;
-}
+} */
 .blog-info-section {
   display: flex;
   justify-content: space-between;
@@ -964,7 +963,7 @@ body > button {
   padding: 0.6rem;
   display: none;
 }
-.auth-form>span {
+.auth-form > span {
   margin-top: 1rem;
   background: #0b530b;
   color: #7fd67f;
@@ -974,7 +973,7 @@ body > button {
   display: none;
   margin-bottom: 1rem !important;
 }
-.contact-me-form>span {
+.contact-me-form > span {
   padding-left: 1.5rem !important;
 }
 .move-upper {
@@ -1329,15 +1328,15 @@ a {
   width: 40vw;
   margin: 1.5rem 0 2rem 1.5rem !important;
 }
-.profile-form input[type=file] {
+.profile-form input[type="file"] {
   display: none;
 }
-.profile-form>label {
+.profile-form > label {
   position: static;
   margin: 2rem 0 0 0 !important;
   top: 0 !important;
 }
-.profile-form > input[type=submit] {
+.profile-form > input[type="submit"] {
   margin-top: 1.5rem;
 }
 .profile-error {
@@ -1357,7 +1356,7 @@ a {
   border: 3px solid #086afd;
   border-radius: 50%;
 }
-#profile-picture>label {
+#profile-picture > label {
   position: absolute;
   padding: 0.3rem 0.9rem;
   background: #086afd;
@@ -1388,8 +1387,12 @@ a {
   animation: load 0.7s infinite ease-in-out;
 }
 @keyframes load {
-  0% {transform: rotate(0deg)}
-  100% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .portfolioOwnerCommentHeading {
   margin-bottom: 0.5rem;
