@@ -503,7 +503,7 @@ body > button {
 .My_Skills > h1 {
   color: #08fdd8;
 }
-.My_Skills > h1 {
+.My_Skills > h1:first-of-type {
   margin-top: 0 !important;
 }
 .My_Skills > h1:not(:first-of-type) {
@@ -589,9 +589,6 @@ body > button {
 .My_Skills > div:nth-of-type(7) > div {
   width: 88%;
   background-color: #504ed1;
-}
-.My_Skills > h1:not(:first-of-type) {
-  margin-top: 1rem !important;
 } */
 .blog-info-section {
   display: flex;
