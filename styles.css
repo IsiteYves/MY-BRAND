@@ -503,7 +503,10 @@ body > button {
 .My_Skills > h1 {
   color: #08fdd8;
 }
-.My_Skills > h1.comment:not(:first-of-type) {
+.My_Skills > h1 {
+  margin-top: 0 !important;
+}
+.My_Skills > h1:not(:first-of-type) {
   margin-top: 1rem !important;
 }
 .About-me-info > div:last-of-type > ul {
