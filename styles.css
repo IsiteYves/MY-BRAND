@@ -503,11 +503,11 @@ body > button {
 .My_Skills > h1 {
   color: #08fdd8;
 }
-.My_Skills > h1:first-of-type {
-  margin-top: 0 !important;
+.My_Skills > h1 {
+  font-size: 20px;
 }
 .My_Skills > h1:not(:first-of-type) {
-  margin-top: 1rem !important;
+  margin-top: 2rem;
 }
 .About-me-info > div:last-of-type > ul {
   list-style-type: disc;
